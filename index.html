@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>English Grammar Pro</title>
+<style>
+:root{--bg:#eef3f1;--cd:#fff;--tx:#14231f;--mu:#5b6f69;--ac:#0f766e;--at:#fff;--ok:#15803d;--no:#b91c1c;--bd:#cfdcd8;--hl:#fde68a;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1816;--cd:#14241f;--tx:#e5efec;--mu:#8fa7a0;--ac:#5eead4;--at:#06201b;--ok:#4ade80;--no:#f87171;--bd:#24403a;--hl:#7a5c0c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1816;--cd:#14241f;--tx:#e5efec;--mu:#8fa7a0;--ac:#5eead4;--at:#06201b;--ok:#4ade80;--no:#f87171;--bd:#24403a;--hl:#7a5c0c;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.w{max-width:820px;margin:0 auto;padding:16px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;margin:.4em 0}
+h1{font-size:1.5rem}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:2px solid var(--ac);padding-bottom:8px;margin-bottom:14px}
+.c{background:var(--cd);border:1px solid var(--bd);border-radius:6px;padding:14px 16px;margin:10px 0}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.k{cursor:pointer;border-left:5px solid var(--ac)}
+.k:hover{background:var(--bg)}
+.r{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.b,.o,.i{font:inherit;color:var(--tx);background:var(--cd);border:1px solid var(--bd);border-radius:8px;padding:8px 14px}
+.b,.o{cursor:pointer}
+.b.on{background:var(--ac);color:var(--at);border-color:var(--ac)}
+.o{display:block;width:100%;text-align:left;margin:6px 0}
+.o.ok{border:2px solid var(--ok);color:var(--ok)}
+.o.no{border:2px solid var(--no);color:var(--no)}
+.o.sel{border:2px solid var(--ac)}
+.i{min-width:220px;max-width:100%}
+.ok2{color:var(--ok)}.no2{color:var(--no)}
+.th li{margin:4px 0}
+em{font-style:normal;background:linear-gradient(transparent 55%,var(--hl) 55%)}
+small{color:var(--mu)}
+.tm{position:sticky;top:env(safe-area-inset-top,0px);display:flex;justify-content:space-between;align-items:center;font-size:1.1rem}
+</style></head><body>
+<div class="w"><header><h1>📘 English Grammar Pro</h1><span id="bd" class="b"></span></header><div id="app"></div></div>
+<script>
+const D=[
+{id:1,n:"Thì hiện tại đơn",t:`<h3>Present Simple</h3><ul><li><b>Khẳng định:</b> S + V(s/es). <b>Phủ định:</b> S + do/does not + V. <b>Nghi vấn:</b> Do/Does + S + V?</li><li><b>Cách dùng:</b> thói quen, sự thật hiển nhiên, lịch trình cố định.</li><li><b>Dấu hiệu:</b> always, usually, often, sometimes, never, every day.</li><li><b>Thêm -s/-es:</b> động từ tận cùng -s, -x, -ch, -sh, -o thêm <i>es</i>; phụ âm + y đổi thành <i>ies</i> (study → studies).</li></ul><p>Ví dụ: <em>She goes to school every day.</em> (thói quen) <em>Water boils at 100°C.</em> (sự thật) <em>The train leaves at 8 p.m.</em> (lịch trình) <em>He doesn’t like coffee.</em></p>`,
+x:{nb:{m:[["She ___ to school every day.",["goes","go","going","is go"],0],["Water ___ at 100°C.",["boil","boils","is boiling","boiled"],1],["They ___ TV in the evening.",["watches","watch","is watching","watched"],1],["He ___ like coffee.",["don’t","doesn’t","isn’t","not"],1]],e:[["Chia động từ: He (go) ___ to work by bus.","goes"]]},
+th:{m:[["___ your brother play football?",["Do","Does","Is","Are"],1],["Chọn câu đúng.",["She don’t like fish.","She doesn’t likes fish.","She doesn’t like fish.","She not like fish."],2],["Ngôi thứ ba số ít của “study” là:",["studys","studies","studyes","study"],1],["Từ nào đi với thì hiện tại đơn?",["now","at the moment","usually","yesterday"],2]],e:[["Viết câu phủ định: She plays tennis on Sundays.","She doesn’t play tennis on Sundays."]]},
+vd:{m:[["The train ___ at 7:30 tomorrow morning.",["leaves","is leaving","left","leave"],0],["My mother usually ___ dinner, but today she ___ out.",["cooks – is eating","cook – eats","is cooking – eats","cooks – ate"],0],["Tom never ___ late for work.",["come","comes","is coming","came"],1],["How often ___ she ___ her grandparents?",["does – visit","do – visits","does – visits","is – visit"],0]],e:[["Sửa lỗi cả câu: My sister don’t watches TV in the evening.","My sister doesn’t watch TV in the evening."]]}}},
+{id:2,n:"Mạo từ (a, an, the)",t:`<h3>Articles</h3><ul><li><b>a:</b> trước âm phụ âm (a book, a university /ju:/).</li><li><b>an:</b> trước âm nguyên âm (an apple, an hour vì /h/ câm).</li><li><b>the:</b> danh từ đã xác định, duy nhất, so sánh nhất, nhạc cụ, đại dương.</li><li><b>Không dùng mạo từ:</b> danh từ số nhiều nói chung, môn học, bữa ăn, thể thao.</li></ul><p>Ví dụ: <em>She has an apple.</em> <em>The sun rises in the east.</em> <em>I have breakfast at 6.</em> <em>He plays football and the guitar.</em></p>`,
+x:{nb:{m:[["She has ___ apple.",["a","an","the","—"],1],["He is ___ engineer.",["a","an","the","—"],1],["___ sun rises in the east.",["A","An","The","—"],2],["My father is ___ doctor.",["a","an","the","—"],0]],e:[["Điền a/an/the: I have ___ orange.","an"]]},
+th:{m:[["He studies at ___ university in Hanoi.",["a","an","the","—"],0],["I usually have ___ breakfast at 6.",["a","an","the","—"],3],["___ Pacific Ocean is the largest ocean.",["A","An","The","—"],2],["She plays ___ piano very well.",["a","an","the","—"],2]],e:[["Điền a/an/the: ___ Earth goes around the Sun.","The"]]},
+vd:{m:[["I bought a shirt and a hat. ___ shirt is blue.",["A","An","The","—"],2],["It took me ___ hour to finish.",["a","an","the","—"],1],["___ life is not always easy.",["A","An","The","—"],3],["Ann is ___ most intelligent student in class.",["a","an","the","—"],2]],e:[["Sửa lỗi cả câu: He is an university student, and he plays the football.","He is a university student, and he plays football."]]}}},
+{id:3,n:"So sánh hơn và so sánh nhất",t:`<h3>Comparison</h3><ul><li><b>Tính từ ngắn:</b> adj-er + than / the adj-est (tall → taller → the tallest). Gấp đôi phụ âm: big → bigger; đổi y → ier: happy → happier.</li><li><b>Tính từ dài:</b> more + adj + than / the most + adj.</li><li><b>Bất quy tắc:</b> good → better → best; bad → worse → worst; far → farther → farthest.</li><li><b>So sánh bằng:</b> as + adj + as. <b>So sánh kép:</b> the + so sánh hơn, the + so sánh hơn.</li></ul><p>Ví dụ: <em>Tom is taller than Jack.</em> <em>This book is more interesting than that one.</em> <em>She is the smartest girl in class.</em> <em>The more you practise, the better you become.</em></p>`,
+x:{nb:{m:[["Tom is ___ than Jack.",["taller","tall","tallest","more tall"],0],["She is the ___ girl in class.",["smart","smarter","smartest","more smart"],2],["This book is ___ than that one.",["more interesting","interestinger","most interesting","interesting"],0],["Her English is ___ than mine.",["good","better","best","gooder"],1]],e:[["Viết dạng so sánh hơn của “big”.","bigger"]]},
+th:{m:[["So sánh hơn của “happy” là:",["happier","more happy","happyer","happiest"],0],["He is as ___ as his brother.",["tall","taller","tallest","more tall"],0],["So sánh nhất của “bad” là:",["baddest","worst","worse","most bad"],1],["This shop is ___ than that one.",["more cheaper","cheaper","more cheap","cheapest"],1]],e:[["Hoàn thành: Today is (hot) ___ than yesterday.","hotter"]]},
+vd:{m:[["The more you practise, ___ you become.",["the better","better","the best","more better"],0],["Mount Everest is ___ mountain in the world.",["the higher","higher","the highest","highest"],2],["My house is not ___ yours.",["as big as","bigger than","so bigger","the biggest"],0],["She speaks English ___ than she did last year.",["fluently","more fluently","most fluently","fluenter"],1]],e:[["Viết lại: Anna is 1.6 m tall. Mary is 1.7 m tall. Mary is ___ Anna.","taller than"]]}}}];
+const sh=a=>a.sort(()=>Math.random()-.5);
+const add=(i,l,s)=>{const x=D.find(d=>d.id==i).x[l];s.trim().split("\n").forEach(r=>{const p=r.split("|"),o=sh(p.slice(1));x.m.push([p[0],o,o.indexOf(p[1])])})};
+D.push({id:4,n:"Thì quá khứ đơn",t:`<h3>Past Simple</h3><ul><li><b>Khẳng định:</b> S + V2/V-ed. <b>Phủ định:</b> S + did not + V. <b>Nghi vấn:</b> Did + S + V? (với <i>be</i>: was/were).</li><li><b>Cách dùng:</b> hành động đã xảy ra và kết thúc hẳn trong quá khứ.</li><li><b>Dấu hiệu:</b> yesterday, last week, two days ago, in 2019, when I was a child.</li><li><b>Quy tắc -ed:</b> stop → stopped, study → studied. <b>Bất quy tắc:</b> go → went, see → saw, buy → bought, have → had.</li></ul><p>Ví dụ: <em>I went to Hue last summer.</em> <em>She didn’t come to the party.</em> <em>Did you enjoy the trip?</em></p>`,x:{nb:{m:[],e:[["Chia động từ: I (visit) ___ my aunt last Sunday.","visited"]]},th:{m:[],e:[["Viết câu phủ định: He cleaned the room.","He didn’t clean the room."]]},vd:{m:[],e:[["Sửa lỗi cả câu: Yesterday I go to the market and buyed some fish.","Yesterday I went to the market and bought some fish."]]}}});
+add(1,"nb",`My sister ___ in a bank.|works|work|working|is work
+We ___ English at school.|study|studies|studying|studied
+The sun ___ in the west.|sets|set|is set|setting
+___ you like pizza?|Do|Does|Are|Is
+Lan ___ breakfast at 6 a.m.|has|have|having|haves
+Birds ___ in the sky.|fly|flies|flying|are fly
+He ___ his teeth twice a day.|brushes|brush|brushing|brushs
+They ___ not go to school on Sunday.|do|does|are|is
+The Earth ___ round the Sun.|goes|go|is going|went
+My parents ___ TV every night.|watch|watches|watching|is watch`);
+add(1,"th",`She ___ sugar in her tea.|doesn’t take|don’t take|doesn’t takes|isn’t take
+Which sentence is correct?|Does he go to school?|Do he goes to school?|Does he goes to school?|Is he go to school?
+Ngôi thứ ba số ít của “fix” là:|fixes|fixs|fixies|fix
+Ngôi thứ ba số ít của “have” là:|has|haves|have|having
+Where ___ your father work?|does|do|is|are
+The shop ___ at 9 a.m. every day.|opens|open|opening|to open
+Mai and Lan ___ good friends.|are|is|do|does
+Does she like music? – ___|Yes, she does.|Yes, she do.|Yes, she is.|Yes, she likes.
+He ___ get up early on Sundays.|doesn’t|don’t|isn’t|not
+How many hours ___ you sleep every night?|do|does|are|is`);
+add(1,"vd",`Mr Binh ___ English, but his students ___ it difficult.|teaches – find|teach – finds|teaches – finds|is teaching – find
+If you heat ice, it ___.|melts|melt|melted|is melting
+My brother ___ football, but he ___ it on TV.|doesn’t play – watches|don’t play – watches|doesn’t plays – watch|isn’t play – watches
+The flight to Hue ___ at 6 p.m. tonight.|departs|depart|is depart|departing
+He ___ coffee because it ___ him awake.|doesn’t drink – keeps|don’t drink – keeps|doesn’t drink – keep|isn’t drink – keeps
+Every morning, Lan ___ up at 5, ___ exercise and then ___ breakfast.|gets – does – has|get – do – have|gets – does – have|gets – do – has
+Which sentence is INCORRECT?|He don’t like milk.|She goes to school by bike.|They live in Hue.|Water boils at 100°C.
+The Moon ___ around the Earth.|moves|move|is move|moving`);
+add(2,"nb",`I have ___ umbrella.|an|a|the|—
+___ moon is bright tonight.|The|A|An|—
+He is ___ student.|a|an|the|—
+She ate ___ egg for breakfast.|an|a|the|—
+I need ___ pen to write.|a|an|the|—
+___ Nile is a long river.|The|A|An|—
+My brother is ___ artist.|an|a|the|—
+We have ___ lesson at 8.|a|an|the|—
+He lives in ___ small house.|a|an|the|—
+It is ___ honest answer.|an|a|the|—`);
+add(2,"th",`Lan likes ___ music.|—|a|an|the
+We went to ___ cinema last night.|the|a|an|—
+I live in ___ United States.|the|a|an|—
+She goes to ___ school at 7 a.m.|—|a|an|the
+___ Mount Everest is the highest mountain.|—|The|A|An
+He is ___ European.|a|an|the|—
+They play ___ badminton every day.|—|a|an|the
+Pass me ___ salt, please.|the|a|an|—
+Hanoi is ___ capital of Vietnam.|the|a|an|—
+It was ___ useful book.|a|an|the|—`);
+add(2,"vd",`She is ___ only child in her family.|the|a|an|—
+Would you like ___ cup of tea?|a|an|the|—
+___ rich should help ___ poor.|The – the|A – a|— – the|The – a
+He has ___ MA in English.|an|a|the|—
+We had ___ dinner at home.|—|a|an|the
+What ___ lovely day!|a|an|the|—
+Tom plays ___ guitar in ___ band.|the – a|a – the|— – a|the – the
+Which sentence is correct?|I go to bed at midnight.|I go to the bed at midnight.|I go to a bed at midnight.|I go to bed at the midnight.`);
+add(3,"nb",`Mai is ___ than Lan.|older|old|oldest|more old
+This is the ___ film I have ever seen.|best|better|good|most good
+A car is ___ than a bike.|faster|fast|fastest|more fast
+Today is ___ day of the year.|the hottest|hotter|hot|the hotter
+Maths is ___ than English for me.|more difficult|difficulter|most difficult|difficult
+He is the ___ student in my class.|tallest|taller|tall|most tall
+This bag is ___ than that one.|cheaper|cheap|cheapest|more cheaper
+Her house is ___ than mine.|bigger|big|biggest|more big
+My mother cooks ___ than my father.|better|good|best|more good
+Summer is ___ than winter.|hotter|hot|hottest|more hot`);
+add(3,"th",`So sánh nhất của “far” (khoảng cách) là:|farthest|farer|most far|farest
+So sánh hơn của “comfortable” là:|more comfortable|comfortabler|most comfortable|comfortable than
+He is ___ intelligent as his sister.|as|more|so|than
+She is not ___ tall as her brother.|as|more|than|the
+Which sentence is correct?|She is taller than me.|She is more tall than me.|She is tallest than me.|She is as taller as me.
+Winter is ___ season of the year.|the coldest|colder|the colder|coldest
+This exercise is ___ difficult than the last one.|less|least|lesser|little
+So sánh hơn của “busy” là:|busier|more busy|busyer|busiest
+Of the three, Ba is ___.|the oldest|older|more old|oldest than
+London is ___ than Hanoi.|more expensive|expensiver|most expensive|as expensive`);
+add(3,"vd",`The harder you work, ___ you will be.|the more successful|more successful|the most successful|successful
+Nobody in my class is ___ than Nam.|taller|the tallest|tall|as tall
+She is ___ of all the students.|the most hardworking|more hardworking|most hardworking|hardworking
+My new phone is twice ___ as my old one.|as expensive|more expensive|expensive|the most expensive
+Her English is getting ___.|better and better|good and good|more good|the best
+This is ___ book I have ever read.|the most boring|more boring|most boring|the more boring
+Hoa sings ___ than any other girl in the class.|more beautifully|beautifuller|most beautifully|the most beautiful
+He is the same age ___ me.|as|than|like|with`);
+add(4,"nb",`I ___ to Hue last summer.|went|go|goes|going
+She ___ a letter yesterday.|wrote|write|writes|writing
+They ___ football two days ago.|played|play|plays|playing
+He ___ TV last night.|watched|watch|watches|watching
+We ___ at home yesterday.|were|was|are|is
+She ___ happy yesterday.|was|were|is|are
+I ___ my homework last night.|did|do|does|doing
+Quá khứ của “see” là:|saw|seen|seed|sees
+Quá khứ của “buy” là:|bought|buyed|boughted|buys
+My father ___ a new car in 2020.|bought|buy|buys|buying
+The film ___ at 8 p.m. yesterday.|started|start|starts|starting
+___ you go out last night?|Did|Do|Does|Are
+He ___ his keys yesterday.|lost|lose|loses|losed
+We ___ a great time last weekend.|had|have|has|having`);
+add(4,"th",`She ___ come to the party yesterday.|didn’t|doesn’t|don’t|isn’t
+Quá khứ của “study” là:|studied|studyed|studeed|studys
+Quá khứ của “stop” là:|stopped|stoped|stopt|stopping
+Did he ___ the answer?|know|knew|knows|known
+Chọn câu đúng.|She didn’t go to school.|She didn’t went to school.|She not went to school.|She doesn’t go to school yesterday.
+Cụm nào dùng với quá khứ đơn?|two years ago|tomorrow|now|every day
+When ___ you born?|were|was|did|are
+I ___ my friend at the mall last Sunday.|met|meet|meeted|have met
+How ___ you get here yesterday?|did|do|were|have
+Quá khứ của “teach” là:|taught|teached|tought|teaches
+He ___ breakfast, so he was hungry.|didn’t have|doesn’t have|hasn’t had|not have
+Mai ___ in Da Nang in 2019.|lived|lives|has lived|is living
+Did you enjoy the trip? – ___|Yes, I did.|Yes, I do.|Yes, I have.|Yes, I am.
+We ___ not at home last night.|were|was|did|are`);
+add(4,"vd",`She ___ the door and ___ in.|opened – walked|open – walks|opened – walk|opens – walked
+Yesterday he ___ up late, so he ___ the bus.|woke – missed|wakes – misses|woke – miss|woken – missed
+We ___ our grandparents last Tet and they ___ us lucky money.|visited – gave|visit – gave|visited – give|visited – given
+What ___ you ___ last weekend?|did – do|do – did|did – did|were – do
+Which sentence is INCORRECT?|She didn’t went home.|He studied hard.|They arrived late.|I saw her yesterday.
+The thief ___ the window and ___ into the house.|broke – climbed|break – climbed|broke – climb|broken – climbed
+___ they at the cinema last night?|Were|Was|Did|Do
+Nam ___ his homework, so he ___ to the cinema.|didn’t do – didn’t go|doesn’t do – doesn’t go|didn’t did – didn’t go|didn’t do – didn’t went
+She ___ me she ___ tired.|told – was|tell – is|told – is|said – was
+Marie Curie ___ two Nobel Prizes.|won|wins|has won|is winning
+I ___ him last night, but he ___ answer.|called – didn’t|call – doesn’t|called – doesn’t|called – not
+The class ___ at 7 and ___ at 11 yesterday.|began – ended|begin – ends|began – end|begun – ended`);
+D.push({id:17,n:"Thì hiện tại hoàn thành",t:`<h3>Present Perfect</h3><ul><li><b>Công thức:</b> S + have/has + V3/V-ed. Phủ định: have/has not + V3. Nghi vấn: Have/Has + S + V3?</li><li><b>Cách dùng:</b> hành động xảy ra chưa rõ thời điểm; kết quả còn ở hiện tại; kinh nghiệm; hành động bắt đầu từ quá khứ kéo dài đến nay.</li><li><b>Dấu hiệu:</b> already, yet, just, ever, never, so far, recently, since + mốc, for + khoảng thời gian.</li><li><b>Phân biệt:</b> has gone (đã đi, chưa về) và has been (đã đến rồi về). Không dùng với yesterday, last week, in 2019.</li></ul><p>Ví dụ: <em>I have seen this film three times.</em> <em>She has lived here since 2010.</em> <em>Have you ever been to Paris?</em></p>`,x:{nb:{m:[],e:[["Chia động từ: She (live) ___ here for five years.","has lived"]]},th:{m:[],e:[["Viết câu phủ định: I have seen that film.","I haven’t seen that film."]]},vd:{m:[],e:[["Sửa lỗi cả câu: I have visited Hue last year and I never eat bun bo.","I visited Hue last year and I have never eaten bun bo."]]}}});
+D.push({id:30,n:"Câu điều kiện",t:`<h3>Conditional Sentences</h3><ul><li><b>Loại 0:</b> If + hiện tại đơn, hiện tại đơn (sự thật, quy luật).</li><li><b>Loại 1:</b> If + hiện tại đơn, will + V (có thể xảy ra ở tương lai).</li><li><b>Loại 2:</b> If + quá khứ đơn, would + V (không có thật ở hiện tại; dùng <i>were</i> cho mọi ngôi).</li><li><b>Loại 3:</b> If + quá khứ hoàn thành, would have + V3 (không có thật ở quá khứ).</li><li><b>Hỗn hợp:</b> If + quá khứ hoàn thành, would + V (quá khứ ảnh hưởng hiện tại). <b>Unless</b> = if … not.</li></ul><p>Ví dụ: <em>If you heat ice, it melts.</em> <em>If it rains, we will stay at home.</em> <em>If I were you, I would apologise.</em> <em>If she had studied, she would have passed.</em></p>`,x:{nb:{m:[],e:[["Chia động từ: If it rains, we (stay) ___ at home.","will stay"]]},th:{m:[],e:[["Điền từ: Unless you ___, you will be late. (hurry)","hurry"]]},vd:{m:[],e:[["Hoàn thành: If I had known her number, I ___ her. (call)","would have called"]]}}});
+add(17,"nb",`I ___ this film three times.|have seen|saw|see|am seeing
+She ___ just arrived.|has|have|is|did
+They ___ lived here for ten years.|have|has|did|are
+He ___ his homework yet.|hasn’t finished|didn’t finished|doesn’t finish|haven’t finished
+Quá khứ phân từ của “go” là:|gone|went|goes|going
+Quá khứ phân từ của “write” là:|written|wrote|writed|writes
+We have known each other ___ 2015.|since|for|ago|in
+She has worked here ___ five years.|for|since|ago|from
+___ you ever been to Paris?|Have|Has|Did|Are
+My brother ___ never eaten sushi.|has|have|did|is
+It ___ rained a lot this week.|has|have|did|is
+I have ___ finished my homework.|already|ago|yesterday|last night
+Quá khứ phân từ của “do” là:|done|did|doed|does
+Lan ___ her bag. She can’t find it.|has lost|lose|losing|is lose`);
+add(17,"th",`This is the first time I ___ sushi.|have eaten|ate|eat|am eating
+Which sentence is correct?|She has lived here since 2010.|She has lived here for 2010.|She lives here since 2010.|She lived here since 2010.
+How long ___ you known her?|have|did|do|are
+He has ___ London twice.|visited|visit|visiting|visits
+Have you finished? – ___|Yes, I have.|Yes, I did.|Yes, I do.|Yes, I am.
+She ___ in Hue since she was born.|has lived|lived|lives|is living
+The film ___ yet.|hasn’t started|didn’t start|doesn’t start|not started
+Từ nào KHÔNG dùng với hiện tại hoàn thành?|yesterday|already|ever|so far
+___ he ever tried Vietnamese coffee?|Has|Have|Did|Does
+We ___ each other for years.|have known|know|knew|are knowing
+Someone ___ my bike! It isn’t here.|has taken|take|taking|was take
+It’s the best film I ___.|have ever seen|had ever see|ever seeing|am ever seen
+They ___ married for 20 years.|have been|were|are being|have being
+He ___ not finished the report.|has|have|did|is`);
+add(17,"vd",`She ___ here since 8 a.m., and she ___ already three cups of coffee.|has been – has drunk|was – drank|has been – drank|is – has drunk
+Which sentence is INCORRECT?|I have met her last week.|I have met her before.|I have never met her.|I have just met her.
+I ___ him for two years, but I ___ him yesterday.|haven’t seen – saw|didn’t see – have seen|haven’t seen – have seen|don’t see – saw
+Have you ever been to Japan? – Yes, I ___ there in 2019.|went|have been|have gone|go
+This is the second time he ___ late this week.|has been|was|is|will be
+Where is Tom? – He ___ to the bank, so he’ll be back soon.|has gone|has been|went|goes
+The Smiths ___ in this house since they got married.|have lived|lived|live|are living
+How many pages ___ you ___ so far?|have – read|did – read|do – read|are – read
+Which sentence is correct?|Have you ever eaten snails?|Did you ever eaten snails?|Have you ever ate snails?|Do you ever eaten snails?
+She ___ her homework, so she can go out now.|has finished|finishes|finishing|is finish
+Since he ___ university, he ___ in a bank.|left – has worked|has left – worked|left – worked|leaves – has worked
+That’s the most exciting trip I ___.|have ever had|had ever|am ever having|ever have`);
+add(30,"nb",`If you heat ice, it ___.|melts|will melted|melt|melted
+If it rains tomorrow, we ___ at home.|will stay|stayed|would stay|have stayed
+If I ___ rich, I would buy a big house.|were|am|will be|would be
+If she had studied, she ___ the exam.|would have passed|would pass|will pass|passed
+If you ___ hard, you will pass the exam.|study|studied|will study|would study
+Loại điều kiện nào diễn tả sự thật hiển nhiên?|Loại 0|Loại 1|Loại 2|Loại 3
+If I ___ you, I would apologise.|were|am|will be|was being
+If he ___ late, we will start without him.|is|will be|would be|was being
+If it ___ tomorrow, we’ll cancel the picnic.|rains|will rain|rained|would rain
+Unless you hurry, you ___ the bus.|will miss|would have missed|missed|have missed
+If water reaches 100°C, it ___.|boils|will boiled|would boil|boiled
+If they ___ earlier, they wouldn’t have missed the train.|had left|left|leave|would leave
+If I won the lottery, I ___ around the world.|would travel|will travel|travelled|travel
+If you ___ me, I will help you.|ask|asked|will ask|had asked`);
+add(30,"th",`Which sentence is type 2?|If I had a car, I would drive to work.|If I have a car, I will drive to work.|If I had had a car, I would have driven.|If I have a car, I drive to work.
+Which sentence is type 3?|If she had known, she would have come.|If she knew, she would come.|If she knows, she will come.|If she knows, she comes.
+Unless he studies, he ___ fail.|will|would have|had|has
+“Unless” có nghĩa là:|if … not|if only|even if|as if
+If I ___ a bird, I would fly to you.|were|am|will be|had been
+If he had worked harder, he ___ promoted.|would have been|will have been|was|is being
+Chọn câu đúng.|If I were you, I would study more.|If I was you, I will study more.|If I am you, I would study more.|If I were you, I will study more.
+Which sentence is correct?|If it rains, I will stay at home.|If it will rain, I stay at home.|If it rained, I will stay at home.|If it rains, I would stay at home.
+If you ___ the instructions, you wouldn’t have made mistakes.|had followed|followed|follow|would follow
+If it ___ so cold, we would go swimming.|weren’t|isn’t|hadn’t been|won’t be
+If I ___ the answer, I would tell you.|knew|know|will know|had known
+___ you meet her, say hello.|If|Unless|Because|Although
+What would you do if you ___ lost?|got|get|will get|had got
+I would have called you if I ___ your number.|had had|have|had|would have`);
+add(30,"vd",`If I had studied harder last year, I ___ in a better school now.|would be|would have been|will be|am
+If he ___ the truth, he wouldn’t be in trouble now.|had told|told|tells|would tell
+Which is the correct mixed conditional?|If she had taken the job, she would be rich now.|If she took the job, she would have been rich.|If she has taken the job, she is rich.|If she had taken the job, she will be rich.
+___ for your help, I would have failed.|But for|Unless|If only|Even if
+Had I known about the traffic, I ___ earlier.|would have left|would leave|will leave|left
+If you ___ more carefully, you wouldn’t have broken the vase.|had walked|walked|walk|would walk
+I will go out unless it ___.|rains|will rain|rained|would rain
+If it ___ for the rain, we would have gone.|hadn’t been|weren’t|isn’t|wouldn’t be
+She would travel more if she ___ more money.|had|has|will have|would have
+Which sentence is INCORRECT?|If I would have time, I would help you.|If I had time, I would help you.|If I have time, I will help you.|If I had had time, I would have helped you.
+If you ___ to the party, you will meet my sister.|come|will come|came|would come
+Were I rich, I ___ a yacht.|would buy|will buy|bought|buy`);
+const S=(i,n)=>D.push({id:i,n,t:"",x:{nb:{m:[],e:[]},th:{m:[],e:[]},vd:{m:[],e:[]}}});
+[[5,"Danh từ"],[6,"Đại từ"],[7,"Động từ quy tắc và bất quy tắc"],[8,"Trợ động từ"],[9,"Động từ khuyết thiếu (Modal verbs)"],[10,"Danh động từ và động từ nguyên thể"],[11,"Cụm động từ (Phrasal verbs)"],[12,"Tính từ"],[13,"Trạng từ"],[14,"Giới từ"],[15,"Liên từ"],[16,"Hiện tại tiếp diễn"],[18,"Hiện tại hoàn thành tiếp diễn"],[19,"Quá khứ tiếp diễn"],[20,"Quá khứ hoàn thành"],[21,"Quá khứ hoàn thành tiếp diễn"],[22,"Tương lai đơn"],[23,"Tương lai gần (Be going to)"],[24,"Tương lai tiếp diễn"],[25,"Tương lai hoàn thành"],[26,"Tương lai hoàn thành tiếp diễn"],[27,"Mệnh đề quan hệ và rút gọn"],[28,"Mệnh đề trạng ngữ"],[29,"Mệnh đề danh ngữ"],[31,"Câu bị động"],[32,"Câu trực tiếp và gián tiếp"],[33,"Câu hỏi đuôi"],[34,"Câu giả định, câu ước (Wish)"],[35,"Đảo ngữ"],[36,"Hòa hợp chủ ngữ và động từ"]].forEach(a=>S(...a));
+const GR=[["1. Từ loại",[5,6,7,8,9,10,11,12,13,14,15,2]],["2. Các thì trong tiếng Anh",[1,16,17,18,4,19,20,21,22,23,24,25,26]],["3. Các loại mệnh đề",[27,28,29]],["4. Cấu trúc câu nền tảng",[30,31,32,3,33,34,35,36]]];
+const f=(i,t,e)=>{const d=D.find(x=>x.id==i);d.t=t;["nb","th","vd"].forEach((l,k)=>d.x[l].e=e[k])};
+f(31,`<h3>Passive Voice</h3><ul><li><b>Công thức:</b> S + be + V3/V-ed (+ by O). Tân ngữ của câu chủ động trở thành chủ ngữ của câu bị động.</li><li><b>Theo thì:</b> HTĐ am/is/are + V3; QKĐ was/were + V3; HTHT have/has been + V3; TLĐ will be + V3; HTTD am/is/are being + V3; modal + be + V3.</li><li><b>Chỉ chuyển được động từ có tân ngữ</b> (arrive, happen… không có bị động). Bỏ “by + tác nhân” khi không rõ hoặc không quan trọng.</li><li><b>Đặc biệt:</b> have/get + O + V3 (nhờ làm giúp); bị động kép: People say that he is rich → He is said to be rich; bị động của make/see/hear: He was made to clean the room.</li></ul><p>Ví dụ: <em>The cake was made by my mother.</em> <em>English is spoken all over the world.</em> <em>I had my car repaired.</em> <em>The work must be finished today.</em></p>`,[[["Chia động từ: The cake (make) ___ by my mother.","was made"],["Chia động từ: English (speak) ___ all over the world.","is spoken"]],[["Viết lại bị động: They built this bridge in 1990.","This bridge was built in 1990."],["Viết lại bị động: Someone has cleaned the room.","The room has been cleaned."]],[["Viết lại: People say that he is a good doctor. (He …)","He is said to be a good doctor."],["Hoàn thành: I had my bike ___ yesterday. (repair)","repaired"]]]);
+f(32,`<h3>Reported Speech</h3><ul><li><b>Lùi thì:</b> HTĐ → QKĐ; HTTD → QKTD; HTHT → QKHT; QKĐ → QKHT; will → would; can → could; must → had to.</li><li><b>Đổi ngôi và trạng từ:</b> now → then; today → that day; tomorrow → the next day; yesterday → the day before; here → there; this → that; ago → before.</li><li><b>Câu hỏi Yes/No:</b> asked + if/whether + S + V (lùi thì). <b>Câu hỏi Wh:</b> asked + từ hỏi + S + V (không đảo).</li><li><b>Mệnh lệnh:</b> told/asked + O + (not) to V. <b>Động từ tường thuật khác:</b> suggest + V-ing, apologise for + V-ing, advise/warn + O + to V.</li></ul><p>Ví dụ: <em>She said, “I am tired.” → She said she was tired.</em> <em>“Do you like tea?” → He asked me if I liked tea.</em> <em>“Don’t be late.” → She told us not to be late.</em></p>`,[[["Hoàn thành: He said, “I am happy.” → He said that he ___ happy.","was"],["Điền từ: “I will come tomorrow.” → She said she ___ come the next day.","would"]],[["Viết lại: “Do you like music?” she asked me. → She asked me if ___","I liked music"],["Viết lại: “Close the window,” he told me. → He told me ___","to close the window"]],[["Viết lại: “Where did you go yesterday?” he asked me. → He asked me where ___","I had gone the day before"],["Hoàn thành: “Let’s have a picnic,” she said. → She suggested ___ a picnic. (have)","having"]]]);
+add(31,"nb",`The cake ___ by my mother.|was made|made|has make|is making
+English ___ all over the world.|is spoken|speaks|is speaking|spoke
+This room ___ every day.|is cleaned|cleans|is cleaning|cleaned
+The letter ___ yesterday.|was sent|sent|is sent|sends
+Quá khứ phân từ của “steal” là:|stolen|stole|stealed|steals
+My bike ___ last night.|was stolen|stole|is stolen|has stole
+The houses ___ in 2010.|were built|was built|built|are built
+Many cars ___ in this factory.|are made|make|are making|made
+The window ___ by Tom.|was broken|broke|is break|has broke
+A new bridge ___ next year.|will be built|will build|builds|is building
+The homework ___ already.|has been done|have been done|has done|did
+Cấu trúc bị động cơ bản là:|be + V3|have + V3|be + V-ing|to + V
+The room ___ at the moment.|is being cleaned|is cleaned|cleans|cleaned
+These books ___ by many students.|are read|reads|is read|are reading`);
+add(31,"th",`Chuyển sang bị động: “They are painting the wall.”|The wall is being painted.|The wall is painted.|The wall was being painted.|The wall has been painted.
+“Someone has stolen my wallet.” →|My wallet has been stolen.|My wallet was stolen.|My wallet is stolen.|My wallet has stolen.
+“She will finish the work tomorrow.” →|The work will be finished tomorrow.|The work will finished tomorrow.|The work is finished tomorrow.|The work would be finished tomorrow.
+“The teacher gave Nam a book.” Bị động đúng là:|Nam was given a book by the teacher.|Nam gave a book by the teacher.|A book gave Nam by the teacher.|Nam was gave a book.
+“You must finish it today.” →|It must be finished today.|It must finished today.|It must been finished today.|It must be finish today.
+Which sentence is correct?|The window was broken by the storm.|The window broke by the storm.|The window was broke by the storm.|The window were broken by the storm.
+“Did they invite you?” →|Were you invited?|Did you invited?|Was you invited?|Are you invited?
+“They speak English here.” →|English is spoken here.|English speaks here.|English is speak here.|English was spoken here.
+Câu nào KHÔNG thể chuyển sang bị động?|He arrived late.|He broke the cup.|He wrote a letter.|He painted the door.
+Tác nhân “by …” thường được lược bỏ khi tác nhân:|không rõ hoặc không quan trọng|rất quan trọng|là tên riêng|là chủ ngữ mới
+The report ___ by Friday.|must be finished|must finish|must finished|must be finish
+Our house ___ last year.|was repainted|repainted|is repainted|has repainted
+Many trees ___ down by the storm.|were blown|blew|was blown|are blow
+The match ___ because of the rain.|was cancelled|cancelled|has cancel|is cancel`);
+add(31,"vd",`I had my car ___ yesterday.|repaired|repair|repairing|to repair
+She got her hair ___ at the salon.|cut|cutting|to cut|cuts
+“People say that he is rich.” →|He is said to be rich.|He is said being rich.|He says to be rich.|It is said him to be rich.
+He is believed ___ abroad.|to live|living|live|lived
+“They are going to build a new school.” →|A new school is going to be built.|A new school is going to build.|A new school will be building.|A new school is built.
+He was made ___ the room.|to clean|clean|cleaning|cleaned
+The children ___ by their grandmother while their parents were away.|were looked after|looked after|were looking after|have looked after
+Which sentence is INCORRECT?|The cake was ate by the children.|The cake was eaten by the children.|The cake is being baked.|The cake will be eaten.
+___ the letter ___ by now?|Has – been sent|Did – send|Is – send|Has – sent
+The new law ___ next month.|will be introduced|will introduce|introduces|has introduced
+Smoking is not ___ in the hospital.|allowed|allow|allowing|to allow
+This song ___ by millions of people since 2010.|has been listened to|was listened|is listening|has listened`);
+add(32,"nb",`She said, “I am tired.” → She said that she ___ tired.|was|is|were|has been
+He said, “I like pizza.” → He said he ___ pizza.|liked|likes|like|had like
+“Tomorrow” trong câu gián tiếp đổi thành:|the next day|yesterday|the day before|that day
+“Now” đổi thành:|then|there|that|before
+“Here” đổi thành:|there|then|that|where
+“Will” đổi thành:|would|could|should|did
+“Can” đổi thành:|could|would|might|did
+“This” đổi thành:|that|these|those|it
+“Ago” đổi thành:|before|after|later|since
+He said, “I am going to school.” → He said he ___ going to school.|was|is|were|had been
+They said, “We play football.” → They said they ___ football.|played|play|have played|will play
+Mai said, “I will help you.” → Mai said she ___ help me.|would|will|can|did
+Lan said, “I can swim.” → Lan said she ___ swim.|could|can|would|may
+“Open the door,” he said. → He told me ___ the door.|to open|open|opening|opened`);
+add(32,"th",`“I have finished,” she said. → She said she ___.|had finished|has finished|have finished|was finished
+“I saw him yesterday,” Tom said. → Tom said he ___ him the day before.|had seen|has seen|sees|would see
+“Do you like tea?” he asked me. → He asked me ___ tea.|if I liked|do I like|if did I like|that I liked
+“Where do you live?” she asked. → She asked me where ___.|I lived|did I live|I had live|do I live
+“Don’t be late,” the teacher told us. →|The teacher told us not to be late.|The teacher told us don’t be late.|The teacher told us to not being late.|The teacher said us not to be late.
+“Please sit down,” he said to me. →|He asked me to sit down.|He asked me sit down.|He asked me sat down.|He asked me for sit down.
+He said, “I must go now.” → He said he ___ go then.|had to|must|has to|should
+“What time is it?” she asked. → She asked ___.|what time it was|what time was it|what time is it|what time it were
+Which sentence is correct?|She said that she was busy.|She said me that she was busy.|She told that she was busy.|She said to that she was busy.
+He ___ me that he would come.|told|said|asked|spoke
+“Are you ready?” he asked. → He asked ___ ready.|if I was|was I|if I am|did I be
+“I’m leaving tomorrow,” she said. → She said she was leaving ___.|the next day|tomorrow|yesterday|the day before
+“We have lived here for years,” they said. → They said they ___ there for years.|had lived|have lived|live|will live
+“Can you help me?” she asked. → She asked me ___ help her.|if I could|could I|if could I|that I could`);
+add(32,"vd",`“I will call you tomorrow,” he said to me. →|He told me he would call me the next day.|He told me he will call you tomorrow.|He said me he would call you the next day.|He told me he would call you tomorrow.
+“Why didn’t you come yesterday?” she asked him. →|She asked him why he hadn’t come the day before.|She asked him why didn’t he come yesterday.|She asked him why he didn’t came the day before.|She asked him why hadn’t he come the day before.
+Which sentence is INCORRECT?|He asked me where did I live.|He asked me where I lived.|He told me to wait.|He said that he was tired.
+“You should see a doctor,” she said to me. →|She advised me to see a doctor.|She said me to see a doctor.|She told me should see a doctor.|She advised me seeing a doctor.
+“Let’s go swimming,” said Tom. →|Tom suggested going swimming.|Tom suggested to go swimming.|Tom suggested me go swimming.|Tom said let’s go swimming.
+“I’m sorry I broke your vase,” she said. →|She apologised for breaking my vase.|She apologised to break my vase.|She apologised that breaking my vase.|She sorry for breaking my vase.
+He said to me, “I have never been here before.” →|He told me he had never been there before.|He told me he has never been here before.|He said me he never been there before.|He told me he had never been here before.
+“Did you see the film last night?” she asked. →|She asked if I had seen the film the night before.|She asked if I saw the film last night.|She asked did I see the film the night before.|She asked that I had seen the film the night before.
+“Don’t touch that button!” he shouted. →|He warned me not to touch that button.|He warned me don’t touch that button.|He warned me to not touching that button.|He warned me touch not that button.
+The reported form of “She said, ‘I am writing a letter now.’” is:|She said she was writing a letter then.|She said she is writing a letter now.|She said she had written a letter then.|She said she was writing a letter now.
+“Where are you going?” he asked me. →|He asked me where I was going.|He asked me where was I going.|He asked me where am I going.|He asked me where I am going.
+“I’ll help you if you want,” she said. →|She said she would help me if I wanted.|She said she will help me if I want.|She said she would help you if you wanted.|She told she would help me if I wanted.`);
+f(16,`<h3>Present Continuous</h3><ul><li><b>Công thức:</b> S + am/is/are + V-ing. Phủ định: am/is/are + not + V-ing. Nghi vấn: Am/Is/Are + S + V-ing?</li><li><b>Cách dùng:</b> hành động đang diễn ra lúc nói; việc tạm thời quanh hiện tại; kế hoạch đã sắp xếp trong tương lai gần; phàn nàn với always.</li><li><b>Dấu hiệu:</b> now, at the moment, at present, today, these days, Look!, Listen!, Be quiet!</li><li><b>Không dùng với động từ trạng thái:</b> know, like, love, want, understand, believe.</li><li><b>Quy tắc V-ing:</b> bỏ e (make → making); gấp đôi phụ âm (run → running); ie → ying (lie → lying).</li></ul><p>Ví dụ: <em>She is reading a book now.</em> <em>Look! The baby is crying.</em> <em>We are flying to Da Lat next week.</em> <em>He is always losing his keys!</em></p>`,[[["Chia động từ: Look! The baby (sleep) ___.","is sleeping"],["Chia động từ: They (play) ___ football now.","are playing"]],[["Viết câu phủ định: She is reading a book.","She isn’t reading a book."],["Chuyển sang nghi vấn: He is working now.","Is he working now?"]],[["Sửa lỗi cả câu: I am knowing the answer, but I am not wanting to tell you.","I know the answer, but I don’t want to tell you."],["Hoàn thành (kế hoạch đã sắp xếp): We ___ to Da Lat next week. (fly)","are flying"]]]);
+f(19,`<h3>Past Continuous</h3><ul><li><b>Công thức:</b> S + was/were + V-ing. Phủ định: wasn’t/weren’t + V-ing. Nghi vấn: Was/Were + S + V-ing?</li><li><b>Cách dùng:</b> hành động đang diễn ra tại một thời điểm xác định trong quá khứ; hành động đang diễn ra thì có hành động khác xen vào; hai hành động diễn ra song song.</li><li><b>Dấu hiệu:</b> at 8 p.m. last night, at this time yesterday, all day yesterday, while, when.</li><li><b>Mẫu:</b> S + was/were + V-ing + when + S + V2 (hành động xen vào). While + S + was/were + V-ing, S + was/were + V-ing (song song).</li></ul><p>Ví dụ: <em>I was watching TV at 8 p.m. last night.</em> <em>She was cooking when I came.</em> <em>While I was studying, he was playing games.</em></p>`,[[["Chia động từ: At 8 p.m. last night, I (watch) ___ TV.","was watching"],["Chia động từ: They (play) ___ football at 5 p.m. yesterday.","were playing"]],[["Viết câu phủ định: She was cooking dinner.","She wasn’t cooking dinner."],["Chuyển sang nghi vấn: They were sleeping.","Were they sleeping?"]],[["Chia động từ: While I (walk) ___ home, it began to rain.","was walking"],["Chia động từ: When the phone rang, she (take) ___ a shower.","was taking"]]]);
+add(16,"nb",`She ___ a book now.|is reading|reads|read|are reading
+They ___ football at the moment.|are playing|play|plays|is playing
+Look! The baby ___.|is crying|cries|cry|are crying
+I ___ to music now.|am listening|listen|listens|is listening
+Listen! Someone ___ at the door.|is knocking|knocks|knock|are knocking
+V-ing của “make” là:|making|makeing|maked|makking
+V-ing của “run” là:|running|runing|runeing|runned
+V-ing của “lie” là:|lying|lieing|liing|lyeing
+We ___ English today.|are learning|learn|learns|is learning
+He ___ not sleeping now.|is|are|does|am
+___ you doing your homework?|Are|Is|Do|Does
+My mother ___ dinner in the kitchen.|is cooking|cook|cooks|are cooking
+The children ___ in the garden at present.|are playing|plays|is playing|play
+Cấu trúc hiện tại tiếp diễn là:|am/is/are + V-ing|have/has + V3|do/does + V|was/were + V-ing`);
+add(16,"th",`Which sentence is correct?|She is watching TV now.|She watching TV now.|She is watch TV now.|She are watching TV now.
+Từ nào đi với hiện tại tiếp diễn?|at the moment|every day|yesterday|usually
+He ___ his homework at the moment.|isn’t doing|doesn’t doing|don’t doing|not doing
+What ___ you doing?|are|do|does|is
+Động từ nào KHÔNG dùng ở thể tiếp diễn?|know|run|write|play
+I ___ the answer.|know|am knowing|knows|knowing
+She ___ English at the moment.|is studying|studies|study|studied
+Is he playing guitar? – ___|No, he isn’t.|No, he doesn’t.|No, he wasn’t.|No, he don’t.
+They ___ at home now.|are staying|stay|stays|is staying
+Hiện tại tiếp diễn còn dùng để chỉ:|kế hoạch đã sắp xếp trong tương lai gần|thói quen lặp lại|sự thật hiển nhiên|hành động đã hoàn tất
+Be quiet! The baby ___.|is sleeping|sleeps|slept|sleep
+V-ing của “swim” là:|swimming|swiming|swimeing|swimmed
+V-ing của “write” là:|writing|writeing|writting|wrote
+We ___ for the bus now.|are waiting|wait|waits|is waiting`);
+add(16,"vd",`Which sentence is INCORRECT?|I am knowing him well.|I know him well.|She is reading now.|They are playing.
+I ___ to Hue tomorrow. I’ve bought the ticket.|am flying|fly|flew|have flown
+Tom is always ___ his keys!|losing|lose|lost|loses
+What ___ you ___ tonight?|are – doing|do – doing|are – do|does – do
+Where’s Mai? – She ___ a shower.|is having|has|have|is have
+Prices ___ higher and higher these days.|are getting|get|got|is getting
+I ___ for a new job at the moment.|am looking|look|looks|looked
+He ___ English, but today he ___ French.|usually speaks – is speaking|is usually speaking – speaks|usually speaks – speaks|usually speak – is speaking
+Why ___ you ___ at me like that?|are – looking|do – look|are – look|do – looking
+Which time expression is NOT suitable? She is cooking ___.|every day|now|at present|today
+The kids ___ TV, so please don’t turn it off.|are watching|watch|watches|is watching
+___ she ___ her friends this weekend?|Is – meeting|Does – meeting|Is – meet|Does – meets`);
+add(19,"nb",`At 8 p.m. last night, I ___ TV.|was watching|watched|watch|am watching
+They ___ football at 5 p.m. yesterday.|were playing|played|was playing|are playing
+She ___ cooking when I came.|was|were|is|did
+We ___ sleeping at midnight.|were|was|are|did
+What ___ you doing at 9 last night?|were|was|did|are
+He ___ studying at that time.|wasn’t|weren’t|didn’t|isn’t
+Cấu trúc quá khứ tiếp diễn là:|was/were + V-ing|did + V|had + V3|am/is/are + V-ing
+V-ing của “dance” là:|dancing|danceing|danning|danced
+V-ing của “sit” là:|sitting|siting|siteing|sitted
+While I ___, he was reading.|was studying|studied|study|am studying
+The students ___ listening to the teacher.|were|was|did|are
+It ___ raining at six o’clock.|was|were|did|is
+___ she sleeping at 10 p.m.?|Was|Were|Did|Is
+This time yesterday, we ___ lunch.|were having|have|has|are having`);
+add(19,"th",`When I came, she ___ dinner.|was cooking|cooked|cooks|is cooking
+While he ___ TV, the phone rang.|was watching|watched|watches|is watching
+Which sentence is correct?|They were playing chess at 7 p.m.|They was playing chess at 7 p.m.|They playing chess at 7 p.m.|They were play chess at 7 p.m.
+Từ nào thường đi với quá khứ tiếp diễn?|at this time yesterday|tomorrow|every day|now
+I ___ when the lights went out.|was reading|read|am reading|have read
+He ___ at home at 8 last night.|wasn’t working|didn’t working|weren’t working|isn’t working
+Were you listening? – ___|Yes, I was.|Yes, I did.|Yes, I were.|Yes, I am.
+Trong “She was cooking when I came”, “was cooking” là:|hành động đang xảy ra thì bị xen vào|hành động xen vào|thói quen|kế hoạch tương lai
+My parents ___ TV while I ___ my homework.|were watching – was doing|watched – did|are watching – am doing|were watching – did
+The baby ___ when I left.|was sleeping|slept|sleeps|is sleeping
+What ___ she doing when you saw her?|was|did|were|is
+We ___ not listening to the music.|were|was|did|are
+Chọn câu đúng.|She was crying when I saw her.|She cried when I was seeing her.|She is crying when I saw her.|She was cry when I saw her.
+The children ___ in the yard at 4 o’clock.|were playing|played|was playing|play`);
+add(19,"vd",`I ___ along the street when I ___ an old friend.|was walking – met|was walking – meet|walking – met|walked – was meeting
+What ___ you ___ when the teacher came in?|were – doing|did – do|are – doing|were – do
+While she ___ a bath, the doorbell ___.|was taking – rang|is taking – rang|was taking – ring|took – was ringing
+Which sentence is INCORRECT?|I was watched TV at 8 p.m.|I was watching TV at 8 p.m.|We were having dinner.|He wasn’t listening.
+He fell and broke his leg while he ___ football.|was playing|played|is playing|plays
+At this time last week, we ___ on the beach.|were lying|was lying|lying|are lie
+She ___ a book when the power went out, so she stopped.|was reading|read|reads|has read
+I ___ my keys when I was running for the bus.|lost|was losing|lose|have lost
+What were they doing? – They ___ a football match.|were watching|was watching|watching|are watch
+Tom ___ asleep while he ___ TV.|fell – was watching|was falling – watched|fell – watched|falls – was watching
+Yesterday at noon, I ___ in a restaurant, and my sister ___ in the park.|was eating – was walking|ate – walked|was eating – walked|eat – was walking
+Was it raining when you left? – Yes, it ___.|was|were|did|is`);
+f(5,`<h3>Nouns</h3><ul><li><b>Đếm được / không đếm được:</b> book, chair (đếm được); water, information, advice, furniture, news, homework (không đếm được, không có số nhiều, dùng a piece of / some).</li><li><b>Số nhiều:</b> + s; -s/-x/-ch/-sh/-o + es (box → boxes); phụ âm + y → ies (city → cities); -f/-fe → ves (knife → knives). Bất quy tắc: man → men, child → children, tooth → teeth, mouse → mice, person → people. Không đổi: sheep, fish, deer.</li><li><b>Sở hữu cách:</b> người/vật sống + ’s (Tom’s book); số nhiều tận cùng s + ’ (the students’ room); vật + of (the door of the room).</li><li><b>Lượng từ:</b> many/few/a few + đếm được số nhiều; much/little/a little + không đếm được. few/little mang nghĩa phủ định (hầu như không).</li></ul><p>Ví dụ: <em>There are three children in the room.</em> <em>The news is good.</em> <em>How much water do you drink?</em> <em>The students’ room is big.</em></p>`,[[["Viết số nhiều của “child”.","children"],["Viết số nhiều của “city”.","cities"]],[["Điền much hoặc many: How ___ students are there?","many"],["Viết dạng sở hữu: the book of Tom → ___ book","Tom’s"]],[["Sửa lỗi cả câu: She gave me some advices about the informations.","She gave me some advice about the information."],["Điền a little hoặc little: I have ___ time, so I can’t go with you.","little"]]]);
+f(6,`<h3>Pronouns</h3><ul><li><b>Nhân xưng chủ ngữ:</b> I, you, he, she, it, we, they. <b>Tân ngữ:</b> me, you, him, her, it, us, them.</li><li><b>Tính từ sở hữu</b> (+ danh từ): my, your, his, her, its, our, their. <b>Đại từ sở hữu</b> (đứng một mình): mine, yours, his, hers, ours, theirs.</li><li><b>Phản thân:</b> myself, yourself, himself, herself, itself, ourselves, yourselves, themselves (chủ ngữ và tân ngữ là một, hoặc nhấn mạnh).</li><li><b>Chỉ định:</b> this/these (gần), that/those (xa). <b>Bất định:</b> someone, anyone, nobody, everything… (chia số ít); both, few (số nhiều); each, neither (+ of + số nhiều, động từ số ít).</li><li><b>Nghi vấn:</b> who, whom, whose, what, which.</li></ul><p>Ví dụ: <em>She did it herself.</em> <em>This book is mine.</em> <em>Nobody knows the answer.</em> <em>Neither of the answers is correct.</em></p>`,[[["Điền đại từ sở hữu: This pen belongs to me. It is ___.","mine"],["Điền đại từ phản thân: She looked at ___ in the mirror.","herself"]],[["Điền đại từ: I like Tom. I often play with ___.","him"],["Điền đại từ sở hữu: These are not our books. They are ___. (của họ)","theirs"]],[["Sửa lỗi cả câu: Me and my brother hurt us when we played football.","My brother and I hurt ourselves when we played football."],["Hoàn thành: Neither of the girls ___ at home. (be)","is"]]]);
+add(5,"nb",`There are three ___ in the room.|children|childs|childrens|child
+I have two ___.|brothers|brother|brothers’|brothes
+Số nhiều của “box” là:|boxes|boxs|boxies|boxen
+Số nhiều của “city” là:|cities|citys|cityes|citis
+Số nhiều của “man” là:|men|mans|manes|mens
+Số nhiều của “tooth” là:|teeth|tooths|teeths|toothes
+Số nhiều của “knife” là:|knives|knifes|knifves|knifs
+Danh từ nào là danh từ không đếm được?|water|book|chair|apple
+We need some ___.|information|informations|an information|a informations
+This is ___ book.|Tom’s|Toms|Toms’|Tom
+How ___ water do you drink?|much|many|few|a few
+How ___ books do you have?|many|much|little|a little
+There are many ___ in the park.|people|peoples|person|a people
+She gave me some good ___.|advice|advices|an advice|advises`);
+add(5,"th",`Which sentence is correct?|The students’ room is big.|The students room is big.|The student’s room are big.|The studentes’ room is big.
+Số nhiều của “sheep” là:|sheep|sheeps|sheepes|sheepen
+I don’t have ___ money.|much|many|a few|few
+There are ___ students in the class.|few|little|much|a little
+She has ___ friends, so she often feels lonely.|few|a few|little|a little
+Chọn câu đúng.|The news is good.|The news are good.|The newses are good.|The new is good.
+Which word is uncountable?|furniture|table|sofa|desk
+The ___ of the room is blue.|door|door’s|doors’|doores
+Số nhiều của “potato” là:|potatoes|potatos|potatoies|potatoen
+These ___ are very sharp.|knives|knifes|knife|knifs
+Số nhiều của “mouse” là:|mice|mouses|mices|meese
+He bought two ___ of bread.|loaves|loafs|loaf|loafes
+I’d like ___ water, please.|some|a|many|few
+Two ___ are crossing the road.|women|woman|womans|womens`);
+add(5,"vd",`Which sentence is INCORRECT?|I need some advices.|I need some advice.|She has a lot of homework.|The news is surprising.
+Neither of the ___ was at home.|boys|boy|boy’s|boyes
+My ___ house is next to the park.|parents’|parent|parents|parent’s
+There isn’t ___ milk left.|much|many|a few|few
+I have ___ time, so I can’t help you.|little|a little|few|a few
+How ___ people came to the party?|many|much|little|a little
+She wears ___ because she can’t see well.|glasses|a glasses|glass|glassess
+Three ___ of rice are on the table.|bowls|bowl|bowlses|bowl’s
+The ___ of the film was exciting.|end|end’s|ends’|ends
+Mathematics ___ my favourite subject.|is|are|were|have been
+These ___ are on sale.|scissors|scissor|a scissors|scissorses
+I’d like two pieces of ___.|furniture|furnitures|a furniture|furnitures’`);
+add(6,"nb",`___ is my teacher. (cô ấy)|She|Her|Hers|Herself
+I like ___. (họ)|them|they|their|theirs
+This is my book. It is ___.|mine|me|my|myself
+___ book is this? It’s Lan’s.|Whose|Who|Whom|Which
+She looked at ___ in the mirror.|herself|her|hers|she
+We love ___ country.|our|we|ours|us
+He cut ___ with a knife.|himself|him|his|he
+___ are my friends. (những người kia)|Those|That|This|It
+Is this your pen? – Yes, it’s ___.|mine|my|me|I
+Đại từ phản thân của “they” là:|themselves|themself|theirselves|them
+Tính từ sở hữu của “we” là:|our|ours|us|we
+Đại từ sở hữu của “you” là:|yours|your|you’s|yourself
+Tom and I are friends. ___ play football together.|We|Us|Our|Ours
+Can you help ___?|me|I|my|mine`);
+add(6,"th",`Which sentence is correct?|She did it herself.|She did it her.|She did it hers.|She did it she.
+My phone is old, but ___ is new. (của họ)|theirs|their|them|they
+Nobody ___ the answer.|knows|know|are knowing|knowing
+Everyone ___ here.|is|are|were|have been
+___ of the two answers is correct.|Neither|None|No|Both
+There is ___ in the box. It’s empty.|nothing|anything|something|everything
+I can’t see ___ in the room.|anyone|someone|everyone|no one
+Which is a reflexive pronoun?|ourselves|ours|us|our
+___ do you want, tea or coffee?|Which|Who|Whose|Whom
+To ___ did you give the book?|whom|who|whose|which
+I forgot my umbrella, so Tom lent me ___.|his|he|him|himself
+These shoes are ___. (của chị ấy)|hers|her|she|herself
+___ is raining outside.|It|This|That|There
+Both of ___ are teachers. (chúng tôi)|us|we|our|ours`);
+add(6,"vd",`Which sentence is INCORRECT?|He hurt him when playing football.|He hurt himself when playing football.|They enjoyed themselves.|I did it myself.
+Tom and ___ went to the cinema.|I|me|my|mine
+It’s a book of ___. (của tôi)|mine|my|me|myself
+Neither of the students ___ the exam.|passed|pass|were passing|have pass
+Each of the girls ___ a prize.|got|get|were getting|have get
+You should believe in ___. (bản thân bạn)|yourself|yourselves|you|yours
+The teacher gave ___ of the students a book.|each|every|all|both
+My opinion is different from ___. (của anh ấy)|his|he|him|himself
+Both of my parents ___ at home.|are|is|was|has been
+Is there ___ in the fridge?|anything|something|nothing|everything
+He talks to ___ when he is nervous.|himself|him|his|he
+___ is that man? – He’s my uncle.|Who|Whom|Whose|Which`);
+f(8,`<h3>Auxiliary Verbs</h3><ul><li><b>do/does/did + V (nguyên mẫu):</b> tạo phủ định (doesn’t like), nghi vấn (Did he come?), nhấn mạnh (I do like it), tránh lặp (She likes tea, and so do I).</li><li><b>be + V-ing / V3:</b> thuộc thì tiếp diễn (is reading) và bị động (was made).</li><li><b>have/has/had + V3:</b> thuộc các thì hoàn thành (has gone, had left).</li><li><b>Lưu ý:</b> sau does/did luôn dùng động từ nguyên mẫu; trợ động từ quyết định câu trả lời ngắn (Do you like tea? – Yes, I do.); đảo trợ động từ sau Not only, Hardly, Never…</li></ul><p>Ví dụ: <em>She doesn’t like fish.</em> <em>Did he finish his homework?</em> <em>He has gone home.</em> <em>Not only does he sing well, but he also dances well.</em></p>`,[[["Điền trợ động từ: ___ she like music?","Does"],["Điền trợ động từ: They ___ not go to school yesterday.","did"]],[["Viết câu phủ định: He has finished his work.","He hasn’t finished his work."],["Chuyển sang nghi vấn: She did her homework.","Did she do her homework?"]],[["Sửa lỗi cả câu: Does she can swim? She don’t know how.","Can she swim? She doesn’t know how."],["Điền: Not only ___ he sing well, but he also dances well.","does"]]]);
+f(9,`<h3>Modal Verbs</h3><ul><li><b>Quy tắc:</b> modal + V nguyên mẫu (không to, không thêm s). Phủ định + not; nghi vấn đảo lên trước chủ ngữ (Can she swim?).</li><li><b>can/could:</b> khả năng, xin phép, nhờ vả lịch sự (Could you…?). <b>may/might:</b> khả năng, xin phép trang trọng (May I…?).</li><li><b>must:</b> bắt buộc, suy đoán chắc chắn; <b>mustn’t:</b> cấm; <b>don’t have to / needn’t:</b> không cần thiết; <b>can’t:</b> chắc chắn không.</li><li><b>should/ought to/had better:</b> lời khuyên. <b>Would:</b> lời mời, giả định (Would you like…?).</li><li><b>Modal + have + V3:</b> must have V3 (chắc là đã), can’t have V3 (chắc chắn không phải), should have V3 (đáng lẽ nên), may/might have V3 (có thể đã).</li></ul><p>Ví dụ: <em>She can speak three languages.</em> <em>You mustn’t park here.</em> <em>You don’t have to come.</em> <em>He must have gone out.</em> <em>You should have told me.</em></p>`,[[["Điền modal verb (cấm đoán): You ___ park here. It’s forbidden.","mustn’t"],["Điền modal verb (khả năng): She ___ swim very well.","can"]],[["Điền (không cần thiết): You ___ wear a uniform; it’s optional.","don’t have to"],["Viết lại với should: It’s a good idea to see a doctor. → You ___ see a doctor.","should"]],[["Hoàn thành (chắc chắn): He isn’t here. He ___ have gone home.","must"],["Sửa lỗi cả câu: She can to swim and she must goes now.","She can swim and she must go now."]]]);
+add(8,"nb",`___ she like coffee?|Does|Do|Is|Has
+He ___ not live here.|does|do|is|has
+They ___ not go to school yesterday.|did|do|does|were
+___ he finish his homework last night?|Did|Do|Does|Is
+She ___ playing the piano now.|is|does|has|do
+I ___ finished my work.|have|do|am|did
+He ___ gone home already.|has|have|does|is
+We ___ studying English.|are|do|have|does
+The cake ___ made by my mother.|was|did|had|does
+___ you been to Paris?|Have|Do|Are|Did
+She doesn’t ___ TV every day.|watch|watches|watched|watching
+I didn’t ___ the answer.|know|knew|known|knows
+Trợ động từ đi với he, she, it ở hiện tại đơn là:|does|do|did|have
+Câu trả lời ngắn đúng cho “Do you like tea?” là:|Yes, I do.|Yes, I am.|Yes, I did.|Yes, I have.`);
+add(8,"th",`Which sentence is correct?|She doesn’t like fish.|She don’t like fish.|She doesn’t likes fish.|She not likes fish.
+___ they playing football now?|Are|Do|Have|Does
+___ your parents live in Hue?|Do|Does|Are|Is
+I do like this song. “Do” ở đây dùng để:|nhấn mạnh|phủ định|hỏi|chỉ quá khứ
+She likes tea, and so ___ I.|do|am|have|did
+He didn’t go, and neither ___ I.|did|do|was|have
+Have you finished? – No, I ___.|haven’t|don’t|didn’t|am not
+___ the letter been sent yet?|Has|Have|Is|Does
+They ___ been waiting for an hour.|have|are|do|did
+Did he come yesterday? – Yes, he ___.|did|does|was|had
+She ___ not been invited to the party.|has|does|did|is
+What time ___ the train leave?|does|do|is|has
+Which sentence is INCORRECT?|Does she can swim?|Can she swim?|Does she swim?|Is she swimming?
+My brother ___ not watching TV at the moment.|is|does|has|do
+Why ___ you cry last night?|did|do|were|have`);
+add(8,"vd",`He ___ been working here since 2010, and he ___ not planning to leave.|has – is|does – is|has – does|is – has
+Not only ___ he sing well, but he also dances well.|does|is|has|do
+Which sentence is INCORRECT?|She don’t know the answer.|She doesn’t know the answer.|They have left.|He is sleeping.
+I ___ know him, but I ___ not remember his name.|do – do|do – does|does – do|did – does
+The room ___ cleaned every day, and it ___ being cleaned now.|is – is|does – is|is – has|has – is
+How long ___ they ___ married?|have – been|did – be|do – be|are – been
+Hardly ___ I arrived when it started to rain.|had|did|have|was
+___ she been told about the change?|Has|Does|Did|Is
+We didn’t know that the shop ___ closed down.|had|did|does|would
+Do you know where ___?|she lives|does she live|she live|is she live
+___ you mind if I open the window?|Do|Does|Are|Have
+Neither she nor her friends ___ been informed.|have|has|does|is`);
+add(9,"nb",`She ___ swim very well.|can|cans|is can|could to
+You ___ wear a seat belt. It’s the law.|must|can|may|might
+You ___ park here. It’s forbidden.|mustn’t|don’t have to|can|should
+___ I open the window?|May|Must|Should|Would
+You should ___ more water.|drink|drinks|drank|to drink
+He ___ speak English when he was five.|could|can|must|should
+It’s cold. You ___ wear a coat.|should|mustn’t|can’t|might not
+Modal verb luôn đi với:|động từ nguyên mẫu không “to”|to V|V-ing|V3
+___ you help me, please?|Could|Must|Ought|Need
+We ___ be late for class.|mustn’t|don’t|aren’t|haven’t
+She ___ speak French and German.|can|cans|must to|may to
+You ___ to study harder.|ought|should to|must to|had to
+It ___ rain tonight. (có thể)|may|must|ought|has
+You ___ tell lies.|shouldn’t|doesn’t|isn’t|hasn’t`);
+add(9,"th",`Which sentence is correct?|She can speak three languages.|She can speaks three languages.|She cans speak three languages.|She can to speak three languages.
+You ___ come if you don’t want to. (không cần)|don’t have to|mustn’t|can’t|shouldn’t
+He ___ be at home. His car is outside. (chắc chắn)|must|can’t|shouldn’t|needn’t
+That ___ be true! It’s impossible.|can’t|must|should|ought
+You ___ see a doctor. You look pale.|should|would|had|do
+“Must not” có nghĩa là:|cấm|không cần|có thể|nên
+“Don’t have to” có nghĩa là:|không cần thiết|cấm|chắc chắn|có thể
+She ___ come tonight, but she isn’t sure.|might|must|has to|ought
+___ you open the door, please?|Would|Might|Must|Should
+I ___ run fast when I was young.|could|can|may|must
+___ I use your phone? – Of course.|May|Must|Ought|Have
+You ___ better take an umbrella.|had|have|has|did
+Students ___ wear uniforms at this school. It’s a rule.|must|may|might|can
+She said she ___ help me.|would|will|shall|can`);
+add(9,"vd",`She ___ have left already; her coat isn’t here.|must|can|should|would
+You ___ have told me earlier!|should|must|can|may
+He ___ have gone out. The lights are off.|must|ought|needn’t|had
+He ___ have arrived by now, but I’m not sure.|may|can’t|needn’t|mustn’t
+Which sentence is INCORRECT?|You must to go now.|You must go now.|You have to go now.|You should go now.
+You ___ bring a gift. It’s not necessary.|needn’t|mustn’t|can’t|shouldn’t
+If I were you, I ___ accept the offer.|would|will|can|must
+The phone rang at midnight. It ___ be Tom; he’s in London.|can’t|must|should|ought
+I ___ swim when I was four, but now I swim every day.|could|can|must|would
+Drivers ___ stop at a red light.|must|may|might|could
+He asked if he ___ use my pen.|could|can|must|shall
+___ you like some tea?|Would|Do|Should|Must`);
+const LV=[["nb","Nhận biết"],["th","Thông hiểu"],["vd","Vận dụng"]],DAY=864e5,PW="tien@123456";
+let T=0,tab="lt",lv="nb",ty="m",TS=0,TQ=[],TA=[],TE=0,TI=0;
+const M={},$=i=>document.getElementById(i);
+const ld=k=>{try{return localStorage.getItem(k)}catch(e){return M[k]||null}};
+const sv=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){M[k]=v}};
+const pool=d=>LV.flatMap(([k])=>d.x[k].m);
+const nm=s=>s.toLowerCase().replace(/[’‘]/g,"'").replace(/[.!\s]+$/,"").replace(/\s+/g," ").trim();
+function st(){const n=Date.now(),l=+ld("gg_l"),s=+ld("gg_s");
+ if(l&&n-l<365*DAY)return{k:"full",d:Math.ceil((365*DAY-(n-l))/DAY)};
+ if(n-s<3*DAY)return{k:"trial",d:Math.ceil((3*DAY-(n-s))/DAY)};
+ return{k:"lock"}}
+function act(){if($("pw").value===PW){sv("gg_l",Date.now());R()}else $("er").textContent="Mật khẩu chưa đúng, hãy nhập lại."}
+const mq=(q,i,m)=>`<div class="c" id="q${i}"><b>${i+1}. ${q[0]}</b><div>${q[1].map((t,j)=>{const c=m=="r"?(j==q[2]?" ok":j==TA[i]?" no":""):m=="t"&&TA[i]===j?" sel":"";const f=m=="p"?`pk(this,${j},${q[2]})`:m=="t"?`sl(${i},${j})`:"";return`<button class="o${c}" onclick="${f}">${"ABCD"[j]}. ${t}</button>`}).join("")}</div></div>`;
+function pk(b,j,c){const p=b.parentNode;if(p.dataset.d)return;p.dataset.d=1;[...p.children].forEach((o,k)=>{if(k==c)o.classList.add("ok");else if(o==b)o.classList.add("no")})}
+function sl(i,j){TA[i]=j;[...document.querySelectorAll("#q"+i+" .o")].forEach((o,k)=>o.classList.toggle("sel",k==j))}
+function ck(i){const a=D.find(x=>x.id==T).x[lv].e[i][1],r=$("r"+i),ok=nm($("e"+i).value)==nm(a);r.className=ok?"ok2":"no2";r.textContent=(ok?"✓ Chính xác. ":"✗ Đáp án: ")+a}
+function bt(d){const x=d.x[lv];
+ let h=`<div class="r">${LV.map(([k,l])=>`<button class="b${lv==k?" on":""}" onclick="lv='${k}';R()">${l}</button>`).join("")}</div><div class="r"><button class="b${ty=="m"?" on":""}" onclick="ty='m';R()">Trắc nghiệm 4 đáp án</button><button class="b${ty=="e"?" on":""}" onclick="ty='e';R()">Tự luận</button></div>`;
+ return h+(ty=="m"?x.m.map((q,i)=>mq(q,i,"p")).join(""):x.e.map((q,i)=>`<div class="c"><b>${i+1}. ${q[0]}</b><br><input class="i" id="e${i}"> <button class="b" onclick="ck(${i})">Kiểm tra</button><div id="r${i}"></div></div>`).join(""))}
+function kt(d){
+ if(TS==0)return`<div class="c"><h3>Bài kiểm tra 50 phút</h3><p>${Math.min(40,pool(d).length)} câu trắc nghiệm, thời gian làm bài 50 phút.</p><button class="b on" onclick="start()">Bắt đầu làm bài</button></div>`;
+ if(TS==1)return`<div class="c tm"><span>⏱ <b id="tm"></b></span><button class="b on" onclick="fin()">Nộp bài</button></div>`+TQ.map((q,i)=>mq(q,i,"t")).join("");
+ const c=TQ.filter((q,i)=>TA[i]===q[2]).length,n=TQ.length;
+ return`<div class="c"><h3>Kết quả: ${c}/${n} câu đúng, ${(c/n*10).toFixed(2)} điểm</h3><button class="b on" onclick="TS=0;R()">Làm lại</button></div>`+TQ.map((q,i)=>mq(q,i,"r")).join("")}
+function start(){clearInterval(TI);TQ=pool(D.find(x=>x.id==T)).slice().sort(()=>Math.random()-.5).slice(0,40);TA=[];TE=Date.now()+50*60*1e3;TS=1;R();tick();TI=setInterval(tick,1000)}
+function tick(){const l=Math.max(0,TE-Date.now()),e=$("tm");if(e)e.textContent=String(l/6e4|0).padStart(2,"0")+":"+String(l/1e3%60|0).padStart(2,"0");if(!l)fin()}
+function fin(){clearInterval(TI);TS=2;R();scrollTo(0,0)}
+function tb(k){clearInterval(TI);tab=k;TS=0;R()}
+function go(id){clearInterval(TI);T=id;tab="lt";TS=0;R()}
+function R(){const s=st(),a=$("app");
+ $("bd").textContent=s.k=="full"?"Đã kích hoạt, còn "+s.d+" ngày":s.k=="trial"?"Dùng thử, còn "+s.d+" ngày":"Hết hạn dùng thử";
+ if(s.k=="lock"){a.innerHTML=`<div class="c"><h2>Đã hết 3 ngày dùng thử</h2><p>Nhập mật khẩu để dùng tiếp trong 365 ngày.</p><input class="i" id="pw" type="password" placeholder="Mật khẩu"> <button class="b on" onclick="act()">Kích hoạt</button><p id="er" class="no2"></p></div>`;return}
+ if(!T){a.innerHTML=`<h2>Chọn chủ điểm ngữ pháp</h2>`+GR.map(([t,l])=>`<h3>${t}</h3><div class="g">${l.map(i=>{const d=D.find(x=>x.id==i),n=pool(d).length;return`<div class="c k" onclick="go(${i})"><b>${d.n}</b><br><small>${n?n+" câu trắc nghiệm":"Đang soạn"}</small></div>`}).join("")}</div>`).join("");return}
+ const d=D.find(x=>x.id==T);
+ a.innerHTML=`<button class="b" onclick="clearInterval(TI);T=0;R()">Quay lại danh sách</button><h2>${d.n}</h2><div class="r">${[["lt","Lý thuyết"],["bt","Bài tập"],["kt","Kiểm tra 50 phút"]].map(([k,l])=>`<button class="b${tab==k?" on":""}" onclick="tb('${k}')">${l}</button>`).join("")}</div>`+(!pool(d).length?"<div class=\"c\">Chủ điểm này đang được soạn.</div>":tab=="lt"?`<div class="c th">${d.t}</div>`:tab=="bt"?bt(d):kt(d))}
+if(!ld("gg_s"))sv("gg_s",Date.now());
+R();
+</script></body></html>
