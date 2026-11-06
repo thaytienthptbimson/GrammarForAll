@@ -3193,6 +3193,725 @@ th(36,`<h3>Subject-Verb Agreement – Sự hòa hợp giữa Chủ ngữ và Đ�
 </ul>
 <p>Ví dụ tổng hợp: <em>The number of students is increasing, while a number of students are absent.</em> • <em>Neither he nor his friends are here.</em> • <em>The teacher, along with her students, is in the lab.</em></p>`);
 
+// Rich linguistic bank to top up every topic (1..36) x level (nb, th, vd) to 50 MC and 50 Essay questions
+(function expandAllQuestions(){
+  const SUBJ_SG = [
+    ["My brother","he"],["My sister","she"],["Lan","she"],["Minh","he"],["Mr Nam","he"],
+    ["Mrs Hoa","she"],["The teacher","he"],["Our monitor","she"],["David","he"],["Sarah","she"],
+    ["Her uncle","he"],["His aunt","she"],["Dr Phong","he"],["The manager","she"],["Alex","he"],
+    ["Elena","she"],["My cousin","he"],["The chef","he"],["That student","she"],["This engineer","he"],
+    ["Miss Linh","she"],["Mr Tuan","he"],["Coach Hung","he"],["Nurse Mai","she"],["Captain Long","he"]
+  ];
+  const SUBJ_PL = [
+    ["The students","they"],["My parents","they"],["Lan and Mai","they"],["The workers","they"],["Those children","they"],
+    ["Our neighbours","they"],["My friends","they"],["The players","they"],["Tom and Jack","they"],["The scientists","they"],
+    ["Many tourists","they"],["The volunteers","they"],["His colleagues","they"],["These girls","they"],["The doctors","they"],
+    ["We","we"],["You and I","we"],["The farmers","they"],["The musicians","they"],["The villagers","they"],
+    ["Nam and Phong","they"],["The engineers","they"],["Our classmates","they"],["The members","they"],["Those boys","they"]
+  ];
+  // 32 distinct verbs: [v1, vs, v2, v3, ving, obj, place_or_prep]
+  const VERBS = [
+    ["write","writes","wrote","written","writing","a detailed report","in the office"],
+    ["read","reads","read","read","reading","an English novel","in the library"],
+    ["clean","cleans","cleaned","cleaned","cleaning","the classroom","before class"],
+    ["repair","repairs","repaired","repaired","repairing","the old bicycle","in the yard"],
+    ["paint","paints","painted","painted","painting","the living room wall","with care"],
+    ["prepare","prepares","prepared","prepared","preparing","breakfast for the family","in the kitchen"],
+    ["learn","learns","learned","learned","learning","new vocabulary","at home"],
+    ["plant","plants","planted","planted","planting","green trees","in the school garden"],
+    ["solve","solves","solved","solved","solving","the maths problem","on the board"],
+    ["wash","washes","washed","washed","washing","the dishes","after dinner"],
+    ["build","builds","built","built","building","a new community library","in the town"],
+    ["check","checks","checked","checked","checking","all the emails","in the morning"],
+    ["practise","practises","practised","practised","practising","the piano","in the music room"],
+    ["organize","organizes","organized","organized","organizing","a charity event","at school"],
+    ["deliver","delivers","delivered","delivered","delivering","the parcels","on time"],
+    ["design","designs","designed","designed","designing","a modern poster","for the club"],
+    ["translate","translates","translated","translated","translating","the article","into Vietnamese"],
+    ["water","waters","watered","watered","watering","the flowers","on the balcony"],
+    ["collect","collects","collected","collected","collecting","old books","for poor children"],
+    ["decorate","decorates","decorated","decorated","decorating","the hall","for the festival"],
+    ["review","reviews","reviewed","reviewed","reviewing","the grammar lessons","before the test"],
+    ["bake","bakes","baked","baked","baking","a birthday cake","for her mother"],
+    ["complete","completes","completed","completed","completing","the science project","with the team"],
+    ["carry","carries","carried","carried","carrying","the heavy boxes","upstairs"],
+    ["iron","irons","ironed","ironed","ironing","the school uniform","in the evening"],
+    ["feed","feeds","fed","fed","feeding","the kittens","in the backyard"],
+    ["sweep","sweeps","swept","swept","sweeping","the dry leaves","in the yard"],
+    ["arrange","arranges","arranged","arranged","arranging","the chairs","in the meeting room"],
+    ["fix","fixes","fixed","fixed","fixing","the broken computer","at the shop"],
+    ["edit","edits","edited","edited","editing","the short video","on the laptop"],
+    ["draw","draws","drew","drawn","drawing","a landscape picture","in the art class"],
+    ["make","makes","made","made","making","a wooden bookshelf","in the workshop"]
+  ];
+
+  const ADJ_DATA = [
+    ["careful","carefully","more careful","the most careful","careless"],
+    ["fluent","fluently","more fluent","the most fluent","hesitant"],
+    ["quick","quickly","quicker","the quickest","slow"],
+    ["clear","clearly","clearer","the clearest","vague"],
+    ["polite","politely","more polite","the most polite","rude"],
+    ["quiet","quietly","quieter","the quietest","noisy"],
+    ["graceful","gracefully","more graceful","the most graceful","awkward"],
+    ["accurate","accurately","more accurate","the most accurate","wrong"],
+    ["patient","patiently","more patient","the most patient","impatient"],
+    ["creative","creatively","more creative","the most creative","dull"],
+    ["confident","confidently","more confident","the most confident","shy"],
+    ["neat","neatly","neater","the neatest","messy"],
+    ["calm","calmly","calmer","the calmest","nervous"],
+    ["generous","generously","more generous","the most generous","selfish"],
+    ["honest","honestly","more honest","the most honest","dishonest"],
+    ["eager","eagerly","more eager","the most eager","reluctant"],
+    ["skilful","skilfully","more skilful","the most skilful","clumsy"],
+    ["serious","seriously","more serious","the most serious","careless"],
+    ["gentle","gently","gentler","the gentlest","rough"],
+    ["happy","happily","happier","the happiest","sad"],
+    ["wise","wisely","wiser","the wisest","foolish"],
+    ["brave","bravely","braver","the bravest","timid"]
+  ];
+
+  const PHRASAL_DATA = [
+    ["look after","chăm sóc","look for","look up","look at","younger siblings when parents are away"],
+    ["look up","tra cứu","look after","look for","look into","new words in the Oxford dictionary"],
+    ["put off","trì hoãn","put on","put out","put up","the outdoor meeting due to heavy rain"],
+    ["give up","từ bỏ","give in","give away","give off","bad habits to stay healthy"],
+    ["turn down","từ chối / vặn nhỏ","turn up","turn on","turn into","the noisy radio in the living room"],
+    ["run out of","hết sạch, cạn kiệt","run into","run after","run away","milk and bread before breakfast"],
+    ["take after","giống (ngoại hình/tính cách)","take off","take up","take over","elder family members in appearance"],
+    ["come across","tình cờ gặp/thấy","come up with","come down with","come into","an old photo album in the drawer"],
+    ["set up","thành lập","set off","set out","set down","an English speaking club at school"],
+    ["break down","bị hỏng (máy móc/xe cộ)","break up","break into","break out","on the way to the station"],
+    ["bring up","nuôi nấng","bring about","bring out","bring in","children in a warm family"],
+    ["get over","vượt qua (bệnh tật/cú sốc)","get on with","get up","get off","a bad cold after a few days"],
+    ["put up with","chịu đựng","put off","put out","put on","noisy traffic outside the window"],
+    ["find out","tìm ra sự thật/thông tin","find for","look after","turn off","the departure time of the train"],
+    ["take up","bắt đầu một sở thích/môn thể thao","take off","take over","take after","playing badminton every afternoon"],
+    ["call off","hủy bỏ","call on","call up","call for","the friendly match because of the storm"],
+    ["carry on","tiếp tục","carry out","carry off","carry away","practising speaking skills every day"],
+    ["carry out","tiến hành, thực hiện","carry on","carry away","carry over","a survey among high school students"],
+    ["hand in","nộp bài","hand out","hand over","hand down","the assignment to the teacher on time"],
+    ["show up","xuất hiện, đến nơi","show off","show around","show out","at the meeting point before 7 a.m."]
+  ];
+
+  const PREP_COLLOC = [
+    ["interested","in","on","at","for","reading historical novels"],
+    ["good","at","in","on","with","solving difficult puzzles"],
+    ["afraid","of","from","with","at","walking alone in the dark"],
+    ["proud","of","for","on","with","academic achievements at school"],
+    ["famous","for","of","with","in","its ancient temples and beaches"],
+    ["responsible","for","to","of","with","organising the class trip"],
+    ["different","from","with","to","at","what we expected earlier"],
+    ["similar","to","with","from","as","her twin sister's backpack"],
+    ["keen","on","in","at","for","joining the English club"],
+    ["fond","of","in","on","about","listening to folk music"],
+    ["tired","of","from","with","at","making the same mistake"],
+    ["capable","of","to","for","in","leading the whole team"],
+    ["aware","of","about","on","for","the importance of environmental protection"],
+    ["full","of","with","by","from","fresh flowers and fruits"],
+    ["short","of","from","with","on","time before the final test"],
+    ["accustomed","to","with","in","for","getting up at 5 a.m."],
+    ["harmful","to","for","with","on","human health and wildlife"],
+    ["satisfied","with","to","for","about","the final exam results"],
+    ["crowded","with","of","by","in","visitors during the festival"],
+    ["successful","in","at","on","for","completing the science project"],
+    ["dependent","on","of","from","in","support from the family"],
+    ["absent","from","of","at","in","the morning class yesterday"],
+    ["polite","to","with","for","at","all the elderly guests"],
+    ["worried","about","of","for","on","the upcoming final examination"],
+    ["excited","about","of","with","in","visiting Ha Long Bay next month"]
+  ];
+
+  function pushMC(arr, qText, correct, d1, d2, d3, seed) {
+    if (arr.length >= 50) return;
+    if (arr.some(x => x[0] === qText)) return;
+    const opts = [correct, d1, d2, d3];
+    const rot = seed % 4;
+    const rotated = opts.slice(rot).concat(opts.slice(0, rot));
+    arr.push([qText, rotated, rotated.indexOf(correct)]);
+  }
+
+  function pushEs(arr, prompt, ans) {
+    if (arr.length >= 50) return;
+    if (arr.some(x => x[0] === prompt)) return;
+    arr.push([prompt, ans]);
+  }
+
+  D.forEach(d => {
+    const id = d.id;
+    const nbM = d.x.nb.m, thM = d.x.th.m, vdM = d.x.vd.m;
+    const nbE = d.x.nb.e, thE = d.x.th.e, vdE = d.x.vd.e;
+
+    for (let i = 0; i < 90 && (nbM.length < 50 || thM.length < 50 || vdM.length < 50 || nbE.length < 50 || thE.length < 50 || vdE.length < 50); i++) {
+      const sg = SUBJ_SG[i % SUBJ_SG.length];
+      const sg2 = SUBJ_SG[(i * 3 + 7) % SUBJ_SG.length];
+      const pl = SUBJ_PL[i % SUBJ_PL.length];
+      const vb = VERBS[i % VERBS.length];
+      const vb2 = VERBS[(i * 5 + 3) % VERBS.length];
+      const adj = ADJ_DATA[i % ADJ_DATA.length];
+      const phr = PHRASAL_DATA[i % PHRASAL_DATA.length];
+      const prp = PREP_COLLOC[i % PREP_COLLOC.length];
+      const yrPast = 2004 + (i % 19);
+      const yrFut = 2027 + (i % 16);
+      const hrs = 2 + (i % 7);
+
+      switch (id) {
+        case 1: // Thì hiện tại đơn
+          pushMC(nbM, `${sg[0]} usually ___ ${vb[5]} ${vb[6]}.`, vb[1], vb[0], vb[4], `is ${vb[0]}`, i);
+          pushMC(nbM, `${pl[0]} often ___ ${vb2[5]} on weekdays.`, vb2[0], vb2[1], vb2[4], vb2[2], i+1);
+          pushMC(thM, `___ ${sg[0].toLowerCase()} ${vb[0]} ${vb[5]} every week?`, "Does", "Do", "Is", "Has", i);
+          pushMC(thM, `${sg[0]} ___ ${vb2[0]} ${vb2[5]} on Sundays.`, "doesn’t", "don’t", "isn’t", "hasn’t", i+2);
+          pushMC(vdM, `Every morning, ${sg[0].toLowerCase()} ___ ${vb[5]} and then ___ to school.`, `${vb[1]} – goes`, `${vb[0]} – goes`, `${vb[1]} – go`, `is ${vb[4]} – goes`, i);
+          pushMC(vdM, `As soon as ${sg[0].toLowerCase()} ___ ${vb2[5]}, ${sg[1]} will call you.`, vb2[1], `will ${vb2[0]}`, vb2[2], `is ${vb2[4]}`, i+3);
+
+          pushEs(nbE, `Chia động từ (hiện tại đơn): ${sg[0]} (${vb[0]}) ___ ${vb[5]} every day.`, vb[1]);
+          pushEs(nbE, `Chia động từ (hiện tại đơn): ${pl[0]} (${vb2[0]}) ___ ${vb2[5]} on Mondays.`, vb2[0]);
+          pushEs(thE, `Viết câu phủ định: ${sg[0]} ${vb[1]} ${vb[5]}.`, `${sg[0]} doesn’t ${vb[0]} ${vb[5]}.`);
+          pushEs(thE, `Chuyển sang câu nghi vấn: ${sg[0]} ${vb2[1]} ${vb2[5]}.`, `Does ${sg[0].charAt(0).toLowerCase()+sg[0].slice(1)} ${vb2[0]} ${vb2[5]}?`);
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} don’t ${vb[1]} ${vb[5]} ${vb[6]}.`, `${sg[0]} doesn’t ${vb[0]} ${vb[5]} ${vb[6]}.`);
+          pushEs(vdE, `Chia động từ: What time (do) ___ ${sg[0].toLowerCase()} usually (${vb2[0]}) ___ ${vb2[5]}?`, `does – ${vb2[0]}`);
+          break;
+
+        case 2: // Mạo từ (a, an, the)
+          pushMC(nbM, `${sg[0]} bought ___ new notebook and ___ eraser before ${vb[4]} ${vb[5]}.`, "a – an", "an – a", "the – a", "a – a", i);
+          pushMC(nbM, `Please close ___ window before you ${vb2[0]} ${vb2[5]}.`, "the", "a", "an", "—", i+1);
+          pushMC(thM, `${sg[0]} wants to study at ___ university after finishing ${vb[5]}.`, "a", "an", "the", "—", i);
+          pushMC(thM, `It took ${sg[0].toLowerCase()} ___ hour to ${vb2[0]} ${vb2[5]}.`, "an", "a", "the", "—", i+2);
+          pushMC(vdM, `${sg[0]} plays ___ piano well, while ${pl[0].toLowerCase()} prefer playing ___ football after ${vb[4]} ${vb[5]}.`, "the – —", "— – the", "a – a", "the – the", i);
+          pushMC(vdM, `___ more ${sg[0].toLowerCase()} practises ${vb2[5]}, ___ more confident ${sg[1]} becomes.`, "The – the", "A – a", "The – a", "— – —", i+3);
+
+          pushEs(nbE, `Điền a/an/the: ${sg[0]} is reading ___ English book after ${vb[4]} ${vb[5]}.`, "an");
+          pushEs(nbE, `Điền a/an/the: ${sg[0]} bought ___ new pen to ${vb2[0]} ${vb2[5]}.`, "a");
+          pushEs(thE, `Điền a/an/the: It took ${sg[0].toLowerCase()} ___ hour to ${vb[0]} ${vb[5]}.`, "an");
+          pushEs(thE, `Điền a/an/the: This is ___ best way for ${sg[0].toLowerCase()} to ${vb2[0]} ${vb2[5]}.`, "the");
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} is an university student who ${vb[1]} ${vb[5]}.`, `${sg[0]} is a university student who ${vb[1]} ${vb[5]}.`);
+          pushEs(vdE, `Điền mạo từ thích hợp: ${sg[0]} plays ___ guitar after ${vb2[4]} ${vb2[5]}.`, "the");
+          break;
+
+        case 3: // So sánh hơn và so sánh nhất
+          pushMC(nbM, `${sg[0]} ${vb[1]} ${vb[5]} ___ than ${sg2[0].toLowerCase()}.`, `more ${adj[1]}`, adj[1], `most ${adj[1]}`, adj[0], i);
+          pushMC(nbM, `${sg[0]} is ___ member when ${vb2[4]} ${vb2[5]}.`, adj[3], adj[2], adj[0], adj[1], i+1);
+          pushMC(thM, `For ${sg[0].toLowerCase()}, ${vb[4]} ${vb[5]} is not as ___ as ${vb2[4]} ${vb2[5]}.`, adj[0], adj[2], adj[3], adj[1], i);
+          pushMC(thM, `Between ${sg[0]} and ${sg2[0]}, ${sg[0]} is ___ at ${vb2[4]} ${vb2[5]}.`, `the ${adj[2]}`, adj[3], adj[0], adj[1], i+2);
+          pushMC(vdM, `The more ${adj[1]} ${sg[0].toLowerCase()} ${vb[1]} ${vb[5]}, ___ the outcome will be.`, "the better", "better", "the best", "more better", i);
+          pushMC(vdM, `${sg[0]} ${vb2[1]} ${vb2[5]} twice as ___ as ${sg2[0].toLowerCase()}.`, adj[1], `more ${adj[1]}`, `most ${adj[1]}`, adj[2], i+3);
+
+          pushEs(nbE, `Chia so sánh hơn: ${sg[0]} is (${adj[0]}) ___ than ${sg2[0]} when ${vb[4]} ${vb[5]}.`, adj[2]);
+          pushEs(nbE, `Chia so sánh nhất: ${sg[0]} is (${adj[0]}) ___ student in the group.`, adj[3]);
+          pushEs(thE, `Hoàn thành câu so sánh bằng: ${sg[0]} is ___ ${adj[0]} ___ ${sg2[0]} at ${vb[4]} ${vb[5]}.`, "as – as");
+          pushEs(thE, `Chia dạng so sánh hơn của trạng từ: ${sg[0]} ${vb2[1]} ${vb2[5]} (more / ${adj[1]}) ___ than before.`, `more ${adj[1]}`);
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} is more ${adj[2]} than ${sg2[0]} when ${vb[4]} ${vb[5]}.`, `${sg[0]} is ${adj[2]} than ${sg2[0]} when ${vb[4]} ${vb[5]}.`);
+          pushEs(vdE, `Hoàn thành so sánh kép: The harder ${sg[0].toLowerCase()} practises ${vb2[5]}, (good) ___ ${sg[1]} becomes.`, "the better");
+          break;
+
+        case 4: // Thì quá khứ đơn
+          pushMC(nbM, `${sg[0]} ___ ${vb[5]} yesterday afternoon.`, vb[2], vb[0], vb[1], vb[4], i);
+          pushMC(nbM, `${pl[0]} ___ ${vb2[5]} in ${yrPast}.`, vb2[2], vb2[0], `have ${vb2[3]}`, `are ${vb2[4]}`, i+1);
+          pushMC(thM, `${sg[0]} ___ ${vb[0]} ${vb[5]} last night because ${sg[1]} was tired.`, "didn’t", "doesn’t", "wasn’t", "hasn’t", i);
+          pushMC(thM, `What time ___ ${pl[0].toLowerCase()} ${vb2[0]} ${vb2[5]} yesterday?`, "did", "do", "were", "had", i+2);
+          pushMC(vdM, `Yesterday, ${sg[0].toLowerCase()} ___ the room and ___ ${vb[5]}.`, `entered – ${vb[2]}`, `enters – ${vb[2]}`, `entered – ${vb[0]}`, `had entered – ${vb[1]}`, i);
+          pushMC(vdM, `Which sentence is INCORRECT about ${sg[0].toLowerCase()}'s work yesterday?`, `${sg[0]} didn’t ${vb2[2]} ${vb2[5]}.`, `${sg[0]} didn’t ${vb2[0]} ${vb2[5]}.`, `${sg[0]} ${vb2[2]} ${vb2[5]}.`, `Did ${sg[0].toLowerCase()} ${vb2[0]} ${vb2[5]}?`, i+3);
+
+          pushEs(nbE, `Chia động từ (quá khứ đơn): ${sg[0]} (${vb[0]}) ___ ${vb[5]} yesterday.`, vb[2]);
+          pushEs(nbE, `Chia động từ (quá khứ đơn): ${pl[0]} (${vb2[0]}) ___ ${vb2[5]} in ${yrPast}.`, vb2[2]);
+          pushEs(thE, `Viết câu phủ định quá khứ đơn: ${sg[0]} ${vb[2]} ${vb[5]} last night.`, `${sg[0]} didn’t ${vb[0]} ${vb[5]} last night.`);
+          pushEs(thE, `Chuyển sang câu nghi vấn: ${pl[0]} ${vb2[2]} ${vb2[5]} two days ago.`, `Did ${pl[0].charAt(0).toLowerCase()+pl[0].slice(1)} ${vb2[0]} ${vb2[5]} two days ago?`);
+          pushEs(vdE, `Sửa lỗi cả câu: Yesterday ${sg[0].toLowerCase()} didn’t ${vb[2]} ${vb[5]}.`, `Yesterday ${sg[0].toLowerCase()} didn’t ${vb[0]} ${vb[5]}.`);
+          pushEs(vdE, `Chia động từ: When ${sg[0].toLowerCase()} lived here, ${sg[1]} often (${vb2[0]}) ___ ${vb2[5]}.`, vb2[2]);
+          break;
+
+        case 5: // Danh từ
+        case 6: // Đại từ
+        case 7: // Động từ quy tắc và bất quy tắc
+        case 8: // Trợ động từ
+          if (id === 5) {
+            pushMC(nbM, `How ___ books did ${sg[0].toLowerCase()} borrow before ${vb[4]} ${vb[5]}?`, "many", "much", "little", "a little", i);
+            pushMC(thM, `The ___ bags were kept neatly while they ${vb2[2]} ${vb2[5]}.`, "children’s", "childrens’", "childrens", "childs’", i);
+            pushMC(vdM, `Which sentence has a noun error when ${sg[0].toLowerCase()} ${vb[1]} ${vb[5]}?`, `${sg[0]} gave me many good advices.`, `${sg[0]} gave me some good advice.`, `The news was very exciting.`, `Those loaves of bread are fresh.`, i);
+            pushEs(nbE, `Điền much hoặc many: How ___ time does ${sg[0].toLowerCase()} need to ${vb[0]} ${vb[5]}?`, "much");
+            pushEs(thE, `Viết dạng sở hữu cách: the room of the students where they ${vb2[0]} ${vb2[5]} → the ___ room`, "students’");
+            pushEs(thE, `Điền a few hoặc a little: ${sg[0]} bought ___ notebooks before ${vb[4]} ${vb[5]}.`, "a few");
+            pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} needed some informations to ${vb[0]} ${vb[5]}.`, `${sg[0]} needed some information to ${vb[0]} ${vb[5]}.`);
+          } else if (id === 6) {
+            pushMC(nbM, `${sg[0]} ${vb[2]} ${vb[5]} all by ___.`, sg[1]==="he"?"himself":"herself", sg[1]==="he"?"him":"her", sg[1]==="he"?"his":"hers", "themselves", i);
+            pushMC(thM, `Neither of the students ___ ready to ${vb2[0]} ${vb2[5]} with ${sg[0]}.`, "is", "are", "were", "have been", i);
+            pushMC(vdM, `Which sentence has a pronoun error while ${vb[4]} ${vb[5]}?`, `${sg[0]} and me ${vb[2]} ${vb[5]}.`, `${sg[0]} and I ${vb[2]} ${vb[5]}.`, `They did it themselves.`, `Nobody knows the truth.`, i);
+            pushMC(vdM, `${sg[0]} lost her pen while ${vb2[4]} ${vb2[5]}, so ${sg2[0]} lent her ___.`, sg2[1]==="he"?"his":"hers", sg2[1]==="he"?"him":"her", sg2[1], sg2[1]==="he"?"himself":"herself", i+2);
+            pushEs(nbE, `Điền đại từ phản thân: ${sg[0]} ${vb[2]} ${vb[5]} by ___.`, sg[1]==="he"?"himself":"herself");
+            pushEs(thE, `Chia động từ sau đại từ bất định: Everyone in ${sg[0]}'s team (want) ___ to ${vb2[0]} ${vb2[5]}.`, "wants");
+            pushEs(vdE, `Sửa lỗi cả câu: ${pl[0]} hurt them while ${vb[4]} ${vb[5]}.`, `${pl[0]} hurt themselves while ${vb[4]} ${vb[5]}.`);
+          } else if (id === 7) {
+            pushMC(nbM, `Khi ${sg[0].toLowerCase()} thực hiện “${vb[0]} ${vb[5]}” hôm qua, dạng V2 của “${vb[0]}” là:`, vb[2], vb[4], vb[1], `to ${vb[0]}`, i);
+            pushMC(nbM, `Khi ${pl[0].toLowerCase()} hoàn thành “${vb2[0]} ${vb2[5]}”, dạng V3 của “${vb2[0]}” là:`, vb2[3], vb2[4], vb2[1], `to ${vb2[0]}`, i+1);
+            pushMC(thM, `${sg[0]} has already ___ ${vb[5]} three times this month.`, vb[3], vb[2], vb[0], vb[4], i);
+            pushMC(vdM, `Yesterday ${vb[5]} was ___ ${adj[1]} by ${sg[0].toLowerCase()}.`, vb[3], vb[4], vb[1], `to ${vb[0]}`, i);
+            pushMC(vdM, `${sg[0]} had already ___ ${vb2[5]} before ${sg2[0].toLowerCase()} arrived.`, vb2[3], vb2[4], vb2[1], `to ${vb2[0]}`, i+2);
+            pushEs(nbE, `Viết dạng V2 (quá khứ đơn) của động từ “${vb[0]}” trong câu: ${sg[0]} ___ ${vb[5]} yesterday.`, vb[2]);
+            pushEs(nbE, `Viết dạng V3 (quá khứ phân từ) của động từ “${vb2[0]}” cho chủ ngữ ${sg[0]}.`, vb2[3]);
+            pushEs(thE, `Chia dạng V3 của động từ: ${sg[0]} has already (${vb[0]}) ___ ${vb[5]}.`, vb[3]);
+            pushEs(thE, `Chia dạng V2 của động từ: Last night, ${sg[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]}.`, vb2[2]);
+            pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} has ${vb[2]} ${vb[5]} since morning.`, `${sg[0]} has ${vb[3]} ${vb[5]} since morning.`);
+          } else {
+            pushMC(nbM, `___ ${sg[0].toLowerCase()} ${vb[0]} ${vb[5]} every Saturday?`, "Does", "Do", "Is", "Has", i);
+            pushMC(thM, `${sg[0]} ${vb[1]} ${vb[5]}, and so ___ ${sg2[0].toLowerCase()}.`, "does", "is", "has", "did", i);
+            pushMC(vdM, `Not only ___ ${sg[0].toLowerCase()} ${vb[0]} ${vb[5]}, but ${sg[1]} also helps others.`, "does", "is", "has", "did", i);
+            pushEs(nbE, `Điền trợ động từ: ___ ${pl[0].toLowerCase()} ${vb[0]} ${vb[5]} yesterday?`, "Did");
+            pushEs(thE, `Điền trợ động từ đồng tình: ${sg[0]} didn’t ${vb2[0]} ${vb2[5]}, and neither ___ I.`, "did");
+            pushEs(vdE, `Sửa lỗi cả câu: Does ${sg[0].toLowerCase()} can ${vb[0]} ${vb[5]}?`, `Can ${sg[0].toLowerCase()} ${vb[0]} ${vb[5]}?`);
+          }
+          break;
+
+        case 9: // Modal verbs
+          pushMC(nbM, `${sg[0]} ___ ${vb[0]} ${vb[5]} very ${adj[1]} now.`, "can", "cans", "can to", "is can", i);
+          pushMC(nbM, `Students ___ make noise while ${pl[0].toLowerCase()} are ${vb2[4]} ${vb2[5]}.`, "mustn’t", "don’t have to", "needn’t", "ought", i+1);
+          pushMC(thM, `${sg[0]} ___ ${vb[0]} ${vb[5]} today; tomorrow is fine too (không cần thiết).`, "doesn’t have to", "mustn’t", "can’t", "shouldn’t", i);
+          pushMC(thM, `${sg[0]} looks tired after ${vb2[4]} ${vb2[5]}; ${sg[1]} ___ take a rest now.`, "should", "mustn’t", "can’t", "ought", i+2);
+          pushMC(vdM, `${vb[5].charAt(0).toUpperCase()+vb[5].slice(1)} is already done; ${sg[0].toLowerCase()} ___ have finished it earlier.`, "must", "should", "needn’t", "can", i);
+          pushMC(vdM, `${sg[0]} ___ have ${vb2[3]} ${vb2[5]} more carefully yesterday, but ${sg[1]} didn't!`, "should", "must", "can", "will", i+3);
+
+          pushEs(nbE, `Điền modal verb (cấm đoán): You ___ park your bike where ${pl[0].toLowerCase()} ${vb[0]} ${vb[5]}.`, "mustn’t");
+          pushEs(nbE, `Chia động từ sau modal: ${sg[0]} must (${vb2[0]}) ___ ${vb2[5]} before 5 p.m.`, vb2[0]);
+          pushEs(thE, `Điền don’t have to hoặc mustn’t: We ___ ${vb[0]} ${vb[5]} today because it is optional.`, "don’t have to");
+          pushEs(thE, `Viết lại với should: It is a good idea for ${sg[0].toLowerCase()} to ${vb2[0]} ${vb2[5]}. → ${sg[0]} ___ ${vb2[0]} ${vb2[5]}.`, "should");
+          pushEs(vdE, `Hoàn thành suy đoán quá khứ: ${sg[0]} succeeded; ${sg[1]} (must / practise) ___ ${vb[5]} very hard.`, "must have practised");
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} ought ${vb2[0]} ${vb2[5]} more ${adj[1]}.`, `${sg[0]} ought to ${vb2[0]} ${vb2[5]} more ${adj[1]}.`);
+          break;
+
+        case 10: // Gerunds and Infinitives
+          pushMC(nbM, `${sg[0]} really enjoys ___ ${vb[5]} in the free time.`, vb[4], `to ${vb[0]}`, vb[0], vb[2], i);
+          pushMC(nbM, `${pl[0]} decided ___ ${vb2[5]} together this week.`, `to ${vb2[0]}`, vb2[4], vb2[0], vb2[3], i+1);
+          pushMC(thM, `${sg[0]} is looking forward to ___ ${vb[5]} next Monday.`, vb[4], `to ${vb[0]}`, vb[0], vb[3], i);
+          pushMC(thM, `The teacher made ${pl[0].toLowerCase()} ___ ${vb2[5]} again.`, vb2[0], `to ${vb2[0]}`, vb2[4], vb2[3], i+2);
+          pushMC(vdM, `${sg[0]} stopped ___ a short rest while ${sg[1]} was ${vb[4]} ${vb[5]}.`, "to take", "taking", "take", "took", i);
+          pushMC(vdM, `Do you remember ___ ${vb2[5]} with ${sg[0]} last semester?`, vb2[4], `to ${vb2[0]}`, vb2[0], vb2[3], i+3);
+
+          pushEs(nbE, `Chia dạng động từ (V-ing / to V): ${sg[0]} enjoys (${vb[0]}) ___ ${vb[5]}.`, vb[4]);
+          pushEs(nbE, `Chia dạng động từ (V-ing / to V): ${sg[0]} promised (${vb2[0]}) ___ ${vb2[5]}.`, `to ${vb2[0]}`);
+          pushEs(thE, `Chia dạng động từ: ${sg[0]} is interested in (${vb[0]}) ___ ${vb[5]}.`, vb[4]);
+          pushEs(thE, `Chia dạng động từ: They let ${sg[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]}.`, vb2[0]);
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} suggested to ${vb[0]} ${vb[5]} ${vb[6]}.`, `${sg[0]} suggested ${vb[4]} ${vb[5]} ${vb[6]}.`);
+          pushEs(vdE, `Chia dạng động từ: ${sg[0]} looks forward to (${vb2[0]}) ___ ${vb2[5]}.`, vb2[4]);
+          break;
+
+        case 11: // Phrasal verbs
+          pushMC(nbM, `${sg[0]} needs to ___ ${phr[5]} (${phr[1]}).`, phr[0], phr[2], phr[3], phr[4], i);
+          pushMC(nbM, `Khi ${sg[0].toLowerCase()} dùng cụm “${phr[0]}” (${phr[5]}), nghĩa của cụm là:`, phr[1], "khởi hành sớm", "tình cờ quên", "kiểm tra lại", i+1);
+          pushMC(thM, `${sg[0]} had to ___ ${vb[4]} ${vb[5]} because of the storm (trì hoãn).`, "put off", "put on", "take after", "look up", i);
+          pushMC(thM, `Please ___ the lights after you ${vb2[0]} ${vb2[5]} (tắt).`, "turn off", "take after", "give up", "look for", i+2);
+          pushMC(vdM, `Which sentence with ${sg[0]} uses a separable phrasal verb CORRECTLY?`, `${sg[0]} turned it off after ${vb[4]} ${vb[5]}.`, `${sg[0]} turned off it after ${vb[4]} ${vb[5]}.`, `${sg[0]} looked it after carefully.`, `${sg[0]} ran it out of yesterday.`, i);
+          pushMC(vdM, `While ${sg[0].toLowerCase()} was ${vb2[4]} ${vb2[5]}, ${sg[1]} ___ an old notebook (tình cờ thấy).`, "came across", "took after", "broke down", "grew up", i+3);
+
+          pushEs(nbE, `Điền cụm động từ có nghĩa “${phr[1]}”: ${sg[0]} promised to ___ ${phr[5]}.`, phr[0]);
+          pushEs(nbE, `Điền tiểu từ: ${sg[0]} wakes up and gets ___ at 5:30 a.m. to ${vb[0]} ${vb[5]}.`, "up");
+          pushEs(thE, `Điền tiểu từ thích hợp: ${sg[0]} never gives ___ when ${vb[4]} ${vb[5]}.`, "up");
+          pushEs(thE, `Điền tiểu từ thích hợp: ${sg[0]} takes ___ ${sg2[0]} in working style.`, "after");
+          pushEs(vdE, `Thay tân ngữ bằng đại từ “it”: ${sg[0]} turned off the lamp before ${vb[4]} ${vb[5]}. → ${sg[0]} turned ___ ___.`, "it off");
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} picked up them after ${vb2[4]} ${vb2[5]}.`, `${sg[0]} picked them up after ${vb2[4]} ${vb2[5]}.`);
+          break;
+
+        case 12: // Adjectives
+          pushMC(nbM, `${sg[0]} seems very ___ after ${vb[4]} ${vb[5]}.`, adj[0], adj[1], adj[2], adj[3], i);
+          pushMC(nbM, `The project that ${sg[0].toLowerCase()} ${vb2[2]} was extremely ___.`, "interesting", "interested", "interest", "interestingly", i+1);
+          pushMC(thM, `${pl[0]} were ___ after they ${vb[2]} ${vb[5]}.`, "excited", "exciting", "excite", "excitedly", i);
+          pushMC(thM, `${sg[0]} bought a ___ table to ${vb2[0]} ${vb2[5]}.`, "nice big brown wooden", "wooden brown big nice", "brown wooden nice big", "big wooden brown nice", i+2);
+          pushMC(vdM, `${sg[0]} attended a ___ workshop before ${vb[4]} ${vb[5]}.`, `${hrs}-day`, `${hrs}-days`, `${hrs} days`, `${hrs} day`, i);
+          pushMC(vdM, `${sg[0]} is ___ to ${vb2[0]} ${vb2[5]} without any help.`, `${adj[0]} enough`, `enough ${adj[0]}`, `too ${adj[1]}`, `so ${adj[0]}`, i+3);
+
+          pushEs(nbE, `Chọn tính từ đúng (${adj[0]} / ${adj[1]}): ${sg[0]} looks very ___ while ${vb[4]} ${vb[5]}.`, adj[0]);
+          pushEs(nbE, `Chia đuôi -ing hoặc -ed (interest): The book that ${sg[0].toLowerCase()} read was very ___.`, "interesting");
+          pushEs(thE, `Chia đuôi -ing hoặc -ed (excite): ${sg[0]} is very ___ about ${vb[4]} ${vb[5]}.`, "excited");
+          pushEs(thE, `Viết tính từ ghép: ${sg[0]} had a break of ${hrs} hours. → It was a ___-hour break.`, `${hrs}`);
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} is ${adj[1]} enough to ${vb[0]} ${vb[5]}.`, `${sg[0]} is ${adj[0]} enough to ${vb[0]} ${vb[5]}.`);
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} had a ${hrs}-hours session to ${vb2[0]} ${vb2[5]}.`, `${sg[0]} had a ${hrs}-hour session to ${vb2[0]} ${vb2[5]}.`);
+          break;
+
+        case 13: // Adverbs
+          pushMC(nbM, `${sg[0]} ${vb[2]} ${vb[5]} very ___.`, adj[1], adj[0], adj[2], adj[3], i);
+          pushMC(nbM, `Khi ${sg[0].toLowerCase()} làm việc một cách “${adj[0]}”, trạng từ tương ứng là:`, adj[1], adj[0], adj[2], adj[4], i+1);
+          pushMC(thM, `${sg[0]} works very ___ to ${vb[0]} ${vb[5]} on time.`, "hard", "hardly", "harder than", "hardness", i);
+          pushMC(thM, `Because of the noise, ${sg[0].toLowerCase()} could ___ concentrate on ${vb2[4]} ${vb2[5]}.`, "hardly", "hard", "lately", "nearly", i+2);
+          pushMC(vdM, `Which sentence describes ${sg[0].toLowerCase()} CORRECTLY?`, `${sg[0]} ${vb[2]} ${vb[5]} ${adj[1]}.`, `${sg[0]} ${vb[2]} ${adj[1]} ${vb[5]}.`, `${sg[0]} ${vb[2]} ${vb[5]} ${adj[0]}.`, `${sg[0]} always is ${adj[0]}.`, i);
+          pushMC(vdM, `${sg[0]} ${vb2[2]} ${vb2[5]} ___ ${adj[1]} that everyone praised ${sg[1]==="he"?"him":"her"}.`, "so", "such", "too", "enough", i+3);
+
+          pushEs(nbE, `Chuyển tính từ “${adj[0]}” sang trạng từ: ${sg[0]} works ___.`, adj[1]);
+          pushEs(nbE, `Điền trạng từ của “good”: ${sg[0]} ${vb[1]} ${vb[5]} very ___.`, "well");
+          pushEs(thE, `Chia dạng từ đúng (${adj[0]}): ${sg[0]} ${vb2[1]} ${vb2[5]} very ___.`, adj[1]);
+          pushEs(thE, `Điền hard hoặc hardly: ${sg[0]} could ___ finish ${vb[5]} in the dark.`, "hardly");
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} ${vb[2]} ${vb[5]} very ${adj[0]}.`, `${sg[0]} ${vb[2]} ${vb[5]} very ${adj[1]}.`);
+          pushEs(vdE, `Sửa lỗi vị trí trạng từ: ${sg[0]} always is ready to ${vb2[0]} ${vb2[5]}.`, `${sg[0]} is always ready to ${vb2[0]} ${vb2[5]}.`);
+          break;
+
+        case 14: // Prepositions
+          pushMC(nbM, `${sg[0]} is very ${prp[0]} ___ ${prp[5]}.`, prp[1], prp[2], prp[3], prp[4], i);
+          pushMC(nbM, `${sg[0]} usually ${vb[1]} ${vb[5]} ___ 8 a.m. ___ Mondays.`, "at – on", "on – at", "in – on", "at – in", i+1);
+          pushMC(thM, `${pl[0]} have ${vb2[3]} ${vb2[5]} ___ ${yrPast}.`, "since", "for", "in", "from", i);
+          pushMC(thM, `${sg[0]} apologised to ${sg2[0]} ___ not ${vb[4]} ${vb[5]} on time.`, "for", "of", "about", "to", i+2);
+          pushMC(vdM, `Which sentence with ${sg[0]} uses prepositions CORRECTLY?`, `${sg[0]} is ${prp[0]} ${prp[1]} ${prp[5]}.`, `${sg[0]} is ${prp[0]} ${prp[2]} ${prp[5]}.`, `${sg[0]} is ${prp[0]} ${prp[3]} ${prp[5]}.`, `${sg[0]} is ${prp[0]} ${prp[4]} ${prp[5]}.`, i);
+          pushMC(vdM, `You can always rely ___ ${sg[0].toLowerCase()} when you need help with ${vb2[5]}.`, "on", "in", "at", "of", i+3);
+
+          pushEs(nbE, `Điền giới từ đúng: ${sg[0]} is ${prp[0]} ___ ${prp[5]}.`, prp[1]);
+          pushEs(nbE, `Điền in, on hoặc at: ${sg[0]} ${vb[1]} ${vb[5]} ___ the morning.`, "in");
+          pushEs(thE, `Điền in, on hoặc at: ${sg[0]} ${vb2[2]} ${vb2[5]} ___ Monday morning.`, "on");
+          pushEs(thE, `Điền since hoặc for: ${sg[0]} has been ${vb[4]} ${vb[5]} ___ ${hrs} hours.`, "for");
+          pushEs(vdE, `Sửa lỗi giới từ: ${sg[0]} is ${prp[0]} ${prp[2]} ${prp[5]}.`, `${sg[0]} is ${prp[0]} ${prp[1]} ${prp[5]}.`);
+          pushEs(vdE, `Điền giới từ: Nothing could prevent ${sg[0].toLowerCase()} ___ ${vb2[4]} ${vb2[5]}.`, "from");
+          break;
+
+        case 15: // Conjunctions
+          pushMC(nbM, `${sg[0]} wanted to ${vb[0]} ${vb[5]}, ___ ${sg[1]} didn't have enough time.`, "but", "so", "because", "or", i);
+          pushMC(nbM, `___ ${sg[0].toLowerCase()} worked very ${adj[1]}, ${sg[1]} finished ${vb2[5]} early.`, "Because", "Although", "Despite", "Unless", i+1);
+          pushMC(thM, `___ the heavy rain, ${pl[0].toLowerCase()} still ${vb[2]} ${vb[5]}.`, "Despite", "Although", "Because", "Even though", i);
+          pushMC(thM, `Both ${sg[0]} ___ ${sg2[0]} ${vb2[2]} ${vb2[5]} yesterday.`, "and", "or", "nor", "but", i+2);
+          pushMC(vdM, `Neither ${sg[0]} ___ ${pl[0].toLowerCase()} forgot to ${vb[0]} ${vb[5]}.`, "nor", "or", "and", "but", i);
+          pushMC(vdM, `Which sentence about ${sg[0]} is grammatically CORRECT?`, `Although ${sg[0].toLowerCase()} was tired, ${sg[1]} ${vb2[2]} ${vb2[5]}.`, `Although ${sg[0].toLowerCase()} was tired, but ${sg[1]} ${vb2[2]} ${vb2[5]}.`, `Despite ${sg[0].toLowerCase()} was tired, ${sg[1]} ${vb2[2]} ${vb2[5]}.`, `Because of ${sg[0].toLowerCase()} was tired, ${sg[1]} rested.`, i+3);
+
+          pushEs(nbE, `Điền liên từ (so / but): ${sg[0]} prepared carefully, ___ ${sg[1]} ${vb[2]} ${vb[5]} easily.`, "so");
+          pushEs(nbE, `Điền liên từ (because / although): ${sg[0]} stayed up late ___ ${sg[1]} had to ${vb2[0]} ${vb2[5]}.`, "because");
+          pushEs(thE, `Điền Although hoặc Despite: ___ being tired, ${sg[0].toLowerCase()} ${vb[2]} ${vb[5]}.`, "Despite");
+          pushEs(thE, `Điền because hoặc because of: ${pl[0]} delayed ${vb2[5]} ___ the storm.`, "because of");
+          pushEs(vdE, `Sửa lỗi cả câu: Although ${sg[0].toLowerCase()} was busy, but ${sg[1]} ${vb[2]} ${vb[5]}.`, `Although ${sg[0].toLowerCase()} was busy, ${sg[1]} ${vb[2]} ${vb[5]}.`);
+          pushEs(vdE, `Điền từ nối cặp: Not only ${sg[0]} ___ also ${sg2[0]} can ${vb2[0]} ${vb2[5]}.`, "but");
+          break;
+
+        case 16: // Hiện tại tiếp diễn
+          pushMC(nbM, `Look! ${sg[0]} ___ ${vb[5]} right now.`, `is ${vb[4]}`, vb[1], vb[2], `are ${vb[4]}`, i);
+          pushMC(nbM, `At the moment, ${pl[0].toLowerCase()} ___ ${vb2[5]}.`, `are ${vb2[4]}`, `is ${vb2[4]}`, vb2[0], vb2[2], i+1);
+          pushMC(thM, `Be quiet! ${sg[0]} ___ ${vb[5]} in the study room.`, `is ${vb[4]}`, vb[1], `has ${vb[3]}`, `was ${vb[4]}`, i);
+          pushMC(thM, `${sg[0]} ___ ${vb2[5]} at present because ${sg[1]} is helping ${sg2[0]}.`, `isn’t ${vb2[4]}`, `doesn’t ${vb2[4]}`, `not ${vb2[4]}`, `aren’t ${vb2[4]}`, i+2);
+          pushMC(vdM, `${sg[0]} ___ always ___ things while ${vb[4]} ${vb[5]}!`, "is – forgetting", "does – forget", "has – forgotten", "was – forget", i);
+          pushMC(vdM, `Which sentence with a stative verb is CORRECT right now?`, `${sg[0]} understands how to ${vb2[0]} ${vb2[5]} now.`, `${sg[0]} is understanding how to ${vb2[0]} ${vb2[5]} now.`, `${sg[0]} is knowing ${sg2[0]} now.`, `${sg[0]} is wanting to ${vb2[0]} ${vb2[5]} now.`, i+3);
+
+          pushEs(nbE, `Chia động từ (hiện tại tiếp diễn): Listen! ${sg[0]} (${vb[0]}) ___ ${vb[5]}.`, `is ${vb[4]}`);
+          pushEs(nbE, `Chia động từ (hiện tại tiếp diễn): ${pl[0]} (${vb2[0]}) ___ ${vb2[5]} right now.`, `are ${vb2[4]}`);
+          pushEs(thE, `Viết câu phủ định: ${sg[0]} is ${vb[4]} ${vb[5]} now.`, `${sg[0]} isn’t ${vb[4]} ${vb[5]} now.`);
+          pushEs(thE, `Chuyển sang nghi vấn: ${pl[0]} are ${vb2[4]} ${vb2[5]} at the moment.`, `Are ${pl[0].charAt(0).toLowerCase()+pl[0].slice(1)} ${vb2[4]} ${vb2[5]} at the moment?`);
+          pushEs(vdE, `Sửa lỗi động từ trạng thái: ${sg[0]} is knowing how to ${vb[0]} ${vb[5]} now.`, `${sg[0]} knows how to ${vb[0]} ${vb[5]} now.`);
+          pushEs(vdE, `Chia động từ (kế hoạch đã sắp xếp): Tomorrow morning, ${sg[0].toLowerCase()} (meet) ___ ${sg2[0]} at 8 a.m.`, "is meeting");
+          break;
+
+        case 17: // Hiện tại hoàn thành
+          pushMC(nbM, `${sg[0]} ___ just ___ ${vb[5]}.`, `has – ${vb[3]}`, `have – ${vb[3]}`, `is – ${vb[4]}`, `did – ${vb[0]}`, i);
+          pushMC(nbM, `${pl[0]} ___ already ___ ${vb2[5]}.`, `have – ${vb2[3]}`, `has – ${vb2[3]}`, `were – ${vb2[4]}`, `did – ${vb2[2]}`, i+1);
+          pushMC(thM, `${sg[0]} hasn't ${vb[3]} ${vb[5]} ___ ${yrPast}.`, "since", "for", "ago", "in", i);
+          pushMC(thM, `This is the first time ${sg[0].toLowerCase()} ___ ${vb2[5]}.`, `has ${vb2[3]}`, vb2[2], vb2[1], `is ${vb2[4]}`, i+2);
+          pushMC(vdM, `Since ${sg[0].toLowerCase()} ___ school in ${yrPast}, ${sg[1]} ___ ${vb[5]} many times.`, `started – has ${vb[3]}`, `has started – ${vb[2]}`, `started – ${vb[2]}`, `starts – has ${vb[3]}`, i);
+          pushMC(vdM, `Which sentence about ${sg[0]} is INCORRECT?`, `${sg[0]} has ${vb2[3]} ${vb2[5]} yesterday.`, `${sg[0]} has just ${vb2[3]} ${vb2[5]}.`, `${sg[0]} has never ${vb2[3]} ${vb2[5]}.`, `${sg[0]} hasn’t ${vb2[3]} ${vb2[5]} yet.`, i+3);
+
+          pushEs(nbE, `Chia động từ (hiện tại hoàn thành): ${sg[0]} (just / ${vb[0]}) ___ ${vb[5]}.`, `has just ${vb[3]}`);
+          pushEs(nbE, `Chia động từ (hiện tại hoàn thành): ${pl[0]} (${vb2[0]}) ___ ${vb2[5]} several times.`, `have ${vb2[3]}`);
+          pushEs(thE, `Điền since hoặc for: ${sg[0]} has ${vb[3]} ${vb[5]} ___ ${hrs} hours.`, "for");
+          pushEs(thE, `Viết câu phủ định: ${sg[0]} has ${vb2[3]} ${vb2[5]}.`, `${sg[0]} hasn’t ${vb2[3]} ${vb2[5]}.`);
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} has ${vb[3]} ${vb[5]} two days ago.`, `${sg[0]} ${vb[2]} ${vb[5]} two days ago.`);
+          pushEs(vdE, `Chia động từ: This is the first time ${sg[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]}.`, `has ${vb2[3]}`);
+          break;
+
+        case 18: // Hiện tại hoàn thành tiếp diễn
+          pushMC(nbM, `${sg[0]} ___ ${vb[5]} for ${hrs} hours without stopping.`, `has been ${vb[4]}`, `have been ${vb[4]}`, `is ${vb[4]}`, `was ${vb[4]}`, i);
+          pushMC(nbM, `${pl[0]} ___ ${vb2[5]} since 7 a.m. today.`, `have been ${vb2[4]}`, `has been ${vb2[4]}`, `are ${vb2[4]}`, `were ${vb2[4]}`, i+1);
+          pushMC(thM, `How long ___ ${sg[0].toLowerCase()} ___ ${vb[5]} today?`, `has – been ${vb[4]}`, `have – been ${vb[4]}`, `is – ${vb[4]}`, `did – ${vb[0]}`, i);
+          pushMC(thM, `${sg[0]} looks exhausted because ${sg[1]} ___ ${vb2[5]} all morning.`, `has been ${vb2[4]}`, `is ${vb2[4]}`, vb2[1], `had ${vb2[3]}`, i+2);
+          pushMC(vdM, `${sg[0]} ___ ${vb[5]} since morning, and ${sg[1]} ___ three parts so far.`, `has been ${vb[4]} – has completed`, `has completed – has been ${vb[4]}`, `is ${vb[4]} – completed`, `was ${vb[4]} – has completed`, i);
+          pushMC(vdM, `Which sentence with ${sg[0]} is INCORRECT?`, `${sg[0]} has been knowing ${sg2[0]} since ${yrPast}.`, `${sg[0]} has known ${sg2[0]} since ${yrPast}.`, `${sg[0]} has been ${vb[4]} ${vb[5]} for ${hrs} hours.`, `${pl[0]} have been ${vb2[4]} ${vb2[5]} all day.`, i+3);
+
+          pushEs(nbE, `Chia động từ (HTHT tiếp diễn): ${sg[0]} (${vb[0]}) ___ ${vb[5]} for ${hrs} hours.`, `has been ${vb[4]}`);
+          pushEs(nbE, `Chia động từ (HTHT tiếp diễn): ${pl[0]} (${vb2[0]}) ___ ${vb2[5]} since 8 a.m.`, `have been ${vb2[4]}`);
+          pushEs(thE, `Viết câu phủ định: ${sg[0]} has been ${vb[4]} ${vb[5]} all morning.`, `${sg[0]} hasn’t been ${vb[4]} ${vb[5]} all morning.`);
+          pushEs(thE, `Đặt câu hỏi với How long: How long ___ ${sg[0].toLowerCase()} been ${vb2[4]} ${vb2[5]}?`, "has");
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} is ${vb[4]} ${vb[5]} since 7 o’clock this morning.`, `${sg[0]} has been ${vb[4]} ${vb[5]} since 7 o’clock this morning.`);
+          pushEs(vdE, `Sửa lỗi động từ trạng thái: ${sg[0]} has been knowing ${sg2[0]} since ${yrPast}.`, `${sg[0]} has known ${sg2[0]} since ${yrPast}.`);
+          break;
+
+        case 19: // Quá khứ tiếp diễn
+          pushMC(nbM, `At ${hrs + 1} p.m. yesterday, ${sg[0].toLowerCase()} ___ ${vb[5]}.`, `was ${vb[4]}`, `were ${vb[4]}`, vb[2], `is ${vb[4]}`, i);
+          pushMC(nbM, `At this time last Sunday, ${pl[0].toLowerCase()} ___ ${vb2[5]}.`, `were ${vb2[4]}`, `was ${vb2[4]}`, vb2[2], `are ${vb2[4]}`, i+1);
+          pushMC(thM, `While ${sg[0].toLowerCase()} ___ ${vb[5]}, the lights suddenly went out.`, `was ${vb[4]}`, vb[2], `is ${vb[4]}`, `had ${vb[3]}`, i);
+          pushMC(thM, `When I arrived, ${pl[0].toLowerCase()} ___ ${vb2[5]} ${vb2[6]}.`, `were ${vb2[4]}`, `was ${vb2[4]}`, vb2[0], `have ${vb2[3]}`, i+2);
+          pushMC(vdM, `While ${sg[0].toLowerCase()} ___ ${vb[5]}, ${pl[0].toLowerCase()} ___ ${vb2[5]}.`, `was ${vb[4]} – were ${vb2[4]}`, `${vb[2]} – were ${vb2[4]}`, `was ${vb[4]} – ${vb2[2]}`, `is ${vb[4]} – are ${vb2[4]}`, i);
+          pushMC(vdM, `${sg[0]} ___ ${vb[5]} when ${sg2[0].toLowerCase()} ___ into the room.`, `was ${vb[4]} – walked`, `${vb[2]} – was walking`, `was ${vb[4]} – walks`, `had ${vb[3]} – was walking`, i+3);
+
+          pushEs(nbE, `Chia động từ (quá khứ tiếp diễn): At 8 p.m. last night, ${sg[0].toLowerCase()} (${vb[0]}) ___ ${vb[5]}.`, `was ${vb[4]}`);
+          pushEs(nbE, `Chia động từ (quá khứ tiếp diễn): At this time yesterday, ${pl[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]}.`, `were ${vb2[4]}`);
+          pushEs(thE, `Chia động từ: While ${sg[0].toLowerCase()} (${vb[0]}) ___ ${vb[5]}, the phone rang.`, `was ${vb[4]}`);
+          pushEs(thE, `Viết câu phủ định: ${sg[0]} was ${vb2[4]} ${vb2[5]} at 9 p.m.`, `${sg[0]} wasn’t ${vb2[4]} ${vb2[5]} at 9 p.m.`);
+          pushEs(vdE, `Sửa lỗi cả câu: While ${pl[0].toLowerCase()} was ${vb[4]} ${vb[5]}, it started to rain.`, `While ${pl[0].toLowerCase()} were ${vb[4]} ${vb[5]}, it started to rain.`);
+          pushEs(vdE, `Chia cặp động từ: When ${sg2[0].toLowerCase()} (arrive) ___, ${sg[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]}.`, `arrived – was ${vb2[4]}`);
+          break;
+
+        case 20: // Quá khứ hoàn thành
+          pushMC(nbM, `By the time I arrived, ${sg[0].toLowerCase()} ___ already ___ ${vb[5]}.`, `had – ${vb[3]}`, `has – ${vb[3]}`, `was – ${vb[4]}`, `did – ${vb[0]}`, i);
+          pushMC(nbM, `After ${pl[0].toLowerCase()} ___ ${vb2[5]}, they went home.`, `had ${vb2[3]}`, `have ${vb2[3]}`, vb2[0], `were ${vb2[4]}`, i+1);
+          pushMC(thM, `Before ${sg[0].toLowerCase()} went to bed last night, ${sg[1]} ___ ${vb[5]}.`, `had ${vb[3]}`, `has ${vb[3]}`, vb[1], `is ${vb[4]}`, i);
+          pushMC(thM, `${sg[0]} told me that ${sg[1]} ___ ${vb2[5]} the day before.`, `had ${vb2[3]}`, `has ${vb2[3]}`, vb2[1], `will ${vb2[0]}`, i+2);
+          pushMC(vdM, `No sooner ___ ${sg[0].toLowerCase()} ___ ${vb[5]} than the bell rang.`, `had – ${vb[3]}`, `did – ${vb[0]}`, `has – ${vb[3]}`, `was – ${vb[4]}`, i);
+          pushMC(vdM, `Which sentence about ${sg[0]} is INCORRECT?`, `Before I came, ${sg[0].toLowerCase()} had ${vb2[0]} ${vb2[5]}.`, `Before I came, ${sg[0].toLowerCase()} had ${vb2[3]} ${vb2[5]}.`, `After ${sg[0].toLowerCase()} had ${vb2[3]} ${vb2[5]}, ${sg[1]} left.`, `By 9 p.m. yesterday, ${sg[0].toLowerCase()} had ${vb2[3]} ${vb2[5]}.`, i+3);
+
+          pushEs(nbE, `Chia động từ (quá khứ hoàn thành): Before 6 p.m. yesterday, ${sg[0].toLowerCase()} (${vb[0]}) ___ ${vb[5]}.`, `had ${vb[3]}`);
+          pushEs(nbE, `Chia động từ (quá khứ hoàn thành): By the time ${sg2[0].toLowerCase()} called, ${pl[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]}.`, `had ${vb2[3]}`);
+          pushEs(thE, `Chia động từ: After ${sg[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]}, ${sg[1]} went out.`, `had ${vb2[3]}`);
+          pushEs(thE, `Chia động từ: By the time we arrived, ${pl[0].toLowerCase()} (${vb[0]}) ___ ${vb[5]}.`, `had ${vb[3]}`);
+          pushEs(vdE, `Sửa lỗi cả câu: After ${sg[0].toLowerCase()} has ${vb[3]} ${vb[5]}, ${sg[1]} went home.`, `After ${sg[0].toLowerCase()} had ${vb[3]} ${vb[5]}, ${sg[1]} went home.`);
+          pushEs(vdE, `Hoàn thành đảo ngữ: Hardly had ${sg[0].toLowerCase()} ${vb2[3]} ${vb2[5]} ___ the guests arrived.`, "when");
+          break;
+
+        case 21: // Quá khứ hoàn thành tiếp diễn
+          pushMC(nbM, `${sg[0]} ___ ${vb[5]} for ${hrs} hours before the manager arrived.`, `had been ${vb[4]}`, `has been ${vb[4]}`, `was ${vb[4]}`, `had ${vb[3]}`, i);
+          pushMC(nbM, `${pl[0]} ___ ${vb2[5]} all morning before the break.`, `had been ${vb2[4]}`, `have been ${vb2[4]}`, `were ${vb2[4]}`, `are ${vb2[4]}`, i+1);
+          pushMC(thM, `${sg[0]} was very tired yesterday because ${sg[1]} ___ ${vb[5]} for ${hrs} hours.`, `had been ${vb[4]}`, `has been ${vb[4]}`, `is ${vb[4]}`, vb[1], i);
+          pushMC(thM, `How long ___ ${pl[0].toLowerCase()} ___ ${vb2[5]} before it started to rain?`, `had – been ${vb2[4]}`, `have – been ${vb2[4]}`, `were – ${vb2[4]}`, `did – ${vb2[0]}`, i+2);
+          pushMC(vdM, `By the time the teacher entered, ${pl[0].toLowerCase()} ___ ${vb[5]} for 30 minutes.`, `had been ${vb[4]}`, `have been ${vb[4]}`, `are ${vb[4]}`, `will be ${vb[4]}`, i);
+          pushMC(vdM, `Which sentence about ${sg[0]} is INCORRECT?`, `${sg[0]} had been ${vb2[0]} ${vb2[5]} for two hours before noon.`, `${sg[0]} had been ${vb2[4]} ${vb2[5]} for two hours before noon.`, `${pl[0]} had been ${vb2[4]} ${vb2[5]} before the bell rang.`, `Had ${sg[0].toLowerCase()} been ${vb2[4]} ${vb2[5]} long?`, i+3);
+
+          pushEs(nbE, `Chia động từ (QKHT tiếp diễn): ${sg[0]} (${vb[0]}) ___ ${vb[5]} for ${hrs} hours when I called.`, `had been ${vb[4]}`);
+          pushEs(nbE, `Chia động từ (QKHT tiếp diễn): ${pl[0]} (${vb2[0]}) ___ ${vb2[5]} for an hour before noon.`, `had been ${vb2[4]}`);
+          pushEs(thE, `Viết câu phủ định: ${sg[0]} had been ${vb2[4]} ${vb2[5]} for long.`, `${sg[0]} hadn’t been ${vb2[4]} ${vb2[5]} for long.`);
+          pushEs(thE, `Chia động từ: ${pl[0]} were exhausted because they (${vb[0]}) ___ ${vb[5]} all afternoon.`, `had been ${vb[4]}`);
+          pushEs(vdE, `Sửa lỗi cả câu: When I arrived yesterday, ${sg[0].toLowerCase()} has been ${vb[4]} ${vb[5]} for two hours.`, `When I arrived yesterday, ${sg[0].toLowerCase()} had been ${vb[4]} ${vb[5]} for two hours.`);
+          pushEs(vdE, `Chia động từ: How long (had) ___ ${sg[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]} before dinner?`, `had – been ${vb2[4]}`);
+          break;
+
+        case 22: // Tương lai đơn
+          pushMC(nbM, `I think ${sg[0].toLowerCase()} ___ ${vb[5]} tomorrow.`, `will ${vb[0]}`, vb[2], `has ${vb[3]}`, `is ${vb[0]}`, i);
+          pushMC(nbM, `Perhaps ${pl[0].toLowerCase()} ___ ${vb2[5]} next week.`, `will ${vb2[0]}`, vb2[2], `have ${vb2[3]}`, vb2[4], i+1);
+          pushMC(thM, `Don't worry! ${sg[0]} ___ help you ${vb[0]} ${vb[5]} tonight.`, "will", "did", "has", "was", i);
+          pushMC(thM, `If ${sg[0].toLowerCase()} has free time tomorrow, ${sg[1]} ___ ${vb2[5]}.`, `will ${vb2[0]}`, vb2[2], `would ${vb2[0]}`, `had ${vb2[3]}`, i+2);
+          pushMC(vdM, `${sg[0]} will ${vb[0]} ${vb[5]} as soon as ${sg[1]} ___ home.`, "gets", "will get", "got", "had got", i);
+          pushMC(vdM, `Which sentence with ${sg[0]} is INCORRECT?`, `When ${sg[0].toLowerCase()} will arrive, ${sg[1]} will ${vb2[0]} ${vb2[5]}.`, `When ${sg[0].toLowerCase()} arrives, ${sg[1]} will ${vb2[0]} ${vb2[5]}.`, `I think ${sg[0].toLowerCase()} will ${vb2[0]} ${vb2[5]}.`, `${sg[0]} won’t ${vb2[0]} ${vb2[5]} tomorrow.`, i+3);
+
+          pushEs(nbE, `Chia động từ (tương lai đơn): I believe ${sg[0].toLowerCase()} (${vb[0]}) ___ ${vb[5]} tomorrow.`, `will ${vb[0]}`);
+          pushEs(nbE, `Chia động từ (tương lai đơn): Tomorrow evening, ${pl[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]}.`, `will ${vb2[0]}`);
+          pushEs(thE, `Viết câu phủ định: ${sg[0]} will ${vb2[0]} ${vb2[5]} next Monday.`, `${sg[0]} won’t ${vb2[0]} ${vb2[5]} next Monday.`);
+          pushEs(thE, `Chia động từ trong mệnh đề thời gian: ${sg[0]} will call you when ${sg[1]} (finish) ___ ${vb[5]}.`, "finishes");
+          pushEs(vdE, `Sửa lỗi cả câu: As soon as ${sg[0].toLowerCase()} will ${vb[0]} ${vb[5]}, ${sg[1]} will let us know.`, `As soon as ${sg[0].toLowerCase()} ${vb[1]} ${vb[5]}, ${sg[1]} will let us know.`);
+          pushEs(vdE, `Điền Shall hoặc Will: ___ we ${vb2[0]} ${vb2[5]} together this evening?`, "Shall");
+          break;
+
+        case 23: // Tương lai gần (Be going to)
+          pushMC(nbM, `${sg[0]} has bought all the materials. ${sg[1].charAt(0).toUpperCase()+sg[1].slice(1)} ___ ${vb[5]} this weekend.`, `is going to ${vb[0]}`, `are going to ${vb[0]}`, `going to ${vb[0]}`, `will ${vb[4]}`, i);
+          pushMC(nbM, `${pl[0]} have made a plan. They ___ ${vb2[5]} next Friday.`, `are going to ${vb2[0]}`, `is going to ${vb2[0]}`, `going to ${vb2[0]}`, `will ${vb2[4]}`, i+1);
+          pushMC(thM, `What ___ ${sg[0].toLowerCase()} going to do with ${vb[5]} tonight?`, "is", "are", "does", "will", i);
+          pushMC(thM, `Look at the schedule! ${pl[0]} ___ ${vb2[5]} this afternoon.`, `are going to ${vb2[0]}`, `is going to ${vb2[0]}`, `going to ${vb2[0]}`, `were going to ${vb2[0]}`, i+2);
+          pushMC(vdM, `Which sentence about ${sg[0]}'s plan is INCORRECT?`, `${sg[0]} is going to ${vb[1]} ${vb[5]}.`, `${sg[0]} is going to ${vb[0]} ${vb[5]}.`, `${pl[0]} are going to ${vb2[0]} ${vb2[5]}.`, `Is ${sg[0].toLowerCase()} going to ${vb[0]} ${vb[5]}?`, i);
+          pushMC(vdM, `${sg[0]} has prepared everything because ${sg[1]} ___ ${vb2[5]} tomorrow morning.`, `is going to ${vb2[0]}`, `going to ${vb2[0]}`, `will ${vb2[4]}`, `are going to ${vb2[0]}`, i+3);
+
+          pushEs(nbE, `Chia động từ (be going to): ${sg[0]} (${vb[0]}) ___ ${vb[5]} tonight.`, `is going to ${vb[0]}`);
+          pushEs(nbE, `Chia động từ (be going to): ${pl[0]} (${vb2[0]}) ___ ${vb2[5]} next week.`, `are going to ${vb2[0]}`);
+          pushEs(thE, `Viết câu phủ định: ${sg[0]} is going to ${vb[0]} ${vb[5]}.`, `${sg[0]} isn’t going to ${vb[0]} ${vb[5]}.`);
+          pushEs(thE, `Chuyển sang nghi vấn: ${pl[0]} are going to ${vb2[0]} ${vb2[5]}.`, `Are ${pl[0].charAt(0).toLowerCase()+pl[0].slice(1)} going to ${vb2[0]} ${vb2[5]}?`);
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} is going to ${vb[4]} ${vb[5]} tomorrow.`, `${sg[0]} is going to ${vb[0]} ${vb[5]} tomorrow.`);
+          pushEs(vdE, `Sửa lỗi cả câu: ${pl[0]} is going to ${vb2[0]} ${vb2[5]} this weekend.`, `${pl[0]} are going to ${vb2[0]} ${vb2[5]} this weekend.`);
+          break;
+
+        case 24: // Tương lai tiếp diễn
+          pushMC(nbM, `At ${hrs + 1} p.m. tomorrow, ${sg[0].toLowerCase()} ___ ${vb[5]}.`, `will be ${vb[4]}`, `will ${vb[4]}`, `is ${vb[0]}`, `was ${vb[4]}`, i);
+          pushMC(nbM, `At this time next week, ${pl[0].toLowerCase()} ___ ${vb2[5]}.`, `will be ${vb2[4]}`, `will ${vb2[3]}`, `have been ${vb2[4]}`, `were ${vb2[4]}`, i+1);
+          pushMC(thM, `Don't call ${sg[0].toLowerCase()} at 8 tonight because ${sg[1]} ___ ${vb[5]}.`, `will be ${vb[4]}`, `will ${vb[3]}`, `has ${vb[3]}`, vb[2], i);
+          pushMC(thM, `When you arrive tomorrow morning, ${pl[0].toLowerCase()} ___ ${vb2[5]}.`, `will be ${vb2[4]}`, `were ${vb2[4]}`, `have ${vb2[3]}`, vb2[2], i+2);
+          pushMC(vdM, `Which sentence about ${sg[0]} tomorrow is INCORRECT?`, `At 9 a.m. tomorrow, ${sg[0].toLowerCase()} will be ${vb[0]} ${vb[5]}.`, `At 9 a.m. tomorrow, ${sg[0].toLowerCase()} will be ${vb[4]} ${vb[5]}.`, `${pl[0]} won’t be ${vb2[4]} ${vb2[5]} at midnight.`, `Will ${sg[0].toLowerCase()} be ${vb[4]} ${vb[5]} then?`, i);
+          pushMC(vdM, `At this time tomorrow, while ${sg[0].toLowerCase()} ___ ${vb2[5]}, we will be waiting outside.`, `is ${vb2[4]}`, `will be ${vb2[0]}`, `was ${vb2[4]}`, `had ${vb2[3]}`, i+3);
+
+          pushEs(nbE, `Chia động từ (tương lai tiếp diễn): At 7 p.m. tomorrow, ${sg[0].toLowerCase()} (${vb[0]}) ___ ${vb[5]}.`, `will be ${vb[4]}`);
+          pushEs(nbE, `Chia động từ (tương lai tiếp diễn): At this time tomorrow, ${pl[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]}.`, `will be ${vb2[4]}`);
+          pushEs(thE, `Viết câu phủ định: ${sg[0]} will be ${vb2[4]} ${vb2[5]} at 10 p.m.`, `${sg[0]} won’t be ${vb2[4]} ${vb2[5]} at 10 p.m.`);
+          pushEs(thE, `Chia động từ: At this time next Monday, ${pl[0].toLowerCase()} (${vb[0]}) ___ ${vb[5]}.`, `will be ${vb[4]}`);
+          pushEs(vdE, `Sửa lỗi cả câu: At this time tomorrow, ${sg[0].toLowerCase()} will be ${vb2[0]} ${vb2[5]}.`, `At this time tomorrow, ${sg[0].toLowerCase()} will be ${vb2[4]} ${vb2[5]}.`);
+          pushEs(vdE, `Sửa lỗi cả câu: When you come tonight, ${sg[0].toLowerCase()} will ${vb[4]} ${vb[5]}.`, `When you come tonight, ${sg[0].toLowerCase()} will be ${vb[4]} ${vb[5]}.`);
+          break;
+
+        case 25: // Tương lai hoàn thành
+          pushMC(nbM, `By 6 p.m. tomorrow, ${sg[0].toLowerCase()} ___ ${vb[5]}.`, `will have ${vb[3]}`, `will ${vb[0]}`, `has ${vb[3]}`, `had ${vb[3]}`, i);
+          pushMC(nbM, `By the end of ${yrFut}, ${pl[0].toLowerCase()} ___ ${vb2[5]}.`, `will have ${vb2[3]}`, `will be ${vb2[0]}`, `have ${vb2[3]}`, vb2[2], i+1);
+          pushMC(thM, `By the time you come back tonight, ${sg[0].toLowerCase()} ___ ${vb[5]}.`, `will have ${vb[3]}`, `had ${vb[3]}`, `is ${vb[4]}`, vb[2], i);
+          pushMC(thM, `___ ${pl[0].toLowerCase()} ___ ${vb2[5]} before Friday?`, `Will – have ${vb2[3]}`, `Have – ${vb2[3]}`, `Did – ${vb2[0]}`, `Are – ${vb2[4]}`, i+2);
+          pushMC(vdM, `Which sentence about ${sg[0]} is INCORRECT?`, `By tomorrow noon, ${sg[0].toLowerCase()} will has ${vb[3]} ${vb[5]}.`, `By tomorrow noon, ${sg[0].toLowerCase()} will have ${vb[3]} ${vb[5]}.`, `${pl[0]} won’t have ${vb2[3]} ${vb2[5]} by then.`, `Will ${sg[0].toLowerCase()} have ${vb[3]} ${vb[5]} by 5 p.m.?`, i);
+          pushMC(vdM, `By the time ${sg2[0].toLowerCase()} arrives tonight, ${sg[0].toLowerCase()} ___ ${vb2[5]}.`, `will have ${vb2[3]}`, `will has ${vb2[3]}`, `would ${vb2[0]}`, `had ${vb2[3]}`, i+3);
+
+          pushEs(nbE, `Chia động từ (tương lai hoàn thành): By Friday, ${sg[0].toLowerCase()} (${vb[0]}) ___ ${vb[5]}.`, `will have ${vb[3]}`);
+          pushEs(nbE, `Chia động từ (tương lai hoàn thành): By next month, ${pl[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]}.`, `will have ${vb2[3]}`);
+          pushEs(thE, `Chia động từ: By the time the bell rings, ${pl[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]}.`, `will have ${vb2[3]}`);
+          pushEs(thE, `Viết câu phủ định: ${sg[0]} will have ${vb[3]} ${vb[5]} by noon.`, `${sg[0]} won’t have ${vb[3]} ${vb[5]} by noon.`);
+          pushEs(vdE, `Sửa lỗi cả câu: By ${yrFut}, ${sg[0].toLowerCase()} will have ${vb2[0]} ${vb2[5]}.`, `By ${yrFut}, ${sg[0].toLowerCase()} will have ${vb2[3]} ${vb2[5]}.`);
+          pushEs(vdE, `Sửa lỗi cả câu: By 5 p.m. tomorrow, ${sg[0].toLowerCase()} will has ${vb[3]} ${vb[5]}.`, `By 5 p.m. tomorrow, ${sg[0].toLowerCase()} will have ${vb[3]} ${vb[5]}.`);
+          break;
+
+        case 26: // Tương lai hoàn thành tiếp diễn
+          pushMC(nbM, `By next month, ${sg[0].toLowerCase()} ___ ${vb[5]} for ${hrs} hours a day.`, `will have been ${vb[4]}`, `will have ${vb[4]}`, `has been ${vb[4]}`, `had been ${vb[4]}`, i);
+          pushMC(nbM, `By 5 p.m. today, ${pl[0].toLowerCase()} ___ ${vb2[5]} for ${hrs} hours.`, `will have been ${vb2[4]}`, `will be ${vb2[0]}`, `have been ${vb2[4]}`, `were ${vb2[4]}`, i+1);
+          pushMC(thM, `By the time the manager arrives, ${sg[0].toLowerCase()} ___ ${vb[5]} for ${hrs} hours.`, `will have been ${vb[4]}`, `will ${vb[0]}`, `is ${vb[4]}`, vb[2], i);
+          pushMC(thM, `How long ___ ${sg[0].toLowerCase()} ___ ${vb2[5]} by the end of this week?`, `will – have been ${vb2[4]}`, `has – been ${vb2[4]}`, `did – ${vb2[0]}`, `is – ${vb2[4]}`, i+2);
+          pushMC(vdM, `Which sentence about ${sg[0]} is INCORRECT?`, `By 8 p.m., ${sg[0].toLowerCase()} will have been ${vb[0]} ${vb[5]} for ${hrs} hours.`, `By 8 p.m., ${sg[0].toLowerCase()} will have been ${vb[4]} ${vb[5]} for ${hrs} hours.`, `${pl[0]} will have been ${vb2[4]} ${vb2[5]} for ${hrs} hours by then.`, `Will ${sg[0].toLowerCase()} have been ${vb[4]} ${vb[5]} for long?`, i);
+          pushMC(vdM, `By the time the clock strikes ten, ${sg[0].toLowerCase()} ___ ${vb2[5]} for ${hrs} hours continuously.`, `will have been ${vb2[4]}`, `will has been ${vb2[4]}`, `have been ${vb2[4]}`, `is ${vb2[4]}`, i+3);
+
+          pushEs(nbE, `Chia động từ (TLHT tiếp diễn): By 6 p.m., ${sg[0].toLowerCase()} (${vb[0]}) ___ ${vb[5]} for ${hrs} hours.`, `will have been ${vb[4]}`);
+          pushEs(nbE, `Chia động từ (TLHT tiếp diễn): By noon tomorrow, ${pl[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]} for ${hrs} hours.`, `will have been ${vb2[4]}`);
+          pushEs(thE, `Viết câu phủ định: ${sg[0]} will have been ${vb2[4]} ${vb2[5]} for two hours.`, `${sg[0]} won’t have been ${vb2[4]} ${vb2[5]} for two hours.`);
+          pushEs(thE, `Chia động từ: By the time we get there, ${pl[0].toLowerCase()} (${vb[0]}) ___ ${vb[5]} for ${hrs} hours.`, `will have been ${vb[4]}`);
+          pushEs(vdE, `Sửa lỗi cả câu: By next year, ${sg[0].toLowerCase()} will has been ${vb2[4]} ${vb2[5]} for ${hrs} years.`, `By next year, ${sg[0].toLowerCase()} will have been ${vb2[4]} ${vb2[5]} for ${hrs} years.`);
+          pushEs(vdE, `Sửa lỗi cả câu: By 7 p.m., ${sg[0].toLowerCase()} will have been ${vb[0]} ${vb[5]} for ${hrs} hours.`, `By 7 p.m., ${sg[0].toLowerCase()} will have been ${vb[4]} ${vb[5]} for ${hrs} hours.`);
+          break;
+
+        case 27: // Mệnh đề quan hệ và rút gọn
+          pushMC(nbM, `The student ___ ${vb[2]} ${vb[5]} won the first prize.`, "who", "which", "whose", "where", i);
+          pushMC(nbM, `The project ___ ${sg[0].toLowerCase()} completed yesterday was praised by all.`, "which", "who", "whom", "where", i+1);
+          pushMC(thM, `${sg[0]}, ___ ${vb[1]} ${vb[5]}, is a very dedicated member.`, "who", "that", "which", "whose", i);
+          pushMC(thM, `The student ___ ${vb2[5]} over there is ${sg[0]}. (rút gọn chủ động)`, vb2[4], vb2[3], `to ${vb2[0]}`, vb2[1], i+2);
+          pushMC(vdM, `The report ___ by ${sg[0].toLowerCase()} yesterday was very accurate. (rút gọn bị động)`, vb[3], vb[4], vb[2], `to ${vb[0]}`, i);
+          pushMC(vdM, `${sg[0]} was the first person ___ ${vb2[5]} in our class.`, `to ${vb2[0]}`, vb2[4], vb2[2], vb2[1], i+3);
+
+          pushEs(nbE, `Điền đại từ quan hệ (who / which): The person ___ ${vb[2]} ${vb[5]} is ${sg[0]}.`, "who");
+          pushEs(nbE, `Điền đại từ quan hệ (who / which): The task ___ ${sg[0].toLowerCase()} ${vb2[2]} was very useful.`, "which");
+          pushEs(thE, `Rút gọn mệnh đề quan hệ (V-ing): The student who is ${vb[4]} ${vb[5]} is my friend. → The student ___ ${vb[5]} is my friend.`, vb[4]);
+          pushEs(thE, `Rút gọn mệnh đề quan hệ (V3/ed): The task which was ${vb2[3]} by ${sg[0]} was easy. → The task ___ by ${sg[0]} was easy.`, vb2[3]);
+          pushEs(vdE, `Rút gọn sau the first: ${sg[0]} was the first person who ${vb[2]} ${vb[5]}. → ${sg[0]} was the first person ___ ${vb[5]}.`, `to ${vb[0]}`);
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]}, that ${vb2[1]} ${vb2[5]}, is my neighbour.`, `${sg[0]}, who ${vb2[1]} ${vb2[5]}, is my neighbour.`);
+          break;
+
+        case 28: // Mệnh đề trạng ngữ
+          pushMC(nbM, `${sg[0]} ${vb[2]} ${vb[5]} ___ ${sg[1]} wanted to help the team.`, "because", "although", "unless", "so that", i);
+          pushMC(nbM, `${sg[0]} worked ___ ${adj[1]} that everyone admired ${sg[1]==="he"?"him":"her"}.`, "so", "such", "too", "enough", i+1);
+          pushMC(thM, `${sg[0]} explained the rule clearly ___ everyone could ${vb[0]} ${vb[5]}.`, "so that", "because of", "despite", "unless", i);
+          pushMC(thM, `___ ${sg[0].toLowerCase()} was busy, ${sg[1]} still ${vb2[2]} ${vb2[5]}.`, "Although", "Because", "So that", "Unless", i+2);
+          pushMC(vdM, `It was ___ an important task that ${sg[0].toLowerCase()} checked ${vb[5]} twice.`, "such", "so", "too", "very", i);
+          pushMC(vdM, `You can join our group ___ you promise to ${vb2[0]} ${vb2[5]} on time.`, "as long as", "although", "because of", "despite", i+3);
+
+          pushEs(nbE, `Điền so hoặc such: ${sg[0]} was ___ ${adj[0]} when ${vb[4]} ${vb[5]} that everyone trusted ${sg[1]==="he"?"him":"her"}.`, "so");
+          pushEs(nbE, `Điền because hoặc although: ${sg[0]} ${vb2[2]} ${vb2[5]} early ___ ${sg[1]} prepared well.`, "because");
+          pushEs(thE, `Điền so that hoặc because: ${sg[0]} got up early ___ ${sg[1]} could ${vb[0]} ${vb[5]} on time.`, "so that");
+          pushEs(thE, `Chia động từ trong mệnh đề thời gian: When ${sg[0].toLowerCase()} (finish) ___ ${vb2[5]}, ${sg[1]} will call us.`, "finishes");
+          pushEs(vdE, `Sửa lỗi cả câu: It was so a difficult task when ${sg[0].toLowerCase()} ${vb[2]} ${vb[5]} that ${sg[1]} asked for help.`, `It was such a difficult task when ${sg[0].toLowerCase()} ${vb[2]} ${vb[5]} that ${sg[1]} asked for help.`);
+          pushEs(vdE, `Điền Unless hoặc If: ___ ${sg[0].toLowerCase()} hurries to ${vb2[0]} ${vb2[5]}, ${sg[1]} will be late.`, "Unless");
+          break;
+
+        case 29: // Mệnh đề danh ngữ
+          pushMC(nbM, `Everyone knows ___ ${sg[0].toLowerCase()} always ${vb[1]} ${vb[5]} ${adj[1]}.`, "that", "what", "which", "whether to", i);
+          pushMC(nbM, `Do you know where ${sg[0].toLowerCase()} ___ ${vb2[5]}?`, vb2[1], `does ${vb2[0]}`, `${vb2[0]}`, `is ${vb2[0]}`, i+1);
+          pushMC(thM, `I wonder ___ ${sg[0].toLowerCase()} has ${vb[3]} ${vb[5]} or not.`, "whether", "that", "what", "who", i);
+          pushMC(thM, `___ ${sg[0].toLowerCase()} ${vb2[2]} yesterday surprised the whole class.`, "What", "Whether", "If", "Where", i+2);
+          pushMC(vdM, `Which sentence about ${sg[0]} has CORRECT noun clause word order?`, `Please tell me why ${sg[0].toLowerCase()} ${vb[2]} ${vb[5]}.`, `Please tell me why did ${sg[0].toLowerCase()} ${vb[0]} ${vb[5]}.`, `Please tell me why ${sg[0].toLowerCase()} did ${vb[2]} ${vb[5]}.`, `Please tell me why was ${sg[0].toLowerCase()} ${vb[0]} ${vb[5]}.`, i);
+          pushMC(vdM, `${sg[0]} insisted on knowing how ___ ${vb2[5]} so ${adj[1]}.`, `${sg2[0].toLowerCase()} ${vb2[2]}`, `did ${sg2[0].toLowerCase()} ${vb2[0]}`, `had ${sg2[0].toLowerCase()} ${vb2[3]}`, `was ${sg2[0].toLowerCase()} ${vb2[0]}`, i+3);
+
+          pushEs(nbE, `Điền that hoặc what: I believe ___ ${sg[0].toLowerCase()} will ${vb[0]} ${vb[5]} well.`, "that");
+          pushEs(nbE, `Điền What hoặc That: ___ ${sg[0].toLowerCase()} said after ${vb2[4]} ${vb2[5]} is true.`, "What");
+          pushEs(thE, `Điền whether hoặc that: I am not sure ___ ${sg[0].toLowerCase()} has ${vb[3]} ${vb[5]} or not.`, "whether");
+          pushEs(thE, `Sắp xếp đúng trật tự: When did ${sg[0].toLowerCase()} ${vb2[0]} ${vb2[5]}? → Do you know when ___ ${vb2[5]}?`, `${sg[0].toLowerCase()} ${vb2[2]}`);
+          pushEs(vdE, `Sửa lỗi đảo ngữ trong mệnh đề danh ngữ: Can you tell me where does ${sg[0].toLowerCase()} ${vb[0]} ${vb[5]}?`, `Can you tell me where ${sg[0].toLowerCase()} ${vb[1]} ${vb[5]}?`);
+          pushEs(vdE, `Sửa lỗi cả câu: I don’t know what did ${sg[0].toLowerCase()} ${vb2[0]} yesterday.`, `I don’t know what ${sg[0].toLowerCase()} ${vb2[2]} yesterday.`);
+          break;
+
+        case 30: // Câu điều kiện
+          pushMC(nbM, `If ${sg[0].toLowerCase()} ___ time tomorrow, ${sg[1]} will ${vb[0]} ${vb[5]}.`, "has", "will have", "had", "would have", i);
+          pushMC(nbM, `If I ___ ${sg[0].toLowerCase()}, I would ${vb2[0]} ${vb2[5]} more ${adj[1]}.`, "were", "am", "will be", "have been", i+1);
+          pushMC(thM, `If ${sg[0].toLowerCase()} had ${vb[3]} ${vb[5]} carefully, ${sg[1]} ___ the prize.`, "would have won", "will win", "won", "would win", i);
+          pushMC(thM, `Unless ${sg[0].toLowerCase()} ___ ${vb2[5]} now, ${sg[1]} will be late.`, vb2[1], `will ${vb2[0]}`, `doesn’t ${vb2[0]}`, vb2[2], i+2);
+          pushMC(vdM, `Had ${sg[0].toLowerCase()} known the schedule, ${sg[1]} ___ ${vb[5]} earlier.`, `would have ${vb[3]}`, `will ${vb[0]}`, `would ${vb[0]}`, vb[2], i);
+          pushMC(vdM, `But for ${sg[0]}'s help yesterday, we ___ ${vb2[5]} on time.`, `wouldn’t have ${vb2[3]}`, `won’t ${vb2[0]}`, `didn’t ${vb2[0]}`, `don’t ${vb2[0]}`, i+3);
+
+          pushEs(nbE, `Chia động từ (ĐK loại 1): If ${sg[0].toLowerCase()} (work) ___ hard, ${sg[1]} will ${vb[0]} ${vb[5]}.`, "works");
+          pushEs(nbE, `Chia động từ (ĐK loại 2): If I (be) ___ ${sg[0].toLowerCase()}, I would ${vb2[0]} ${vb2[5]}.`, "were");
+          pushEs(thE, `Chia động từ (ĐK loại 2): If ${sg[0].toLowerCase()} (have) ___ more time now, ${sg[1]} would ${vb2[0]} ${vb2[5]}.`, "had");
+          pushEs(thE, `Chia động từ (ĐK loại 3): If ${sg[0].toLowerCase()} had known, ${sg[1]} (${vb[0]}) ___ ${vb[5]}.`, `would have ${vb[3]}`);
+          pushEs(vdE, `Đảo ngữ ĐK loại 3: If ${sg[0].toLowerCase()} had ${vb2[3]} ${vb2[5]} → ___ ${sg[0].toLowerCase()} ${vb2[3]} ${vb2[5]}`, "Had");
+          pushEs(vdE, `Sửa lỗi cả câu: If ${sg[0].toLowerCase()} will ${vb[0]} ${vb[5]} tomorrow, we will celebrate.`, `If ${sg[0].toLowerCase()} ${vb[1]} ${vb[5]} tomorrow, we will celebrate.`);
+          break;
+
+        case 31: // Câu bị động
+          pushMC(nbM, `Every week, ${vb[5]} ___ by ${sg[0].toLowerCase()}.`, `is ${vb[3]}`, `are ${vb[3]}`, vb[1], `was ${vb[4]}`, i);
+          pushMC(nbM, `Yesterday, ${vb2[5]} ___ by ${pl[0].toLowerCase()}.`, `was ${vb2[3]}`, `is ${vb2[3]}`, vb2[2], `has ${vb2[3]}`, i+1);
+          pushMC(thM, `Right now, ${vb[5]} ___ by ${sg[0].toLowerCase()}.`, `is being ${vb[3]}`, `is ${vb[3]}`, `has been ${vb[3]}`, `was ${vb[3]}`, i);
+          pushMC(thM, `Next week, ${vb2[5]} ___ by ${pl[0].toLowerCase()}.`, `will be ${vb2[3]}`, `will ${vb2[3]}`, `is ${vb2[3]}`, `has been ${vb2[3]}`, i+2);
+          pushMC(vdM, `${sg[0]} had the technician ___ the computer before ${vb[4]} ${vb[5]} → ${sg[0]} had the computer ___.`, "repair – repaired", "repaired – repair", "to repair – repaired", "repairing – repaired", i);
+          pushMC(vdM, `People say that ${sg[0].toLowerCase()} ${vb2[1]} ${vb2[5]} well → ${sg[0]} is said ___ ${vb2[5]} well.`, `to ${vb2[0]}`, vb2[4], vb2[0], `that ${vb2[1]}`, i+3);
+
+          pushEs(nbE, `Chia bị động hiện tại đơn: ${vb[5].charAt(0).toUpperCase()+vb[5].slice(1)} (be / ${vb[0]}) ___ by ${sg[0].toLowerCase()} every week.`, `is ${vb[3]}`);
+          pushEs(nbE, `Chia bị động tương lai đơn: Tomorrow, ${vb2[5]} (will / ${vb2[0]}) ___ by ${sg[0].toLowerCase()}.`, `will be ${vb2[3]}`);
+          pushEs(thE, `Chia bị động quá khứ đơn: Yesterday, ${vb2[5]} (be / ${vb2[0]}) ___ by ${sg[0].toLowerCase()}.`, `was ${vb2[3]}`);
+          pushEs(thE, `Chia bị động với must: ${vb[5].charAt(0).toUpperCase()+vb[5].slice(1)} (must / ${vb[0]}) ___ by ${sg[0].toLowerCase()} today.`, `must be ${vb[3]}`);
+          pushEs(vdE, `Chia thể truyền khiến: ${sg[0]} had the bike (repair) ___ before ${vb2[4]} ${vb2[5]}.`, "repaired");
+          pushEs(vdE, `Viết lại bị động kép: People believe that ${sg[0].toLowerCase()} is ${adj[0]}. → ${sg[0]} is believed ___ ${adj[0]}.`, "to be");
+          break;
+
+        case 32: // Câu trực tiếp và gián tiếp
+          pushMC(nbM, `${sg[0]} said, “I ${vb[0]} ${vb[5]} every day.” → ${sg[0]} said that ${sg[1]} ___ ${vb[5]} every day.`, vb[2], vb[1], `has ${vb[3]}`, `will ${vb[0]}`, i);
+          pushMC(nbM, `${sg[0]} said, “I will ${vb2[0]} ${vb2[5]} tomorrow.” → ${sg[0]} said ${sg[1]} ___ ${vb2[0]} ${vb2[5]} the next day.`, "would", "will", "can", "must", i+1);
+          pushMC(thM, `“Did you ${vb[0]} ${vb[5]} yesterday?” ${sg[0].toLowerCase()} asked me → ${sg[0]} asked me if I ___ ${vb[5]} the day before.`, `had ${vb[3]}`, vb[2], `have ${vb[3]}`, `did ${vb[0]}`, i);
+          pushMC(thM, `“Please ${vb2[0]} ${vb2[5]} ${adj[1]},” ${sg[0].toLowerCase()} told me → ${sg[0]} told me ___ ${vb2[5]} ${adj[1]}.`, `to ${vb2[0]}`, vb2[4], vb2[0], vb2[2], i+2);
+          pushMC(vdM, `“Let’s ${vb[0]} ${vb[5]} together,” said ${sg[0]} → ${sg[0]} suggested ___ ${vb[5]} together.`, vb[4], `to ${vb[0]}`, vb[0], `that ${vb[4]}`, i);
+          pushMC(vdM, `“Don’t forget to ${vb2[0]} ${vb2[5]},” ${sg[0].toLowerCase()} said to me → ${sg[0]} reminded me ___ ${vb2[5]}.`, `to ${vb2[0]}`, vb2[4], `not to ${vb2[0]}`, vb2[0], i+3);
+
+          pushEs(nbE, `Lùi thì câu gián tiếp: ${sg[0]} said, “I ${vb[0]} ${vb[5]}.” → ${sg[0]} said that ${sg[1]} ___ ${vb[5]}.`, vb[2]);
+          pushEs(nbE, `Lùi thì với will: ${sg[0]} said, “I will ${vb2[0]} ${vb2[5]}.” → ${sg[0]} said ${sg[1]} ___ ${vb2[0]} ${vb2[5]}.`, "would");
+          pushEs(thE, `Chuyển câu mệnh lệnh: “Don’t forget ${vb[5]},” ${sg[0].toLowerCase()} told us. → ${sg[0]} told us ___ forget ${vb[5]}.`, "not to");
+          pushEs(thE, `Chuyển câu hỏi: “Where do you ${vb2[0]} ${vb2[5]}?” ${sg[0].toLowerCase()} asked me. → ${sg[0]} asked me where I ___ ${vb2[5]}.`, vb2[2]);
+          pushEs(vdE, `Tường thuật với suggest: “Why don’t we ${vb[0]} ${vb[5]}?” said ${sg[0]}. → ${sg[0]} suggested ___ ${vb[5]}.`, vb[4]);
+          pushEs(vdE, `Tường thuật với apologise: “I’m sorry I didn’t ${vb2[0]} ${vb2[5]},” ${sg[0].toLowerCase()} said. → ${sg[0]} apologised for not ___ ${vb2[5]}.`, vb2[4]);
+          break;
+
+        case 33: // Câu hỏi đuôi
+          pushMC(nbM, `${sg[0]} ${vb[1]} ${vb[5]} every week, ___?`, `doesn’t ${sg[1]}`, `does ${sg[1]}`, `isn’t ${sg[1]}`, `didn’t ${sg[1]}`, i);
+          pushMC(nbM, `${pl[0]} didn't ${vb2[0]} ${vb2[5]} yesterday, ___?`, "did they", "didn’t they", "do they", "were they", i+1);
+          pushMC(thM, `${sg[0]} has already ${vb[3]} ${vb[5]}, ___?`, `hasn’t ${sg[1]}`, `doesn’t ${sg[1]}`, `has ${sg[1]}`, `didn’t ${sg[1]}`, i);
+          pushMC(thM, `${pl[0]} can ${vb2[0]} ${vb2[5]} ${adj[1]}, ___?`, "can’t they", "can they", "don’t they", "aren’t they", i+2);
+          pushMC(vdM, `${sg[0]} rarely ${vb[1]} ${vb[5]} late at night, ___?`, `does ${sg[1]}`, `doesn’t ${sg[1]}`, `did ${sg[1]}`, `is ${sg[1]}`, i);
+          pushMC(vdM, `Everyone in ${sg[0]}'s class ${vb2[2]} ${vb2[5]}, ___?`, "didn’t they", "didn’t he", "did they", "weren’t they", i+3);
+
+          pushEs(nbE, `Điền câu hỏi đuôi: ${sg[0]} ${vb[1]} ${vb[5]} every day, ___?`, `doesn’t ${sg[1]}`);
+          pushEs(nbE, `Điền câu hỏi đuôi: ${pl[0]} ${vb2[2]} ${vb2[5]} yesterday, ___?`, "didn’t they");
+          pushEs(thE, `Điền câu hỏi đuôi: ${sg[0]} won’t ${vb2[0]} ${vb2[5]} late, ___?`, `will ${sg[1]}`);
+          pushEs(thE, `Điền câu hỏi đuôi: ${sg[0]} has ${vb[3]} ${vb[5]}, ___?`, `hasn’t ${sg[1]}`);
+          pushEs(vdE, `Điền câu hỏi đuôi đặc biệt: ${sg[0]} never ${vb[1]} ${vb[5]} carelessly, ___?`, `does ${sg[1]}`);
+          pushEs(vdE, `Điền câu hỏi đuôi mệnh lệnh: Please ${vb2[0]} ${vb2[5]} carefully, ___?`, "will you");
+          break;
+
+        case 34: // Câu giả định, câu ước (Wish)
+          pushMC(nbM, `${sg[0]} wishes ${sg[1]} ___ more time to ${vb[0]} ${vb[5]} now.`, "had", "has", "will have", "is having", i);
+          pushMC(nbM, `I wish ${sg[0].toLowerCase()} ___ stop making noise while I am ${vb2[4]} ${vb2[5]}.`, "would", "will", "can", "does", i+1);
+          pushMC(thM, `${sg[0]} wishes ${sg[1]} ___ ${vb[5]} more ${adj[1]} yesterday.`, `had ${vb[3]}`, vb[2], vb[1], `would ${vb[0]}`, i);
+          pushMC(thM, `It’s high time ${pl[0].toLowerCase()} ___ ${vb2[5]} seriously.`, vb2[2], vb2[0], `will ${vb2[0]}`, `have ${vb2[3]}`, i+2);
+          pushMC(vdM, `The principal demanded that every student ___ ${vb[5]} on time.`, vb[0], vb[1], vb[2], `to ${vb[0]}`, i);
+          pushMC(vdM, `It is essential that ${sg[0].toLowerCase()} ___ ${vb2[5]} before Friday.`, vb2[0], vb2[1], vb2[2], `to ${vb2[0]}`, i+3);
+
+          pushEs(nbE, `Chia động từ sau wish (hiện tại): ${sg[0]} wishes ${sg[1]} (be) ___ free to ${vb[0]} ${vb[5]} now.`, "were");
+          pushEs(nbE, `Chia động từ sau wish (tương lai): I wish ${sg[0].toLowerCase()} (will) ___ ${vb2[0]} ${vb2[5]} tomorrow.`, "would");
+          pushEs(thE, `Chia động từ sau wish (trái với quá khứ): ${sg[0]} wishes ${sg[1]} (${vb[0]}) ___ ${vb[5]} yesterday.`, `had ${vb[3]}`);
+          pushEs(thE, `Chia động từ sau It’s high time: It’s high time ${sg[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]}.`, vb2[2]);
+          pushEs(vdE, `Chia động từ giả định: The teacher suggested that ${sg[0].toLowerCase()} (${vb[0]}) ___ ${vb[5]} again.`, vb[0]);
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} wishes ${sg[1]} can ${vb2[0]} ${vb2[5]} now.`, `${sg[0]} wishes ${sg[1]} could ${vb2[0]} ${vb2[5]} now.`);
+          break;
+
+        case 35: // Đảo ngữ
+          pushMC(nbM, `Never ___ ${sg[0].toLowerCase()} ${vb[3]} ${vb[5]} so ${adj[1]} before.`, "has", "does", "is", "did", i);
+          pushMC(nbM, `Seldom ___ ${sg[0].toLowerCase()} ${vb2[0]} ${vb2[5]} without checking carefully.`, "does", "do", "is", "has", i+1);
+          pushMC(thM, `No sooner had ${sg[0].toLowerCase()} ${vb[3]} ${vb[5]} ___ the guests arrived.`, "than", "when", "that", "then", i);
+          pushMC(thM, `Hardly ___ ${pl[0].toLowerCase()} ${vb2[3]} ${vb2[5]} when the bell rang.`, "had", "did", "have", "were", i+2);
+          pushMC(vdM, `Only after ${sg[0].toLowerCase()} had ${vb[3]} ${vb[5]} ___ ${sg[1]} take a rest.`, "did", "had", "does", "was", i);
+          pushMC(vdM, `Not only ___ ${sg[0].toLowerCase()} ${vb2[0]} ${vb2[5]}, but ${sg[1]} also helps the whole class.`, "does", "is", "has", "did", i+3);
+
+          pushEs(nbE, `Điền trợ động từ đảo ngữ: Rarely ___ ${sg[0].toLowerCase()} ${vb[0]} ${vb[5]} late.`, "does");
+          pushEs(nbE, `Điền trợ động từ đảo ngữ: Never ___ ${sg[0].toLowerCase()} ${vb2[3]} ${vb2[5]} before.`, "has");
+          pushEs(thE, `Điền than hoặc when: Hardly had ${sg[0].toLowerCase()} ${vb[3]} ${vb[5]} ___ it started to rain.`, "when");
+          pushEs(thE, `Điền than hoặc when: No sooner had ${sg[0].toLowerCase()} ${vb2[3]} ${vb2[5]} ___ the phone rang.`, "than");
+          pushEs(vdE, `Sửa lỗi đảo ngữ: Not only ${sg[0].toLowerCase()} ${vb[1]} ${vb[5]}, but ${sg[1]} is also kind.`, `Not only does ${sg[0].toLowerCase()} ${vb[0]} ${vb[5]}, but ${sg[1]} is also kind.`);
+          pushEs(vdE, `Điền trợ động từ: Only when ${sg[0].toLowerCase()} finished ${vb2[5]} ___ ${sg[1]} go home.`, "did");
+          break;
+
+        case 36: // Hòa hợp chủ ngữ và động từ
+          pushMC(nbM, `Each of the students in ${sg[0]}'s group ___ ${vb[5]} every week.`, vb[1], vb[0], vb[4], `are ${vb[4]}`, i);
+          pushMC(nbM, `Both ${sg[0]} and ${sg2[0]} ___ ${vb2[5]} right now.`, `are ${vb2[4]}`, `is ${vb2[4]}`, `was ${vb2[4]}`, vb2[1], i+1);
+          pushMC(thM, `Neither ${pl[0].toLowerCase()} nor ${sg[0].toLowerCase()} ___ ${vb[3]} ${vb[5]} yet.`, "has", "have", "are", "were", i);
+          pushMC(thM, `A number of students ___ ${vb2[4]} ${vb2[5]} in the hall today.`, "are", "is", "was", "has been", i+2);
+          pushMC(vdM, `${sg[0]}, together with ${pl[0].toLowerCase()}, ___ going to ${vb[0]} ${vb[5]} tomorrow.`, "is", "are", "were", "have been", i);
+          pushMC(vdM, `The number of students who ${vb2[0]} ${vb2[5]} ___ increasing rapidly.`, "is", "are", "were", "have been", i+3);
+
+          pushEs(nbE, `Chia động từ (is / are): Everyone in ${sg[0]}'s class ___ ready to ${vb[0]} ${vb[5]}.`, "is");
+          pushEs(nbE, `Chia động từ (is / are): Both ${sg[0]} and ${sg2[0]} ___ ${vb2[4]} ${vb2[5]} now.`, "are");
+          pushEs(thE, `Chia động từ (is / are): The number of students who ${vb[0]} ${vb[5]} ___ forty.`, "is");
+          pushEs(thE, `Chia động từ (is / are): A number of students ___ ${vb2[4]} ${vb2[5]} now.`, "are");
+          pushEs(vdE, `Chia động từ: ${sg[0]}, along with her classmates, (be) ___ ${vb2[4]} ${vb2[5]} right now.`, "is");
+          pushEs(vdE, `Sửa lỗi hòa hợp S-V: Neither ${sg[0].toLowerCase()} nor ${pl[0].toLowerCase()} is ${vb[4]} ${vb[5]}.`, `Neither ${sg[0].toLowerCase()} nor ${pl[0].toLowerCase()} are ${vb[4]} ${vb[5]}.`);
+          break;
+      }
+    }
+  });
+})();
+
 const LV=[["nb","Nhận biết"],["th","Thông hiểu"],["vd","Vận dụng"]],DAY=864e5,PW="tien@123456";
 let T=0,tab="lt",lv="nb",ty="m",TS=0,TQ=[],TA=[],TE=0,TI=0,qSearch="",catFilter=0;
 const M={},$=i=>document.getElementById(i);
