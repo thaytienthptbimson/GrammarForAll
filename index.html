@@ -1,37 +1,777 @@
 <!DOCTYPE html>
 <html lang="vi"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>English Grammar Pro</title>
+<title>English Grammar Pro - Thầy Phạm Tiến - THPT Bỉm Sơn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#eef3f1;--cd:#fff;--tx:#14231f;--mu:#5b6f69;--ac:#0f766e;--at:#fff;--ok:#15803d;--no:#b91c1c;--bd:#cfdcd8;--hl:#fde68a;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1816;--cd:#14241f;--tx:#e5efec;--mu:#8fa7a0;--ac:#5eead4;--at:#06201b;--ok:#4ade80;--no:#f87171;--bd:#24403a;--hl:#7a5c0c;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0d1816;--cd:#14241f;--tx:#e5efec;--mu:#8fa7a0;--ac:#5eead4;--at:#06201b;--ok:#4ade80;--no:#f87171;--bd:#24403a;--hl:#7a5c0c;color-scheme:dark}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-.w{max-width:820px;margin:0 auto;padding:16px}
-h1,h2,h3{font-family:Georgia,"Times New Roman",serif;margin:.4em 0}
-h1{font-size:1.5rem}
-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:2px solid var(--ac);padding-bottom:8px;margin-bottom:14px}
-.c{background:var(--cd);border:1px solid var(--bd);border-radius:6px;padding:14px 16px;margin:10px 0}
-.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
-.k{cursor:pointer;border-left:5px solid var(--ac)}
-.k:hover{background:var(--bg)}
-.r{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
-.b,.o,.i{font:inherit;color:var(--tx);background:var(--cd);border:1px solid var(--bd);border-radius:8px;padding:8px 14px}
-.b,.o{cursor:pointer}
-.b.on{background:var(--ac);color:var(--at);border-color:var(--ac)}
-.o{display:block;width:100%;text-align:left;margin:6px 0}
-.o.ok{border:2px solid var(--ok);color:var(--ok)}
-.o.no{border:2px solid var(--no);color:var(--no)}
-.o.sel{border:2px solid var(--ac)}
-.i{min-width:220px;max-width:100%}
-.ok2{color:var(--ok)}.no2{color:var(--no)}
-.th li{margin:4px 0}
-em{font-style:normal;background:linear-gradient(transparent 55%,var(--hl) 55%)}
-small{color:var(--mu)}
-.tm{position:sticky;top:env(safe-area-inset-top,0px);display:flex;justify-content:space-between;align-items:center;font-size:1.1rem}
+:root {
+  --bg: #f0f5f4;
+  --bg-soft: #e4efec;
+  --cd: #ffffff;
+  --cd-hover: #f8fbfb;
+  --tx: #0f1f1c;
+  --mu: #526661;
+  --ac: #0f766e;
+  --ac-dark: #115e59;
+  --ac-light: #ccfbf1;
+  --ac-soft: rgba(15, 118, 110, 0.1);
+  --sec: #1d4ed8;
+  --sec-light: #dbeafe;
+  --amber: #d97706;
+  --amber-light: #fef3c7;
+  --at: #ffffff;
+  --ok: #15803d;
+  --ok-bg: #dcfce7;
+  --no: #b91c1c;
+  --no-bg: #fee2e2;
+  --bd: #d1e0dc;
+  --hl: #fde68a;
+  --sh: 0 4px 16px -2px rgba(15, 35, 31, 0.07), 0 2px 6px -1px rgba(15, 35, 31, 0.04);
+  --sh-lg: 0 12px 28px -4px rgba(15, 118, 110, 0.14), 0 4px 12px -2px rgba(15, 35, 31, 0.06);
+  --font-main: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-heading: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b1513;
+    --bg-soft: #12221f;
+    --cd: #152723;
+    --cd-hover: #1b312c;
+    --tx: #e6f1ee;
+    --mu: #94ada7;
+    --ac: #2dd4bf;
+    --ac-dark: #14b8a6;
+    --ac-light: rgba(45, 212, 191, 0.16);
+    --ac-soft: rgba(45, 212, 191, 0.1);
+    --sec: #60a5fa;
+    --sec-light: rgba(96, 165, 250, 0.16);
+    --amber: #fbbf24;
+    --amber-light: rgba(251, 191, 36, 0.16);
+    --at: #042f2e;
+    --ok: #4ade80;
+    --ok-bg: rgba(74, 222, 128, 0.15);
+    --no: #f87171;
+    --no-bg: rgba(248, 113, 113, 0.15);
+    --bd: #243e38;
+    --hl: #785a0c;
+    --sh: 0 4px 16px rgba(0, 0, 0, 0.35);
+    --sh-lg: 0 12px 28px rgba(0, 0, 0, 0.5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b1513;
+  --bg-soft: #12221f;
+  --cd: #152723;
+  --cd-hover: #1b312c;
+  --tx: #e6f1ee;
+  --mu: #94ada7;
+  --ac: #2dd4bf;
+  --ac-dark: #14b8a6;
+  --ac-light: rgba(45, 212, 191, 0.16);
+  --ac-soft: rgba(45, 212, 191, 0.1);
+  --sec: #60a5fa;
+  --sec-light: rgba(96, 165, 250, 0.16);
+  --amber: #fbbf24;
+  --amber-light: rgba(251, 191, 36, 0.16);
+  --at: #042f2e;
+  --ok: #4ade80;
+  --ok-bg: rgba(74, 222, 128, 0.15);
+  --no: #f87171;
+  --no-bg: rgba(248, 113, 113, 0.15);
+  --bd: #243e38;
+  --hl: #785a0c;
+  --sh: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --sh-lg: 0 12px 28px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  background-image:
+    radial-gradient(at 0% 0%, var(--ac-soft) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, var(--sec-light) 0px, transparent 45%);
+  background-attachment: fixed;
+  color: var(--tx);
+  font: 16px/1.65 var(--font-main);
+  -webkit-font-smoothing: antialiased;
+}
+.w { max-width: 1040px; margin: 0 auto; padding: 14px 16px 40px; }
+
+/* ALL GRAMMAR HEADINGS & TITLES IN SCIENTIFIC SANS-SERIF UPPERCASE */
+h1, h2, h3, h4, .grammar-heading, .k b, .topic-heading, .cat-heading, .th h3, .th h4 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 800;
+  margin: 0.4em 0;
+}
+
+/* TOP COPYRIGHT & AUTHOR BANNER */
+.top-banner {
+  background: linear-gradient(135deg, #0b4f4a 0%, #0f766e 45%, #1e3a8a 100%);
+  color: #ffffff;
+  border-radius: 18px;
+  padding: 20px 24px;
+  margin-bottom: 18px;
+  box-shadow: var(--sh-lg);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+.top-banner::before {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -50px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+.top-banner::after {
+  content: "";
+  position: absolute;
+  left: 30%;
+  bottom: -60px;
+  width: 260px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(253, 230, 138, 0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+.copyright-ribbon {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(253, 230, 138, 0.45);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fef08a;
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.copyright-ribbon .dot {
+  color: #ffffff;
+  opacity: 0.7;
+}
+.banner-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1 1 320px;
+}
+.brand-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.85rem;
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25);
+}
+.brand-text h1 {
+  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+  margin: 0;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+.brand-sub {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 400;
+}
+.banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.banner-actions .b {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 7px 13px;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+.banner-actions .b:hover {
+  background: rgba(255, 255, 255, 0.26);
+}
+.banner-footer {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.96);
+}
+.teacher-info {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.phone-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #fef08a;
+  color: #0f172a;
+  font-weight: 800;
+  padding: 3px 11px;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  text-decoration: none;
+}
+
+/* STATS OVERVIEW BAR */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.stat-card {
+  background: var(--cd);
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--sh);
+}
+.stat-ic {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  background: var(--ac-light);
+  color: var(--ac);
+}
+.stat-ic.s2 { background: var(--sec-light); color: var(--sec); }
+.stat-ic.s3 { background: var(--amber-light); color: var(--amber); }
+.stat-ic.s4 { background: var(--ok-bg); color: var(--ok); }
+.stat-val {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--tx);
+  line-height: 1.15;
+}
+.stat-lbl {
+  font-size: 0.78rem;
+  color: var(--mu);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* SEARCH & FILTER TOOLBAR */
+.toolbar {
+  background: var(--cd);
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--sh);
+}
+.search-box {
+  position: relative;
+  flex: 1 1 250px;
+}
+.search-box input {
+  width: 100%;
+  padding: 10px 14px 10px 38px;
+  border: 1px solid var(--bd);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--tx);
+  font: inherit;
+  font-size: 0.94rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-box input:focus {
+  outline: none;
+  border-color: var(--ac);
+  box-shadow: 0 0 0 3px var(--ac-soft);
+}
+.search-ic {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--mu);
+  pointer-events: none;
+}
+.filter-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.fp {
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 7px 12px;
+  border-radius: 9px;
+  border: 1px solid var(--bd);
+  background: var(--bg);
+  color: var(--mu);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.fp:hover {
+  border-color: var(--ac);
+  color: var(--tx);
+}
+.fp.on {
+  background: var(--ac);
+  color: var(--at);
+  border-color: var(--ac);
+}
+
+/* CATEGORY SECTIONS & TOPIC CARDS */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 22px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--bd);
+}
+.section-header h3 {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ac);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cat-badge {
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--ac-light);
+  color: var(--ac);
+}
+
+.c {
+  background: var(--cd);
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin: 12px 0;
+  box-shadow: var(--sh);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.g {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+.k {
+  cursor: pointer;
+  border-left: 5px solid var(--ac);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  position: relative;
+}
+.k:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sh-lg);
+  border-color: var(--ac);
+  background: var(--cd-hover);
+}
+.k-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+.k-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--ac-light);
+  color: var(--ac);
+  flex-shrink: 0;
+}
+.k b {
+  font-family: var(--font-heading);
+  font-size: 0.96rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  line-height: 1.38;
+  color: var(--tx);
+  display: block;
+}
+.k-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+.meta-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--mu);
+  border: 1px solid var(--bd);
+}
+.meta-pill.mc {
+  background: var(--ac-soft);
+  color: var(--ac);
+  border-color: transparent;
+}
+.meta-pill.es {
+  background: var(--sec-light);
+  color: var(--sec);
+  border-color: transparent;
+}
+
+/* TOPIC DETAIL HEADER & TABS */
+.topic-bar {
+  background: var(--cd);
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  box-shadow: var(--sh);
+}
+.topic-bar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.topic-title-main {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.035em;
+  color: var(--ac);
+  margin: 4px 0 12px;
+  line-height: 1.3;
+}
+
+.r {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+.b, .o, .i {
+  font: inherit;
+  color: var(--tx);
+  background: var(--cd);
+  border: 1px solid var(--bd);
+  border-radius: 10px;
+  padding: 9px 15px;
+  transition: all 0.16s ease;
+}
+.b, .o { cursor: pointer; }
+.b {
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.b:hover {
+  border-color: var(--ac);
+  background: var(--cd-hover);
+}
+.b.on {
+  background: var(--ac);
+  color: var(--at);
+  border-color: var(--ac);
+  box-shadow: 0 3px 10px rgba(15, 118, 110, 0.25);
+}
+
+/* SCIENTIFIC THEORY STYLING */
+.th {
+  line-height: 1.75;
+  font-size: 1rem;
+}
+.th h3 {
+  font-family: var(--font-heading);
+  font-size: 1.22rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ac);
+  border-bottom: 2px solid var(--ac-light);
+  padding-bottom: 10px;
+  margin: 0 0 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.th h3::before {
+  content: "📘";
+  font-size: 1.15rem;
+}
+.th h4 {
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--sec);
+  background: var(--sec-light);
+  padding: 7px 12px;
+  border-radius: 8px;
+  border-left: 4px solid var(--sec);
+  margin: 16px 0 8px;
+}
+.th ul {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+.th li {
+  margin: 8px 0;
+  padding-left: 4px;
+}
+.th li > b:first-child {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 0.9em;
+  letter-spacing: 0.02em;
+  color: var(--ac);
+}
+.th p {
+  background: var(--bg);
+  border-left: 4px solid var(--amber);
+  padding: 12px 14px;
+  border-radius: 0 10px 10px 0;
+  margin: 14px 0 4px;
+}
+em {
+  font-style: normal;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: linear-gradient(transparent 50%, var(--hl) 50%);
+}
+small { color: var(--mu); }
+
+/* QUESTIONS & OPTIONS */
+.q-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 1.02rem;
+}
+.q-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: var(--ac-light);
+  color: var(--ac);
+  padding: 2px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.o {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 7px 0;
+  padding: 11px 14px;
+  font-weight: 500;
+  border-radius: 10px;
+  background: var(--bg);
+}
+.o:hover {
+  border-color: var(--ac);
+  background: var(--cd-hover);
+}
+.o.ok {
+  border: 2px solid var(--ok);
+  background: var(--ok-bg);
+  color: var(--ok);
+  font-weight: 700;
+}
+.o.no {
+  border: 2px solid var(--no);
+  background: var(--no-bg);
+  color: var(--no);
+  font-weight: 600;
+}
+.o.sel {
+  border: 2px solid var(--ac);
+  background: var(--ac-light);
+  font-weight: 700;
+}
+.i {
+  min-width: 240px;
+  width: min(100%, 420px);
+  background: var(--bg);
+  margin: 8px 6px 8px 0;
+}
+.i:focus {
+  outline: none;
+  border-color: var(--ac);
+  box-shadow: 0 0 0 3px var(--ac-soft);
+}
+.ok2 {
+  color: var(--ok);
+  background: var(--ok-bg);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  margin-top: 6px;
+  display: inline-block;
+}
+.no2 {
+  color: var(--no);
+  background: var(--no-bg);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  margin-top: 6px;
+  display: inline-block;
+}
+.tm {
+  position: sticky;
+  top: env(safe-area-inset-top, 8px);
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 1.1rem;
+  border: 2px solid var(--ac);
+  background: var(--cd);
+  box-shadow: var(--sh-lg);
+}
+.site-footer {
+  margin-top: 32px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: var(--cd);
+  border: 1px solid var(--bd);
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--mu);
+  box-shadow: var(--sh);
+}
+.site-footer strong {
+  color: var(--tx);
+}
+@media (max-width: 600px) {
+  .top-banner { padding: 16px; }
+  .banner-footer { flex-direction: column; align-items: flex-start; }
+  .g { grid-template-columns: 1fr; }
+}
 </style></head><body>
-<div class="w"><header><h1>📘 English Grammar Pro</h1><span id="bd" class="b"></span></header><div id="app"></div></div>
+<div class="w">
+  <header class="top-banner">
+    <div class="copyright-ribbon">
+      <span>🎓 BẢN QUYỀN THUỘC VỀ THẦY PHẠM TIẾN</span>
+      <span class="dot">•</span>
+      <span>🏫 GV TIẾNG ANH TRƯỜNG THPT BỈM SƠN</span>
+      <span class="dot">•</span>
+      <span>📞 ĐT: 0943930787</span>
+    </div>
+    <div class="banner-main">
+      <div class="brand-wrap">
+        <div class="brand-icon" aria-hidden="true">📘</div>
+        <div class="brand-text">
+          <h1>ENGLISH GRAMMAR PRO</h1>
+          <p class="brand-sub">Hệ thống Học lý thuyết, Luyện tập Phân hóa &amp; Kiểm tra Ngữ pháp Tiếng Anh Khoa học</p>
+        </div>
+      </div>
+      <div class="banner-actions">
+        <span id="bd" class="b"></span>
+        <button type="button" class="b" id="themeBtn" onclick="toggleTheme()" title="Đổi chế độ Sáng / Tối">🌓 Giao diện</button>
+      </div>
+    </div>
+    <div class="banner-footer">
+      <div class="teacher-info">
+        <span>📌 Bản quyền thuộc về Thầy Phạm Tiến - GV Tiếng Anh trường THPT Bỉm Sơn</span>
+        <a href="tel:0943930787" class="phone-pill">📞 ĐT: 0943930787</a>
+      </div>
+      <div>✨ 36 Chuyên đề • 3 Mức độ (Nhận biết – Thông hiểu – Vận dụng)</div>
+    </div>
+  </header>
+  <div id="app"></div>
+  <footer class="site-footer">
+    <strong>Bản quyền thuộc về Thầy Phạm Tiến - GV Tiếng Anh trường THPT Bỉm Sơn - ĐT: 0943930787</strong><br>
+    <span>Hệ thống học tập và rèn luyện Ngữ pháp Tiếng Anh toàn diện dành cho học sinh THPT</span>
+  </footer>
+</div>
 <script>
 const D=[
 {id:1,n:"Thì hiện tại đơn",t:`<h3>Present Simple</h3><ul><li><b>Khẳng định:</b> S + V(s/es). <b>Phủ định:</b> S + do/does not + V. <b>Nghi vấn:</b> Do/Does + S + V?</li><li><b>Cách dùng:</b> thói quen, sự thật hiển nhiên, lịch trình cố định.</li><li><b>Dấu hiệu:</b> always, usually, often, sometimes, never, every day.</li><li><b>Thêm -s/-es:</b> động từ tận cùng -s, -x, -ch, -sh, -o thêm <i>es</i>; phụ âm + y đổi thành <i>ies</i> (study → studies).</li></ul><p>Ví dụ: <em>She goes to school every day.</em> (thói quen) <em>Water boils at 100°C.</em> (sự thật) <em>The train leaves at 8 p.m.</em> (lịch trình) <em>He doesn’t like coffee.</em></p>`,
@@ -1130,41 +1870,340 @@ Which sentence is correct?|She will have lived here for ten years by 2030.|She w
 ___ they have repaired the car by tomorrow?|Will|Do|Are|Has
 By next week, the builders ___ the roof.|will have finished|will have finish|will finishing|finished
 Which time phrase suits the future perfect?|by this time next year|yesterday morning|ten years ago|every day`);
+var ee=(i,l,s)=>{const x=D.find(d=>d.id==i).x[l];s.trim().split("\n").forEach(r=>{const p=r.split("|");x.e.push([p[0],p[1]])})};
+var th=(i,t)=>{D.find(d=>d.id==i).t=t};
+th(5,`<h3>Nouns – Danh từ</h3><h4>1. Phân loại</h4><ul><li><b>Danh từ chung</b> (teacher, city) và <b>danh từ riêng</b> (Lan, Hanoi, Monday – viết hoa).</li><li><b>Cụ thể</b> (table, dog) và <b>trừu tượng</b> (happiness, freedom).</li><li><b>Đếm được:</b> có số nhiều, dùng a/an và số đếm (a book, three books). <b>Không đếm được:</b> không có số nhiều, không dùng a/an (water, rice, money, information, advice, news, furniture, homework, luggage, weather).</li><li><b>Danh từ ghép:</b> toothbrush, bus stop, mother-in-law.</li></ul><h4>2. Cách thành lập số nhiều</h4><ul><li>Thêm <i>s</i>: book → books, day → days.</li><li>Tận cùng -s, -x, -z, -ch, -sh thêm <i>es</i>: bus → buses, box → boxes, watch → watches, dish → dishes.</li><li>Tận cùng phụ âm + y đổi thành <i>ies</i>: baby → babies; nguyên âm + y chỉ thêm s: boy → boys.</li><li>Tận cùng -o: thêm <i>es</i> với hero, potato, tomato; thêm <i>s</i> với photo, piano, radio, zoo.</li><li>-f/-fe → <i>ves</i>: leaf → leaves, knife → knives, wife → wives; ngoại lệ: roof → roofs, chief → chiefs.</li><li>Bất quy tắc: man → men, woman → women, child → children, foot → feet, tooth → teeth, mouse → mice, person → people, goose → geese.</li><li>Số ít và số nhiều giống nhau: sheep, fish, deer, series. Luôn số nhiều: trousers, scissors, glasses, jeans, clothes, police, people.</li></ul><h4>3. Danh từ không đếm được và đơn vị đo</h4><ul><li>a piece of advice/information/news/furniture, a glass of water, a cup of tea, a bottle of milk, a slice of bread, a loaf of bread, a bar of chocolate, a bowl of rice.</li><li>Chia động từ số ít: The news is good. Furniture is expensive. Mathematics, physics, economics (môn học) cũng chia số ít.</li></ul><h4>4. Lượng từ</h4><ul><li><b>Đếm được số nhiều:</b> many, a few (một vài, đủ dùng), few (hầu như không có), several, a number of.</li><li><b>Không đếm được:</b> much, a little (một ít), little (hầu như không), a great deal of.</li><li><b>Cả hai loại:</b> a lot of, lots of, some, any, plenty of. <i>some</i> dùng ở câu khẳng định, <i>any</i> ở câu phủ định và nghi vấn. <i>much/many</i> thường dùng trong câu phủ định và nghi vấn.</li></ul><h4>5. Sở hữu cách</h4><ul><li>Người/con vật + ’s: Lan’s bag, the cat’s tail; số nhiều tận cùng s + ’: the students’ room; số nhiều bất quy tắc + ’s: children’s toys, women’s clothes.</li><li>Vật + of: the door of the room, the end of the film.</li><li>Hai người cùng sở hữu: Tom and Mary’s house; sở hữu riêng: Tom’s and Mary’s houses.</li></ul><h4>6. Chức năng và hậu tố</h4><ul><li>Danh từ làm chủ ngữ, tân ngữ, bổ ngữ, hoặc đứng sau giới từ.</li><li>Hậu tố tạo danh từ: -tion/-sion (education), -ment (development), -ness (kindness), -ity (ability), -er/-or (teacher, actor), -ship (friendship), -ism, -ance/-ence.</li></ul><h4>7. Lỗi thường gặp</h4><ul><li>Sai: informations, advices, furnitures, homeworks. Đúng: information, advice, furniture, homework.</li><li>Sai: much students. Đúng: many students. Sai: many water. Đúng: much water.</li></ul><p>Ví dụ: <em>There are three children in the room.</em> <em>The news is good.</em> <em>I have a few friends.</em> <em>The students’ room is big.</em></p>`);
+ee(5,"nb",`Viết số nhiều của “book”.|books
+Viết số nhiều của “bus”.|buses
+Viết số nhiều của “day”.|days
+Viết số nhiều của “baby”.|babies
+Viết số nhiều của “woman”.|women
+Viết số nhiều của “foot”.|feet
+Viết số nhiều của “leaf”.|leaves
+Viết số nhiều của “tomato”.|tomatoes
+Viết số nhiều của “photo”.|photos
+Điền some hoặc any: There isn’t ___ milk in the fridge.|any
+Điền much hoặc many: There are too ___ cars on the road.|many
+Điền much hoặc many: I don’t have ___ money.|much
+Viết dạng sở hữu: the bag of Lan → ___ bag|Lan’s
+Viết dạng sở hữu: the toys of the children → the ___ toys|children’s
+Điền a few hoặc a little: I have ___ friends in Hue.|a few`);
+ee(5,"th",`Viết số nhiều của “wife”.|wives
+Viết số nhiều của “country”.|countries
+Viết số nhiều của “dish”.|dishes
+Viết số nhiều của “piano”.|pianos
+Viết số nhiều của “goose”.|geese
+Viết số nhiều của “roof”.|roofs
+Viết số nhiều của “deer”.|deer
+Viết số nhiều của “person”.|people
+Điền much hoặc many: How ___ sugar do you need?|much
+Điền little hoặc a little: She has ___ time, so she is always busy. (hầu như không có)|little
+Điền few hoặc a few: There are ___ seats left, so we can sit together. (vẫn còn một vài)|a few
+Viết dạng sở hữu: the room of the students → the ___ room|students’
+Điền is hoặc are: The police ___ coming.|are
+Điền is hoặc are: The furniture in this room ___ new.|is
+Điền từ chỉ đơn vị: I’d like two ___ of bread. (lát)|slices`);
+ee(5,"vd",`Sửa lỗi cả câu: She gave me some advices.|She gave me some advice.
+Sửa lỗi cả câu: The childrens are playing in the garden.|The children are playing in the garden.
+Sửa lỗi cả câu: There is many people in the room.|There are many people in the room.
+Sửa lỗi cả câu: The news are very surprising.|The news is very surprising.
+Sửa lỗi cả câu: I need three piece of paper.|I need three pieces of paper.
+Sửa lỗi cả câu: He bought two loafs of bread.|He bought two loaves of bread.
+Sửa lỗi cả câu: There isn’t much students in the class.|There aren’t many students in the class.
+Sửa lỗi cả câu: I have little friends, so I feel lonely.|I have few friends, so I feel lonely.
+Sửa lỗi cả câu: Mice is afraid of cats.|Mice are afraid of cats.
+Sửa lỗi cả câu: These scissor are sharp.|These scissors are sharp.
+Sửa lỗi cả câu: She drinks too many water.|She drinks too much water.
+Sửa lỗi cả câu: Two womans came to see you.|Two women came to see you.
+Viết dạng sở hữu: The (woman) ___ clothes are expensive.|women’s
+Chia động từ: Mathematics (be) ___ my favourite subject.|is`);
+add(5,"nb",`Số nhiều của “bus” là:|buses|buss|busses|buses’
+Số nhiều của “day” là:|days|daies|dayes|day
+There are five ___ in the zoo.|monkeys|monkies|monkeyes|monkey`);
+add(5,"th",`How ___ money do you have?|much|many|few|a few
+Số nhiều của “foot” là:|feet|foots|feets|footes
+There are a few ___ left.|apples|apple|apples’|applees
+The ___ toys are on the floor.|children’s|childrens|childrens’|children`);
+add(5,"vd",`He gave me two ___ of advice.|pieces|piece|pieces’|pieced
+Which word is always plural?|trousers|information|news|furniture
+We had ___ rain last week, so the garden is green.|a lot of|many|few|a few`);
+th(6,`<h3>Pronouns – Đại từ</h3><h4>1. Bảng đại từ nhân xưng</h4><ul><li><b>Chủ ngữ:</b> I, you, he, she, it, we, you, they. <b>Tân ngữ:</b> me, you, him, her, it, us, you, them (đứng sau động từ hoặc giới từ: give me, with them).</li><li><b>Tính từ sở hữu</b> (+ danh từ): my, your, his, her, its, our, their. <b>Đại từ sở hữu</b> (đứng một mình, thay cho tính từ sở hữu + danh từ): mine, yours, his, hers, ours, theirs. Ví dụ: This is my book. = This book is mine. Không có its → “its” không có dạng đại từ sở hữu thông dụng.</li><li><b>Phản thân:</b> myself, yourself, himself, herself, itself, ourselves, yourselves, themselves.</li></ul><h4>2. Đại từ phản thân</h4><ul><li>Chủ ngữ và tân ngữ là một người: She looked at herself in the mirror.</li><li>Nhấn mạnh: I did it myself. = Tôi tự làm. <b>by + đại từ phản thân</b> = một mình: She lives by herself.</li><li>Cụm hay gặp: enjoy yourself, help yourself, introduce yourself, hurt oneself, believe in yourself.</li></ul><h4>3. Đại từ chỉ định</h4><ul><li><b>this/these</b> (gần), <b>that/those</b> (xa): This pen is mine. Those books are hers.</li><li>this/that + số ít; these/those + số nhiều.</li></ul><h4>4. Đại từ bất định</h4><ul><li><b>Với -one, -body, -thing:</b> someone, anyone, everyone, no one/nobody, something, anything, everything, nothing. Luôn chia <b>số ít</b>: Everyone is here. Nobody knows.</li><li>some- dùng ở câu khẳng định; any- dùng ở phủ định và nghi vấn; no- mang nghĩa phủ định (không dùng thêm not).</li><li><b>both</b> (cả hai, số nhiều); <b>few/many/several</b> (số nhiều); <b>each/either/neither</b> + of + số nhiều, động từ số ít (Neither of the answers is correct); <b>all/some/most</b> theo danh từ phía sau.</li></ul><h4>5. Đại từ nghi vấn</h4><ul><li><b>who</b> (ai – chủ ngữ), <b>whom</b> (ai – tân ngữ, trang trọng), <b>whose</b> (của ai), <b>what</b> (cái gì), <b>which</b> (cái nào, trong phạm vi hạn chế).</li></ul><h4>6. Mẹo và lỗi thường gặp</h4><ul><li>Sau and: dùng đúng trật tự và hình thức: Tom and I went (không dùng Me and Tom went). Sau giới từ dùng tân ngữ: between you and me.</li><li>Không dùng it để chỉ người đã biết tên; it dùng với thời tiết, thời gian, khoảng cách: It is raining.</li><li>Sai: a friend of me. Đúng: a friend of mine. Sai: He hurt him (cùng một người). Đúng: He hurt himself.</li></ul><p>Ví dụ: <em>She did it herself.</em> <em>This book is mine.</em> <em>Nobody knows the answer.</em> <em>Neither of the answers is correct.</em></p>`);
+ee(6,"nb",`Điền đại từ chủ ngữ: Lan is my friend. ___ is very kind.|She
+Điền đại từ chủ ngữ: My brothers play football. ___ play every day.|They
+Điền đại từ tân ngữ: I love my parents. I call ___ every day.|them
+Điền đại từ tân ngữ: Please help ___. (tôi)|me
+Điền tính từ sở hữu: She loves ___ mother. (của cô ấy)|her
+Điền tính từ sở hữu: We love ___ school. (của chúng tôi)|our
+Điền đại từ sở hữu: This bag is mine. That bag is ___. (của bạn)|yours
+Điền đại từ phản thân: I cut ___ with a knife.|myself
+Điền đại từ phản thân: He taught ___ English.|himself
+Điền this hoặc that: ___ pen in my hand is new. (gần)|This
+Điền these hoặc those: ___ books over there are mine. (xa)|Those
+Điền whose hoặc who: ___ car is this?|Whose
+Điền từ để hỏi: ___ is your name?|What
+Điền đại từ: It is my pen. It is ___.|mine
+Điền đại từ tân ngữ: Tom is here. Give ___ the book.|him`);
+ee(6,"th",`Điền đại từ phản thân: They enjoyed ___ at the party.|themselves
+Điền đại từ phản thân: She made the cake ___. (tự mình)|herself
+Điền đại từ sở hữu: Our house is big, but ___ is bigger. (của họ)|theirs
+Điền đại từ bất định: There is ___ in the room. It’s empty. (không ai)|nobody
+Điền đại từ bất định: ___ knows the answer. (mọi người)|Everyone
+Điền đại từ bất định: Is there ___ in the box? (cái gì đó)|anything
+Điền both hoặc neither: ___ of my parents are teachers. (cả hai)|Both
+Điền neither hoặc both: ___ of the two shirts fits me. (không cái nào)|Neither
+Điền each hoặc every: ___ of the students has a book.|Each
+Điền who hoặc whom: ___ did you meet at the party? (tân ngữ, trang trọng)|Whom
+Điền which hoặc who: ___ do you prefer, tea or coffee?|Which
+Điền that hoặc those: ___ shoes over there are expensive.|Those
+Điền đại từ: Tom and I are friends. ___ play together.|We
+Điền đại từ: This is Mai. I often study with ___.|her
+Điền đại từ: The cat is hungry. Give ___ some food.|it`);
+ee(6,"vd",`Sửa lỗi cả câu: Me and Tom went to school.|Tom and I went to school.
+Sửa lỗi cả câu: She looked at her in the mirror.|She looked at herself in the mirror.
+Sửa lỗi cả câu: This book is her.|This book is hers.
+Sửa lỗi cả câu: Everyone are here.|Everyone is here.
+Sửa lỗi cả câu: Give the book to he.|Give the book to him.
+Sửa lỗi cả câu: Them are my friends.|They are my friends.
+Sửa lỗi cả câu: Nobody know the answer.|Nobody knows the answer.
+Sửa lỗi cả câu: He hurt him while playing football.|He hurt himself while playing football.
+Sửa lỗi cả câu: Our teacher gave we some homework.|Our teacher gave us some homework.
+Sửa lỗi cả câu: It is a friend of me.|It is a friend of mine.
+Sửa lỗi cả câu: Both of the girls is nice.|Both of the girls are nice.
+Sửa lỗi cả câu: She did the work by her.|She did the work by herself.
+Sửa lỗi cả câu: Their house is bigger than our.|Their house is bigger than ours.
+Chia động từ: Neither of my brothers (be) ___ at home.|is`);
+add(6,"nb",`___ is my brother. (anh ấy)|He|Him|His|Himself
+This is ___ car. (của tôi)|my|me|mine|I
+I love ___. (cô ấy)|her|she|hers|herself`);
+add(6,"th",`The book is ___. (của cô ấy)|hers|her|she|herself
+They blame ___ for the accident. (bản thân họ)|themselves|them|theirs|their
+___ is knocking at the door? – It’s Tom.|Who|Whom|Whose|Which
+Some of ___ are late. (chúng tôi)|us|we|our|ours`);
+add(6,"vd",`I’ve lost my pen. Can I borrow ___? (của bạn)|yours|your|you|yourself
+Which sentence is correct?|They did it themselves.|They did it theirselves.|They did it them.|They did it their.
+Each of the boys ___ his own room.|has|have|are having|were having`);
+th(7,`<h3>Regular and Irregular Verbs – Động từ quy tắc và bất quy tắc</h3><h4>1. Ba dạng của động từ</h4><ul><li><b>V1</b> (nguyên mẫu), <b>V2</b> (quá khứ đơn), <b>V3</b> (quá khứ phân từ).</li><li><b>V2</b> dùng cho quá khứ đơn và mệnh đề if của câu điều kiện loại 2. <b>V3</b> dùng cho các thì hoàn thành (have/has/had + V3), câu bị động (be + V3) và câu điều kiện loại 3.</li></ul><h4>2. Động từ quy tắc (V2 = V3 = V + ed)</h4><ul><li>Thêm <i>ed</i>: work → worked, play → played.</li><li>Tận cùng <i>e</i> chỉ thêm <i>d</i>: live → lived, love → loved.</li><li>Phụ âm + y → <i>ied</i>: study → studied, carry → carried; nguyên âm + y thêm ed: play → played.</li><li>Từ một âm tiết có nguyên âm ngắn + phụ âm đơn thì gấp đôi phụ âm: stop → stopped, plan → planned; từ hai âm tiết nhấn âm sau cũng gấp đôi: prefer → preferred.</li><li><b>Cách đọc -ed:</b> /t/ sau âm vô thanh (worked, watched, stopped, laughed); /d/ sau âm hữu thanh và nguyên âm (played, lived, opened); /id/ sau t, d (wanted, needed).</li></ul><h4>3. Động từ bất quy tắc – nhóm theo mẫu</h4><ul><li><b>Cả ba dạng giống nhau:</b> cut, put, hit, let, set, hurt, cost, shut, quit.</li><li><b>V2 = V3:</b> buy – bought, bring – brought, think – thought, catch – caught, teach – taught, have – had, make – made, say – said, tell – told, sell – sold, find – found, keep – kept, sleep – slept, leave – left, meet – met, sit – sat, stand – stood, win – won, lose – lost, build – built, send – sent, spend – spent.</li><li><b>Ba dạng khác nhau:</b> go – went – gone, see – saw – seen, eat – ate – eaten, take – took – taken, give – gave – given, write – wrote – written, speak – spoke – spoken, break – broke – broken, choose – chose – chosen, drink – drank – drunk, begin – began – begun, sing – sang – sung, swim – swam – swum, fly – flew – flown, know – knew – known, grow – grew – grown, draw – drew – drawn, do – did – done, be – was/were – been.</li><li><b>V1 = V3:</b> come – came – come, become – became – become, run – ran – run.</li></ul><h4>4. Mẹo nhớ</h4><ul><li>Đuôi -ought/-aught: bought, brought, thought, caught, taught.</li><li>-ow → -ew / -own: know, grow, throw, fly (flew, flown). -ake → -ook / -aken: take, shake.</li></ul><h4>5. Lỗi thường gặp</h4><ul><li>Sai: has went, have ate, I seen, goed, buyed, did went. Đúng: has gone, have eaten, I saw, went, bought, did go.</li><li>Sau did/didn’t luôn dùng V1: Did he go? He didn’t go.</li></ul><p>Ví dụ: <em>She studied hard.</em> <em>He went home.</em> <em>I have seen that film.</em> <em>The letter was written by Tom.</em></p>`);
+ee(7,"nb",`Viết quá khứ của “eat”.|ate
+Viết quá khứ của “drink”.|drank
+Viết quá khứ của “come”.|came
+Viết quá khứ của “have”.|had
+Viết quá khứ của “make”.|made
+Viết quá khứ của “do”.|did
+Viết quá khứ của “get”.|got
+Viết quá khứ của “sit”.|sat
+Viết quá khứ của “know”.|knew
+Viết quá khứ của “live”.|lived
+Viết quá khứ của “walk”.|walked
+Viết quá khứ của “study”.|studied
+Viết quá khứ của “stop”.|stopped
+Viết quá khứ của “read”.|read
+Viết quá khứ của “say”.|said
+Viết quá khứ của “give”.|gave`);
+ee(7,"th",`Viết quá khứ phân từ của “go”.|gone
+Viết quá khứ phân từ của “see”.|seen
+Viết quá khứ phân từ của “eat”.|eaten
+Viết quá khứ phân từ của “take”.|taken
+Viết quá khứ phân từ của “drink”.|drunk
+Viết quá khứ phân từ của “speak”.|spoken
+Viết quá khứ phân từ của “break”.|broken
+Viết quá khứ phân từ của “choose”.|chosen
+Viết quá khứ phân từ của “give”.|given
+Viết quá khứ phân từ của “begin”.|begun
+Viết quá khứ phân từ của “buy”.|bought
+Viết quá khứ phân từ của “teach”.|taught
+Viết quá khứ phân từ của “do”.|done
+Viết quá khứ phân từ của “fly”.|flown
+Viết quá khứ phân từ của “know”.|known
+Viết quá khứ phân từ của “sing”.|sung`);
+ee(7,"vd",`Chia động từ: She (go) ___ to Hue last week.|went
+Chia động từ: He has (eat) ___ all the cake.|eaten
+Chia động từ: We (see) ___ that film yesterday.|saw
+Chia động từ: They have (write) ___ many letters.|written
+Chia động từ: I (buy) ___ this bag two days ago.|bought
+Chia động từ: The window was (break) ___ by Tom.|broken
+Chia động từ: She has never (fly) ___ in a plane.|flown
+Chia động từ: He (teach) ___ English last year.|taught
+Sửa lỗi cả câu: He has went to school.|He has gone to school.
+Sửa lỗi cả câu: I seen her yesterday.|I saw her yesterday.
+Sửa lỗi cả câu: She buyed a new dress.|She bought a new dress.
+Sửa lỗi cả câu: They have ate dinner.|They have eaten dinner.
+Sửa lỗi cả câu: He drinked all the milk.|He drank all the milk.
+Sửa lỗi cả câu: The cup was broke by the cat.|The cup was broken by the cat.
+Sửa lỗi cả câu: We have began the lesson.|We have begun the lesson.`);
+add(7,"nb",`Quá khứ của “eat” là:|ate|eated|eaten|eats
+Quá khứ của “drink” là:|drank|drinked|drunk|drinks
+Quá khứ của “come” là:|came|comed|comes|coming
+Quá khứ của “have” là:|had|haved|has|having
+Quá khứ của “make” là:|made|maked|makes|making
+Quá khứ của “do” là:|did|done|doed|does
+Quá khứ của “get” là:|got|getted|gotted|gets
+Quá khứ của “sit” là:|sat|sitted|sitting|sits
+Quá khứ của “live” là:|lived|lifed|livd|lives
+Quá khứ của “walk” là:|walked|walkt|walkd|walking
+Quá khứ của “know” là:|knew|knowed|known|knows`);
+add(7,"th",`Quá khứ phân từ của “go” là:|gone|went|goed|going
+Quá khứ phân từ của “drink” là:|drunk|drank|drinked|drinks
+Quá khứ phân từ của “speak” là:|spoken|spoke|speaked|speaks
+Quá khứ phân từ của “choose” là:|chosen|chose|choosed|chooses
+Quá khứ phân từ của “know” là:|known|knew|knowed|knows
+-ed trong “played” được đọc là:|/d/|/t/|/id/|không đọc
+-ed trong “needed” được đọc là:|/id/|/t/|/d/|không đọc
+-ed trong “watched” được đọc là:|/t/|/d/|/id/|không đọc
+-ed trong “stopped” được đọc là:|/t/|/d/|/id/|không đọc
+Which sentence is correct?|She has written a letter.|She has wrote a letter.|She has writed a letter.|She have written a letter.
+Which sentence is correct?|They went home early.|They goed home early.|They gone home early.|They going home early.
+Quá khứ và quá khứ phân từ của “put” là:|put – put|putted – putted|put – putted|puted – puted`);
+add(7,"vd",`Which sentence is INCORRECT?|She has spoke to him.|She has spoken to him.|She spoke to him.|She had spoken to him.
+The song was ___ by a famous singer.|sung|sang|singed|sing
+He has ___ his lunch already.|eaten|ate|eated|eat
+They have ___ in this city since 2000.|lived|lives|live|living
+Dạng V1 – V2 – V3 đúng là:|drink – drank – drunk|drink – drunk – drank|drink – drinked – drunk|drink – drank – drank
+Dạng V1 – V2 – V3 đúng là:|fly – flew – flown|fly – flied – flied|fly – flew – flew|fly – flown – flew
+Dạng V1 – V2 – V3 đúng là:|take – took – taken|take – taked – taken|take – took – took|take – taken – took
+Which sentence is INCORRECT?|He has drank all the water.|He has drunk all the water.|He drank all the water.|He had drunk all the water.
+I have never ___ such a beautiful place.|seen|saw|seed|see
+She ___ her homework before dinner yesterday.|did|done|doed|does
+The thief was ___ by the police.|caught|catched|catches|catching
+Which verb is regular?|visit|go|see|take`);
+th(8,`<h3>Auxiliary Verbs – Trợ động từ</h3><h4>1. Khái niệm và phân loại</h4><ul><li>Trợ động từ giúp tạo thì, thể phủ định, nghi vấn, bị động và nhấn mạnh; bản thân không mang nghĩa chính (khi làm động từ chính, be/do/have có nghĩa riêng).</li><li>Gồm 3 trợ động từ chính: <b>be</b> (am/is/are/was/were/been/being), <b>do</b> (do/does/did), <b>have</b> (have/has/had); cùng các động từ khuyết thiếu (can, will, must…).</li></ul><h4>2. Trợ động từ be</h4><ul><li><b>Thì tiếp diễn:</b> be + V-ing (She is reading; They were playing).</li><li><b>Bị động:</b> be + V3 (The cake was made by my mother).</li><li>Khi là động từ chính, be không cần trợ động từ: She isn’t tired. Are you ready?</li></ul><h4>3. Trợ động từ do / does / did</h4><ul><li>Dùng với động từ thường ở hiện tại đơn và quá khứ đơn: He doesn’t like fish. Did you see him?</li><li>Sau do/does/did <b>luôn là V nguyên mẫu</b> (không s, không ed): Does she go? Did he go?</li><li><b>Nhấn mạnh:</b> I do like this song. <b>Tránh lặp động từ:</b> She works harder than I do.</li><li>Không dùng do với be và modal: Does she can swim ✗ → Can she swim ✓.</li></ul><h4>4. Trợ động từ have / has / had</h4><ul><li>Hoàn thành: have/has + V3 (hiện tại hoàn thành), had + V3 (quá khứ hoàn thành), will have + V3 (tương lai hoàn thành).</li><li>Have/has been + V-ing: hoàn thành tiếp diễn. Have to + V: phải làm gì (có thể mượn do để hỏi/phủ định: Do you have to go?).</li></ul><h4>5. Dạng rút gọn thường gặp</h4><ul><li>isn’t, aren’t, wasn’t, weren’t, don’t, doesn’t, didn’t, haven’t, hasn’t, hadn’t, won’t, can’t, shan’t.</li></ul><h4>6. Câu trả lời ngắn và câu đồng tình</h4><ul><li>Dùng đúng trợ động từ của câu hỏi: Do you like tea? – Yes, I do. / No, I don’t. Has she finished? – Yes, she has.</li><li><b>So/Neither:</b> so + trợ động từ + S (She likes tea, and so do I); neither/nor + trợ động từ + S (He didn’t go, and neither did I). <b>Too/either:</b> I like it, too. I don’t like it, either.</li></ul><h4>7. Đảo trợ động từ</h4><ul><li>Not only does he sing well, but he also dances well. Hardly had she arrived when it rained. Never have I seen such a view.</li></ul><h4>8. Lưu ý</h4><ul><li>Câu hỏi gián tiếp không đảo: Do you know where she lives? (không phải where does she live).</li><li>Sai: She doesn’t likes; Did he went; Do she like. Đúng: She doesn’t like; Did he go; Does she like.</li></ul><p>Ví dụ: <em>She doesn’t like fish.</em> <em>Did he finish his homework?</em> <em>He has gone home.</em> <em>Not only does he sing well, but he also dances well.</em></p>`);
+ee(8,"nb",`Điền trợ động từ: ___ you like pizza?|Do
+Điền trợ động từ: She ___ not like fish.|does
+Điền trợ động từ: ___ he play football on Sundays?|Does
+Điền trợ động từ: They ___ not go to school yesterday.|did
+Điền trợ động từ: ___ you see him last night?|Did
+Điền trợ động từ: I ___ not watching TV now.|am
+Điền trợ động từ: She ___ cooking dinner now.|is
+Điền trợ động từ: They ___ playing in the garden.|are
+Điền trợ động từ: He ___ finished his work.|has
+Điền trợ động từ: We ___ lived here for ten years.|have
+Điền trợ động từ: The cake ___ made by my mother.|was
+Điền trợ động từ: ___ she been to Paris?|Has
+Viết dạng rút gọn: does not → ___|doesn’t
+Viết dạng rút gọn: did not → ___|didn’t
+Viết dạng rút gọn: have not → ___|haven’t`);
+ee(8,"th",`Viết câu phủ định: He likes tea.|He doesn’t like tea.
+Viết câu phủ định: They went to the park.|They didn’t go to the park.
+Viết câu phủ định: She is reading a book.|She isn’t reading a book.
+Viết câu phủ định: I have finished my homework.|I haven’t finished my homework.
+Chuyển sang nghi vấn: She likes music.|Does she like music?
+Chuyển sang nghi vấn: They went home.|Did they go home?
+Chuyển sang nghi vấn: He is sleeping.|Is he sleeping?
+Chuyển sang nghi vấn: You have eaten lunch.|Have you eaten lunch?
+Trả lời ngắn: Do you like tea? – Yes, I ___.|do
+Trả lời ngắn: Did he come yesterday? – No, he ___.|didn’t
+Trả lời ngắn: Has she finished? – Yes, she ___.|has
+Trả lời ngắn: Are they students? – No, they ___.|aren’t
+Điền từ: She likes tea, and so ___ I.|do
+Điền từ: He didn’t go, and neither ___ I.|did
+Điền trợ động từ: What time ___ the train leave?|does`);
+ee(8,"vd",`Sửa lỗi cả câu: Does she can swim?|Can she swim?
+Sửa lỗi cả câu: She don’t know the answer.|She doesn’t know the answer.
+Sửa lỗi cả câu: Did he went home?|Did he go home?
+Sửa lỗi cả câu: He doesn’t likes coffee.|He doesn’t like coffee.
+Sửa lỗi cả câu: They doesn’t live here.|They don’t live here.
+Sửa lỗi cả câu: Do she like music?|Does she like music?
+Sửa lỗi cả câu: I am not agree with you.|I don’t agree with you.
+Sửa lỗi cả câu: Where you did go yesterday?|Where did you go yesterday?
+Sửa lỗi cả câu: Is he has a car?|Does he have a car?
+Sửa lỗi cả câu: Don’t he know the truth?|Doesn’t he know the truth?
+Điền: Not only ___ she sing well, but she also dances well.|does
+Điền: Never ___ I seen such a beautiful view.|have
+Điền: I have been waiting, and she ___ been waiting too.|has
+Điền: ___ the letter been sent yet?|Has`);
+add(8,"nb",`She ___ not like coffee.|does|do|is|has
+___ they live in Hue?|Do|Does|Is|Has
+He ___ working now.|is|does|has|do`);
+add(8,"th",`He ___ been to Paris twice.|has|have|does|is
+___ she going to the party tonight?|Is|Does|Has|Do
+I ___ not seen him since Monday.|have|am|do|did
+The report ___ written last week.|was|did|had|does`);
+add(8,"vd",`She ___ not finished the homework when I called, but she ___ finishing it now.|had – is|has – does|did – has|was – is
+Which sentence is INCORRECT?|Did he went home?|Did he go home?|Does he go home?|Has he gone home?
+Do you know what time ___?|it is|is it|does it|it does`);
 const LV=[["nb","Nhận biết"],["th","Thông hiểu"],["vd","Vận dụng"]],DAY=864e5,PW="tien@123456";
-let T=0,tab="lt",lv="nb",ty="m",TS=0,TQ=[],TA=[],TE=0,TI=0;
+let T=0,tab="lt",lv="nb",ty="m",TS=0,TQ=[],TA=[],TE=0,TI=0,qSearch="",catFilter=0;
 const M={},$=i=>document.getElementById(i);
 const ld=k=>{try{return localStorage.getItem(k)}catch(e){return M[k]||null}};
 const sv=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){M[k]=v}};
 const pool=d=>LV.flatMap(([k])=>d.x[k].m);
+const epool=d=>LV.flatMap(([k])=>d.x[k].e);
 const nm=s=>s.toLowerCase().replace(/[’‘]/g,"'").replace(/[.!\s]+$/,"").replace(/\s+/g," ").trim();
+
+function toggleTheme(){
+  const root=document.documentElement;
+  const cur=root.getAttribute("data-theme");
+  const next=cur==="dark"?"light":cur==="light"?"dark":(window.matchMedia("(prefers-color-scheme:dark)").matches?"light":"dark");
+  root.setAttribute("data-theme",next);
+  sv("gg_theme",next);
+}
+(function initTheme(){
+  const saved=ld("gg_theme");
+  if(saved)document.documentElement.setAttribute("data-theme",saved);
+})();
+
 function st(){const n=Date.now(),l=+ld("gg_l"),s=+ld("gg_s");
  if(l&&n-l<365*DAY)return{k:"full",d:Math.ceil((365*DAY-(n-l))/DAY)};
  if(n-s<3*DAY)return{k:"trial",d:Math.ceil((3*DAY-(n-s))/DAY)};
  return{k:"lock"}}
 function act(){if($("pw").value===PW){sv("gg_l",Date.now());R()}else $("er").textContent="Mật khẩu chưa đúng, hãy nhập lại."}
-const mq=(q,i,m)=>`<div class="c" id="q${i}"><b>${i+1}. ${q[0]}</b><div>${q[1].map((t,j)=>{const c=m=="r"?(j==q[2]?" ok":j==TA[i]?" no":""):m=="t"&&TA[i]===j?" sel":"";const f=m=="p"?`pk(this,${j},${q[2]})`:m=="t"?`sl(${i},${j})`:"";return`<button class="o${c}" onclick="${f}">${"ABCD"[j]}. ${t}</button>`}).join("")}</div></div>`;
+const mq=(q,i,m)=>`<div class="c" id="q${i}"><div class="q-head"><span class="q-badge">Câu ${i+1}</span><b>${q[0]}</b></div><div>${q[1].map((t,j)=>{const c=m=="r"?(j==q[2]?" ok":j==TA[i]?" no":""):m=="t"&&TA[i]===j?" sel":"";const f=m=="p"?`pk(this,${j},${q[2]})`:m=="t"?`sl(${i},${j})`:"";return`<button class="o${c}" onclick="${f}"><b>${"ABCD"[j]}.</b> ${t}</button>`}).join("")}</div></div>`;
 function pk(b,j,c){const p=b.parentNode;if(p.dataset.d)return;p.dataset.d=1;[...p.children].forEach((o,k)=>{if(k==c)o.classList.add("ok");else if(o==b)o.classList.add("no")})}
-function sl(i,j){TA[i]=j;[...document.querySelectorAll("#q"+i+" .o")].forEach((o,k)=>o.classList.toggle("sel",k==j))}
+function sl(i,j){TA[i]=j;[...document.querySelectorAll("#q"+i+" .o")].forEach((o,k)=>o.classList.toggle("sel",k==j));const ansEl=$("ansCount");if(ansEl)ansEl.textContent=TA.filter(x=>x!==undefined).length+"/"+TQ.length;}
 function ck(i){const a=D.find(x=>x.id==T).x[lv].e[i][1],r=$("r"+i),ok=nm($("e"+i).value)==nm(a);r.className=ok?"ok2":"no2";r.textContent=(ok?"✓ Chính xác. ":"✗ Đáp án: ")+a}
 function bt(d){const x=d.x[lv];
- let h=`<div class="r">${LV.map(([k,l])=>`<button class="b${lv==k?" on":""}" onclick="lv='${k}';R()">${l}</button>`).join("")}</div><div class="r"><button class="b${ty=="m"?" on":""}" onclick="ty='m';R()">Trắc nghiệm 4 đáp án</button><button class="b${ty=="e"?" on":""}" onclick="ty='e';R()">Tự luận</button></div>`;
- return h+(ty=="m"?x.m.map((q,i)=>mq(q,i,"p")).join(""):x.e.map((q,i)=>`<div class="c"><b>${i+1}. ${q[0]}</b><br><input class="i" id="e${i}"> <button class="b" onclick="ck(${i})">Kiểm tra</button><div id="r${i}"></div></div>`).join(""))}
+ let h=`<div class="r">${LV.map(([k,l])=>{const cnt=ty=="m"?d.x[k].m.length:d.x[k].e.length;return`<button class="b${lv==k?" on":""}" onclick="lv='${k}';R()">${l} (${cnt})</button>`}).join("")}</div><div class="r"><button class="b${ty=="m"?" on":""}" onclick="ty='m';R()">Trắc nghiệm 4 đáp án (${ x.m.length })</button><button class="b${ty=="e"?" on":""}" onclick="ty='e';R()">Tự luận (${ x.e.length })</button></div>`;
+ return h+(ty=="m"?x.m.map((q,i)=>mq(q,i,"p")).join(""):x.e.map((q,i)=>`<div class="c"><div class="q-head"><span class="q-badge">Câu ${i+1}</span><b>${q[0]}</b></div><input class="i" id="e${i}" placeholder="Nhập câu trả lời của bạn..." onkeydown="if(event.key==='Enter')ck(${i})"> <button class="b on" onclick="ck(${i})">Kiểm tra</button><div id="r${i}"></div></div>`).join(""))}
 function kt(d){
- if(TS==0)return`<div class="c"><h3>Bài kiểm tra 50 phút</h3><p>${Math.min(40,pool(d).length)} câu trắc nghiệm, thời gian làm bài 50 phút.</p><button class="b on" onclick="start()">Bắt đầu làm bài</button></div>`;
- if(TS==1)return`<div class="c tm"><span>⏱ <b id="tm"></b></span><button class="b on" onclick="fin()">Nộp bài</button></div>`+TQ.map((q,i)=>mq(q,i,"t")).join("");
+ if(TS==0)return`<div class="c"><h3 class="grammar-heading">BÀI KIỂM TRA 50 PHÚT</h3><p>Đề kiểm tra gồm <b>${Math.min(40,pool(d).length)} câu trắc nghiệm</b> được trộn ngẫu nhiên từ các mức độ Nhận biết, Thông hiểu, Vận dụng. Thời gian làm bài <b>50 phút</b>.</p><button class="b on" onclick="start()">Bắt đầu làm bài</button></div>`;
+ if(TS==1)return`<div class="c tm"><span>⏱ Thời gian: <b id="tm"></b> • Đã chọn: <b id="ansCount">${TA.filter(x=>x!==undefined).length}/${TQ.length}</b></span><button class="b on" onclick="fin()">Nộp bài</button></div>`+TQ.map((q,i)=>mq(q,i,"t")).join("");
  const c=TQ.filter((q,i)=>TA[i]===q[2]).length,n=TQ.length;
- return`<div class="c"><h3>Kết quả: ${c}/${n} câu đúng, ${(c/n*10).toFixed(2)} điểm</h3><button class="b on" onclick="TS=0;R()">Làm lại</button></div>`+TQ.map((q,i)=>mq(q,i,"r")).join("")}
+ return`<div class="c"><h3 class="grammar-heading">KẾT QUẢ: ${c}/${n} CÂU ĐÚNG — ${(c/n*10).toFixed(2)} ĐIỂM</h3><button class="b on" onclick="TS=0;R()">Làm lại</button></div>`+TQ.map((q,i)=>mq(q,i,"r")).join("")}
 function start(){clearInterval(TI);TQ=pool(D.find(x=>x.id==T)).slice().sort(()=>Math.random()-.5).slice(0,40);TA=[];TE=Date.now()+50*60*1e3;TS=1;R();tick();TI=setInterval(tick,1000)}
 function tick(){const l=Math.max(0,TE-Date.now()),e=$("tm");if(e)e.textContent=String(l/6e4|0).padStart(2,"0")+":"+String(l/1e3%60|0).padStart(2,"0");if(!l)fin()}
 function fin(){clearInterval(TI);TS=2;R();scrollTo(0,0)}
 function tb(k){clearInterval(TI);tab=k;TS=0;R()}
-function go(id){clearInterval(TI);T=id;tab="lt";TS=0;R()}
+function go(id){clearInterval(TI);T=id;tab="lt";TS=0;R();scrollTo(0,0)}
+function setCat(c){catFilter=c;R()}
+function onSearch(val){qSearch=val;R();const inp=$("searchInput");if(inp){inp.focus();inp.setSelectionRange(inp.value.length,inp.value.length);}}
+
 function R(){const s=st(),a=$("app");
- $("bd").textContent=s.k=="full"?"Đã kích hoạt, còn "+s.d+" ngày":s.k=="trial"?"Dùng thử, còn "+s.d+" ngày":"Hết hạn dùng thử";
- if(s.k=="lock"){a.innerHTML=`<div class="c"><h2>Đã hết 3 ngày dùng thử</h2><p>Nhập mật khẩu để dùng tiếp trong 365 ngày.</p><input class="i" id="pw" type="password" placeholder="Mật khẩu"> <button class="b on" onclick="act()">Kích hoạt</button><p id="er" class="no2"></p></div>`;return}
- if(!T){a.innerHTML=`<h2>Chọn chủ điểm ngữ pháp</h2>`+GR.map(([t,l])=>`<h3>${t}</h3><div class="g">${l.map(i=>{const d=D.find(x=>x.id==i),n=pool(d).length;return`<div class="c k" onclick="go(${i})"><b>${d.n}</b><br><small>${n?n+" câu trắc nghiệm":"Đang soạn"}</small></div>`}).join("")}</div>`).join("");return}
+ $("bd").textContent=s.k=="full"?"✓ Đã kích hoạt ("+s.d+" ngày)":s.k=="trial"?"⏳ Dùng thử ("+s.d+" ngày)":"🔒 Hết hạn dùng thử";
+ if(s.k=="lock"){a.innerHTML=`<div class="c"><h2 class="grammar-heading">ĐÃ HẾT 3 NGÀY DÙNG THỬ</h2><p>Nhập mật khẩu bản quyền của Thầy Phạm Tiến (ĐT: 0943930787) để kích hoạt sử dụng tiếp trong 365 ngày.</p><input class="i" id="pw" type="password" placeholder="Mật khẩu"> <button class="b on" onclick="act()">Kích hoạt</button><p id="er" class="no2"></p></div>`;return}
+ if(!T){
+   const totalMC=D.reduce((acc,d)=>acc+pool(d).length,0);
+   const totalEs=D.reduce((acc,d)=>acc+epool(d).length,0);
+   const kw=qSearch.trim().toLowerCase();
+   const statsHtml=`<div class="stats-grid">
+     <div class="stat-card"><div class="stat-ic">📚</div><div><div class="stat-val">${D.length} CHUYÊN ĐỀ</div><div class="stat-lbl">4 Nhóm Ngữ pháp Trọng tâm</div></div></div>
+     <div class="stat-card"><div class="stat-ic s2">✅</div><div><div class="stat-val">${totalMC} CÂU HỎI</div><div class="stat-lbl">Trắc nghiệm 4 Đáp án</div></div></div>
+     <div class="stat-card"><div class="stat-ic s3">✍️</div><div><div class="stat-val">${totalEs} BÀI TẬP</div><div class="stat-lbl">Tự luận Rèn Kỹ năng</div></div></div>
+     <div class="stat-card"><div class="stat-ic s4">🎯</div><div><div class="stat-val">3 MỨC ĐỘ</div><div class="stat-lbl">Nhận biết • Thông hiểu • Vận dụng</div></div></div>
+   </div>`;
+   const toolbarHtml=`<div class="toolbar">
+     <div class="search-box"><span class="search-ic">🔍</span><input id="searchInput" type="search" placeholder="Tìm nhanh chủ điểm ngữ pháp (VD: hiện tại đơn, câu bị động, mạo từ...)" value="${qSearch.replace(/"/g,'&quot;')}" oninput="onSearch(this.value)"></div>
+     <div class="filter-pills">
+       <button class="fp${catFilter===0?" on":""}" onclick="setCat(0)">Tất cả (${D.length})</button>
+       ${GR.map(([t,l],idx)=>`<button class="fp${catFilter===idx+1?" on":""}" onclick="setCat(${idx+1})">${t.toUpperCase()} (${l.length})</button>`).join("")}
+     </div>
+   </div>`;
+   const groupsHtml=GR.map(([t,l],idx)=>{
+     if(catFilter!==0 && catFilter!==idx+1)return "";
+     const filtered=l.filter(i=>{
+       const d=D.find(x=>x.id==i);
+       return !kw || d.n.toLowerCase().includes(kw) || d.t.toLowerCase().includes(kw);
+     });
+     if(!filtered.length)return "";
+     return `<div class="section-header"><h3 class="cat-heading">${t.toUpperCase()}</h3><span class="cat-badge">${filtered.length} CHỦ ĐIỂM</span></div><div class="g">${filtered.map((i,kIdx)=>{
+       const d=D.find(x=>x.id==i),n=pool(d).length,ne=epool(d).length;
+       return `<div class="c k" onclick="go(${i})"><div class="k-top"><b class="topic-heading">${d.n.toUpperCase()}</b><span class="k-num">#${String(kIdx+1).padStart(2,"0")}</span></div><div class="k-meta"><span class="meta-pill mc">${n?n+" câu trắc nghiệm":"Đang soạn"}</span>${ne?`<span class="meta-pill es">${ne} câu tự luận</span>`:""}</div></div>`;
+     }).join("")}</div>`;
+   }).join("");
+   a.innerHTML=`<h2 class="grammar-heading">CHỌN CHỦ ĐIỂM NGỮ PHÁP</h2>`+statsHtml+toolbarHtml+(groupsHtml||`<div class="c">Không tìm thấy chủ điểm ngữ pháp phù hợp với từ khóa.</div>`);
+   return;
+ }
  const d=D.find(x=>x.id==T);
- a.innerHTML=`<button class="b" onclick="clearInterval(TI);T=0;R()">Quay lại danh sách</button><h2>${d.n}</h2><div class="r">${[["lt","Lý thuyết"],["bt","Bài tập"],["kt","Kiểm tra 50 phút"]].map(([k,l])=>`<button class="b${tab==k?" on":""}" onclick="tb('${k}')">${l}</button>`).join("")}</div>`+(!pool(d).length?"<div class=\"c\">Chủ điểm này đang được soạn.</div>":tab=="lt"?`<div class="c th">${d.t}</div>`:tab=="bt"?bt(d):kt(d))}
+ const grp=GR.find(([t,l])=>l.includes(d.id));
+ a.innerHTML=`<div class="topic-bar"><div class="topic-bar-top"><button class="b" onclick="clearInterval(TI);T=0;R()">← Quay lại danh sách</button>${grp?`<span class="cat-badge">${grp[0].toUpperCase()}</span>`:""}</div><h2 class="topic-title-main">${d.n.toUpperCase()}</h2><div class="r">${[["lt","📖 Lý thuyết"],["bt","✍️ Bài tập ("+pool(d).length+" TN • "+epool(d).length+" TL)"],["kt","⏱ Kiểm tra 50 phút"]].map(([k,l])=>`<button class="b${tab==k?" on":""}" onclick="tb('${k}')">${l}</button>`).join("")}</div></div>`+(!pool(d).length?"<div class=\"c\">Chủ điểm này đang được soạn.</div>":tab=="lt"?`<div class="c th">${d.t}</div>`:tab=="bt"?bt(d):kt(d))}
 if(!ld("gg_s"))sv("gg_s",Date.now());
 R();
 </script></body></html>
