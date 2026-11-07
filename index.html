@@ -755,7 +755,7 @@ small { color: var(--mu); }
       <div class="teacher-info">
         <span>📌 Bản quyền thuộc về Thầy Phạm Tiến - GV Tiếng Anh trường THPT Bỉm Sơn - <a href="tel:0943930787" class="phone-pill">ĐT: 0943930787</a></span>
       </div>
-      <div>✨ 36 Chuyên đề • 3 Mức độ (Nhận biết – Thông hiểu – Vận dụng)</div>
+      <div>✨ 43 Chuyên đề • 3 Mức độ (Nhận biết – Thông hiểu – Vận dụng)</div>
     </div>
   </header>
   <div id="app"></div>
@@ -3193,6 +3193,257 @@ th(36,`<h3>Subject-Verb Agreement – Sự hòa hợp giữa Chủ ngữ và Đ�
 </ul>
 <p>Ví dụ tổng hợp: <em>The number of students is increasing, while a number of students are absent.</em> • <em>Neither he nor his friends are here.</em> • <em>The teacher, along with her students, is in the lab.</em></p>`);
 
+// Register new Clause topics 37..43 and add them to GR[2] ("3. Các loại mệnh đề")
+[
+  [37, "Mệnh đề chỉ nguyên nhân (Clauses of Reason)"],
+  [38, "Mệnh đề chỉ kết quả (Clauses of Result)"],
+  [39, "Mệnh đề chỉ sự đối lập – nhượng bộ (Clauses of Contrast & Concession)"],
+  [40, "Mệnh đề chỉ mục đích (Clauses of Purpose)"],
+  [41, "Mệnh đề chỉ thời gian (Clauses of Time)"],
+  [42, "Mệnh đề chỉ cách thức và nơi chốn (Clauses of Manner & Place)"],
+  [43, "Mệnh đề phân từ (Participle Clauses)"]
+].forEach(([id, n]) => {
+  if (!D.find(x => x.id === id)) {
+    S(id, n);
+  }
+});
+GR[2][1] = [27, 29, 28, 37, 38, 39, 40, 41, 42, 43];
+
+th(37, `<h3>Clauses of Reason – Mệnh đề chỉ nguyên nhân</h3>
+<h4>1. Các liên từ mở đầu mệnh đề chỉ nguyên nhân (+ S + V)</h4>
+<ul>
+<li><b>Because + S + V:</b> Nhấn mạnh trực tiếp vào nguyên nhân (thường dùng trả lời câu hỏi <i>Why?</i>, đứng đầu hoặc giữa câu): <em>He stayed at home because he was ill.</em></li>
+<li><b>Since / As + S + V:</b> Mang nghĩa “vì, bởi lẽ” – dùng khi nguyên nhân đã được cả người nói và người nghe biết rõ (thường đứng đầu câu, có dấu phẩy ngăn cách): <em>Since/As it was raining heavily, we cancelled the trip.</em></li>
+<li><b>Now (that) + S + V:</b> “Vì giờ đây...” – giải thích tình huống mới phát sinh ở hiện tại/tương lai: <em>Now that you have finished your exams, you can relax.</em></li>
+<li><b>Seeing (that) / Considering (that) + S + V:</b> “Xét thấy rằng, vì thực tế là...”: <em>Seeing that the weather is bad, we should stay indoors.</em></li>
+<li><b>For + S + V:</b> Liên từ kết hợp đứng giữa câu (sau dấu phẩy), văn phong trang trọng: <em>He felt exhausted, for he had worked all night.</em></li>
+<li><b>In that + S + V:</b> “Ở chỗ là, vì thực tế là” (giải thích cụ thể thêm cho nhận định phía trước).</li>
+</ul>
+<h4>2. Phân biệt Mệnh đề nguyên nhân (Because/Since/As) và Cụm giới từ chỉ nguyên nhân</h4>
+<ul>
+<li><b>Mệnh đề (Clause):</b> <b>Because / Since / As + S + V</b>.</li>
+<li><b>Cụm từ (Phrase):</b> <b>Because of / Due to / Owing to / Thanks to / On account of / As a result of + Danh từ / Cụm danh từ (N/NP) / Đại từ / V-ing</b>.
+  <br>• <i>Thanks to:</i> nhờ có (thường mang nghĩa tích cực).
+  <br>• <i>Due to / Owing to / Because of:</i> bởi vì, do.
+  <br>• Nếu muốn giữ mệnh đề sau các cụm giới từ này, phải thêm <b>the fact that + S + V</b> (<em>due to the fact that it rained heavily</em>).</li>
+</ul>
+<h4>3. Quy tắc biến đổi từ Because + S + V sang Because of / Due to + N/V-ing (Trọng tâm đề thi)</h4>
+<ul>
+<li><b>Quy tắc 1 – Hai vế CÙNG CHỦ NGỮ:</b> Bỏ chủ ngữ ở vế <i>because</i>, đưa động từ về <b>V-ing</b>:
+  <br>• <em>Because <b>she</b> was tired, <b>she</b> went to bed early. → Because of <b>being tired</b>, she went to bed early.</em></li>
+<li><b>Quy tắc 2 – Chủ ngữ là Danh từ + be + Tính từ:</b> Đổi thành <b>Tính từ sở hữu / the + Tính từ + Danh từ</b>:
+  <br>• <em>Because the weather was cold, we stayed home. → Because of <b>the cold weather</b>, we stayed home.</em>
+  <br>• <em>Because she was sick, she was absent. → Because of <b>her sickness / illness</b>, she was absent.</em></li>
+<li><b>Quy tắc 3 – Động từ thường + Trạng từ:</b> Đổi động từ thành danh từ, trạng từ thành tính từ:
+  <br>• <em>Because he behaved badly... → Because of <b>his bad behaviour</b>...</em>
+  <br>• <em>Because it rained heavily... → Because of <b>the heavy rain</b>...</em></li>
+</ul>
+<h4>4. Lỗi thường gặp</h4>
+<ul>
+<li><b>Dùng cả “Because” và “so” trong cùng một câu:</b> Sai: <i>Because he was late, so he missed the bus.</i> → Đúng: <b>Because he was late, he missed the bus.</b></li>
+<li><b>Dùng “Because of + S + V”:</b> Sai: <i>Because of the rain was heavy, we stayed in.</i> → Đúng: <b>Because the rain was heavy / Because of the heavy rain, we stayed in.</b></li>
+</ul>
+<p>Ví dụ tổng hợp: <em>Because it rained heavily, the match was postponed.</em> • <em>Because of the heavy rain, the match was postponed.</em> • <em>Now that she has graduated, she is looking for a job.</em></p>`);
+
+th(38, `<h3>Clauses of Result – Mệnh đề chỉ kết quả</h3>
+<h4>1. Cấu trúc SO ... THAT (Quá... đến nỗi mà...)</h4>
+<ul>
+<li><b>Với Tính từ hoặc Trạng từ:</b>
+  <br>• Công thức: <b>S + V(thường) / be + so + adj / adv + that + S + V</b>.
+  <br>• Ví dụ: <em>The coffee was <b>so hot that</b> I couldn’t drink it. He drove <b>so carelessly that</b> he caused an accident.</em></li>
+<li><b>Với Danh từ có từ chỉ số lượng (many, few, much, little):</b>
+  <br>• Đếm được số nhiều: <b>S + V + so + many / few + N(số nhiều) + that + S + V</b> (<em>She had <b>so many tasks that</b> she worked until midnight.</em>).
+  <br>• Không đếm được: <b>S + V + so + much / little + N(không đếm được) + that + S + V</b> (<em>There was <b>so much noise that</b> I couldn’t concentrate.</em>).</li>
+<li><b>Cấu trúc đặc biệt với tính từ + a/an + danh từ đếm được số ít:</b>
+  <br>• <b>so + adj + a/an + N(số ít) + that + S + V</b> (<em>It was <b>so cold a day that</b> we stayed indoors.</em>).</li>
+</ul>
+<h4>2. Cấu trúc SUCH ... THAT (Quá... đến nỗi mà...)</h4>
+<ul>
+<li><b>Với cụm danh từ đếm được số ít:</b>
+  <br>• <b>S + V + such + a / an + adj + N(số ít) + that + S + V</b> (<em>It was <b>such an interesting book that</b> I read it twice.</em>).</li>
+<li><b>Với danh từ số nhiều hoặc danh từ không đếm được (KHÔNG dùng a/an!):</b>
+  <br>• <b>S + V + such + adj + N(số nhiều / không đếm được) + that + S + V</b> (<em>It was <b>such bad weather that</b> the flight was cancelled. They are <b>such friendly people that</b> everyone loves them.</em>).</li>
+<li><b>Với a lot of + Danh từ:</b>
+  <br>• <b>such + a lot of + N + that + S + V</b> (Lưu ý: <i>many/much/few/little</i> đi với <b>so</b>; còn <i>a lot of</i> đi với <b>such</b>!).</li>
+</ul>
+<h4>3. Chuyển đổi tương đương giữa SO/SUCH ... THAT và TOO ... TO / ENOUGH ... TO</h4>
+<ul>
+<li><b>Chuyển sang TOO ... TO (Quá... đến mức không thể... – mang nghĩa phủ định):</b>
+  <br>• Công thức: <b>S + V + too + adj / adv (+ for O) + to V(nguyên mẫu)</b>.
+  <br>• <em>The box was <b>so heavy that</b> she couldn’t lift it. → The box was <b>too heavy for her to lift</b>.</em> (Lưu ý: bỏ tân ngữ <i>it</i> ở cuối câu khi <i>it</i> trùng với chủ ngữ <i>The box</i>!).</li>
+<li><b>Chuyển sang ENOUGH ... TO (Đủ... để có thể...):</b>
+  <br>• Công thức: <b>S + V + adj / adv + enough (+ for O) + to V(nguyên mẫu)</b>.
+  <br>• <em>He is <b>so old that</b> he can drive a car. → He is <b>old enough to drive</b> a car.</em></li>
+</ul>
+<h4>4. Đảo ngữ mệnh đề kết quả (Nâng cao)</h4>
+<ul>
+<li><b>So + Adj / Adv + Trợ động từ / be + S + (V) + that + S + V:</b> <em><b>So tired was she that</b> she fell asleep at her desk.</em></li>
+<li><b>Such + be + Cụm danh từ + that + S + V:</b> <em><b>Such was the force of the storm that</b> many trees were uprooted.</em></li>
+</ul>
+<h4>5. Lỗi thường gặp</h4>
+<ul>
+<li><b>Dùng “so” trước cụm “a/an + adj + N”:</b> Sai: <i>It was so a cold day that...</i> → Đúng: <b>It was such a cold day that...</b></li>
+<li><b>Thêm “a/an” sau “such” khi danh từ không đếm được (weather, news, advice, furniture, progress):</b> Sai: <i>such a bad weather</i> → Đúng: <b>such bad weather</b>.</li>
+</ul>
+<p>Ví dụ tổng hợp: <em>She was so tired that she fell asleep immediately.</em> • <em>It was such a difficult test that few students passed.</em> • <em>There was so much traffic that we arrived late.</em></p>`);
+
+th(39, `<h3>Clauses of Contrast &amp; Concession – Mệnh đề chỉ sự đối lập và nhượng bộ</h3>
+<h4>1. Mệnh đề nhượng bộ với ALTHOUGH / THOUGH / EVEN THOUGH</h4>
+<ul>
+<li><b>Công thức:</b> <b>Although / Though / Even though + S + V, S + V</b> (Mặc dù... nhưng...).
+  <br>• <i>Even though</i> nhấn mạnh sự tương phản mạnh hơn <i>although</i>; <i>though</i> có thể đứng cuối câu độc lập (mang nghĩa “tuy nhiên”: <em>It was hard work; I enjoyed it, though.</em>).
+  <br>• <b>QUY TẮC TUYỆT ĐỐI:</b> Đã có <i>Although / Though / Even though</i> ở vế trước thì <b>KHÔNG ĐƯỢC dùng “but”</b> ở vế sau!</li>
+</ul>
+<h4>2. Phân biệt với Cụm giới từ DESPITE / IN SPITE OF</h4>
+<ul>
+<li><b>Despite / In spite of + Danh từ / Cụm danh từ (N/NP) / V-ing:</b>
+  <br>• <em><b>Although</b> it rained heavily, they went out. → <b>Despite / In spite of</b> the heavy rain, they went out.</em>
+  <br>• <em><b>Although</b> he was ill, he went to school. → <b>Despite / In spite of</b> being ill (his illness), he went to school.</em></li>
+<li><b>Despite the fact that / In spite of the fact that + S + V:</b> Khi muốn giữ nguyên mệnh đề S + V sau <i>despite / in spite of</i>.</li>
+<li><b>Lưu ý:</b> Tuyệt đối không viết <i>Despite of</i> (<b>Despite</b> không có <i>of</i>; <b>In spite of</b> phải có <i>of</i>).</li>
+</ul>
+<h4>3. Cấu trúc nhượng bộ nâng cao (Rất hay gặp trong câu phân loại điểm 9–10)</h4>
+<ul>
+<li><b>Đảo tính từ / trạng từ lên trước AS / THOUGH:</b>
+  <br>• Công thức: <b>Adj / Adv + as / though + S + be / V, S + V</b> (= Mặc dù...).
+  <br>• Ví dụ: <em><b>Rich as he is</b> (= Although he is rich), he is not happy. <b>Hard as she tried</b> (= Although she tried hard), she couldn’t open the door.</em></li>
+<li><b>Cấu trúc NO MATTER ... và WHATEVER / HOWEVER / WHEREVER / WHOEVER:</b>
+  <br>• <b>No matter how + adj / adv + S + be/V, S + V = However + adj / adv + S + be/V, S + V</b> (Dù có... thế nào đi nữa): <em><b>No matter how hard</b> he tries (= <b>However hard</b> he tries), he cannot beat his brother.</em>
+  <br>• <b>No matter what + (N) + S + V = Whatever + (N) + S + V</b> (Dù cái gì...): <em><b>No matter what</b> happens (= <b>Whatever</b> happens), stay calm.</em>
+  <br>• <b>No matter who / where / when + S + V = Whoever / Wherever / Whenever + S + V.</b></li>
+<li><b>Much as + S + V (thường đi với động từ chỉ tình cảm: like, love, admire, respect):</b> <em><b>Much as I admire</b> him, I don’t agree with his decision.</em></li>
+</ul>
+<h4>4. Mệnh đề chỉ sự đối lập trực tiếp: WHILE / WHEREAS</h4>
+<ul>
+<li><b>While / Whereas + S1 + V1, S2 + V2</b> (Trong khi... thì ngược lại... – dùng để đối chiếu hai chủ thể có đặc điểm trái ngược nhau hoàn toàn):
+  <br>• <em>Tom is very outgoing, <b>whereas / while</b> his brother is shy and quiet.</em></li>
+</ul>
+<p>Ví dụ tổng hợp: <em>Although the traffic was heavy, we arrived on time.</em> • <em>Despite the heavy traffic, we arrived on time.</em> • <em>Hard as he worked, he didn’t get a promotion.</em></p>`);
+
+th(40, `<h3>Clauses of Purpose – Mệnh đề chỉ mục đích</h3>
+<h4>1. Mệnh đề chỉ mục đích với SO THAT / IN ORDER THAT (+ S + Modal + V)</h4>
+<ul>
+<li><b>Công thức chuẩn:</b>
+  <br>• Ở hiện tại / tương lai: <b>S1 + V1 + so that / in order that + S2 + can / will / may (not) + V(nguyên mẫu)</b>.
+  <br>• Ở quá khứ: <b>S1 + V1(quá khứ) + so that / in order that + S2 + could / would / might (not) + V(nguyên mẫu)</b>.</li>
+<li>Ví dụ:
+  <br>• <em>She studies hard <b>so that she can pass</b> the entrance exam.</em>
+  <br>• <em>He spoke slowly <b>in order that everyone could understand</b> him.</em>
+  <br>• <em>I wrote down the address <b>so that I wouldn’t forget</b> it.</em></li>
+</ul>
+<h4>2. Cụm từ chỉ mục đích (Phrases of Purpose: To V / In order to V / So as to V)</h4>
+<ul>
+<li>Khi hai vế có <b>CÙNG CHỦ NGỮ</b>, ta thường rút gọn mệnh đề mục đích thành cụm động từ nguyên mẫu:
+  <br>• <b>Khẳng định (Để làm gì):</b> <b>to + V = in order to + V = so as to + V</b> (<em>She got up early <b>in order to / so as to / to catch</b> the first bus.</em>).
+  <br>• <b>Phủ định (Để KHÔNG làm gì):</b> <b>in order NOT to + V = so as NOT to + V</b> (Lưu ý: <b>KHÔNG dùng “not to V” đứng một mình</b> để chỉ mục đích! Phải dùng <b>in order not to V</b> hoặc <b>so as not to V</b>: <em>He walked quietly <b>so as not to wake</b> the baby.</em>).
+  <br>• Khi khác chủ ngữ, thêm <b>for + Tân ngữ (O)</b>: <b>in order for O to V</b> (<em>The teacher stepped aside in order for the students to see the board.</em>).</li>
+<li><b>Cấu trúc FOR + Danh từ / V-ing:</b>
+  <br>• <b>for + Danh từ:</b> chỉ mục đích hướng tới một vật/việc (<em>They went to the café <b>for a drink</b>.</em>).
+  <br>• <b>be used for + V-ing = be used to + V(nguyên mẫu):</b> dùng để mô tả công dụng của đồ vật (<em>A knife is used <b>for cutting</b> meat = A knife is used <b>to cut</b> meat.</em>).</li>
+</ul>
+<h4>3. Mệnh đề mục đích phủ định trang trọng: FOR FEAR THAT / LEST / IN CASE</h4>
+<ul>
+<li><b>for fear that + S + should/might/would + V = lest + S + (should) + V:</b> “Vì sợ rằng, kẻo mà...”; tương đương cụm giới từ <b>for fear of + N/V-ing</b>:
+  <br>• <em>She locked all the windows <b>for fear that</b> a thief might break in (= <b>for fear of</b> a burglar).</em></li>
+<li><b>in case + S + V(hiện tại đơn / quá khứ đơn):</b> “Phòng khi...” (chuẩn bị trước cho một khả năng có thể xảy ra: <em>Take an umbrella <b>in case it rains</b>.</em>).</li>
+</ul>
+<h4>4. Lỗi thường gặp</h4>
+<ul>
+<li><b>Dùng “not to V” thay vì “in order not to V / so as not to V”:</b> Sai: <i>She hurried not to be late.</i> → Đúng: <b>She hurried in order not to / so as not to be late.</b></li>
+<li><b>Thiếu modal verb (can/could/will/would) trong mệnh đề so that / in order that.</b></li>
+</ul>
+<p>Ví dụ tổng hợp: <em>She studies hard so that she can get a scholarship.</em> • <em>He left early so as not to miss the train.</em> • <em>Take a map in case you get lost.</em></p>`);
+
+th(41, `<h3>Clauses of Time – Mệnh đề chỉ thời gian</h3>
+<h4>1. Các liên từ mở đầu mệnh đề chỉ thời gian</h4>
+<ul>
+<li><b>when:</b> khi (dùng cho mọi mốc thời gian hoặc hành động cắt ngang/nối tiếp).</li>
+<li><b>while / as:</b> trong khi (nhấn mạnh hành động đang diễn ra kéo dài hoặc hai hành động song song; <i>as</i> còn mang nghĩa “khi... dần dần”).</li>
+<li><b>before:</b> trước khi • <b>after:</b> sau khi.</li>
+<li><b>as soon as / once / the moment (that) / immediately after:</b> ngay sau khi, một khi.</li>
+<li><b>until / till:</b> cho đến khi (<i>wait until... / not... until...</i>).</li>
+<li><b>since:</b> kể từ khi (mệnh đề sau <i>since</i> luôn chia ở <b>Quá khứ đơn</b>, mệnh đề chính chia ở <b>Hiện tại hoàn thành / HTHT tiếp diễn</b>).</li>
+<li><b>by the time:</b> vào lúc, trước lúc (thường đi với các thì hoàn thành: <i>had V3</i> hoặc <i>will have V3</i>).</li>
+<li><b>whenever / every time:</b> bất cứ khi nào, mỗi khi.</li>
+</ul>
+<h4>2. QUY TẮC PHỐI HỢP THÌ TRONG MỆNH ĐỀ THỜI GIAN (Cực kỳ quan trọng trong đề thi THPT)</h4>
+<ul>
+<li><b>1. Khi nói về TƯƠNG LAI:</b>
+  <br>• <b>TUYỆT ĐỐI KHÔNG dùng thì tương lai (will / be going to) trong mệnh đề chỉ thời gian!</b> Thay vào đó, dùng <b>Hiện tại đơn (V/Vs-es)</b> hoặc <b>Hiện tại hoàn thành (have/has V3)</b>.
+  <br>• Công thức: <b>When / As soon as / Before / After / Until + S + V(hiện tại đơn / HTHT), S + will / be going to + V (hoặc Câu mệnh lệnh)</b>.
+  <br>• Công thức với By the time: <b>By the time + S + V(hiện tại đơn), S + will have + V3/V-ed</b>.
+  <br>• Ví dụ: <em>I will call you <b>as soon as I arrive</b>. <b>By the time you get</b> home, I <b>will have cooked</b> dinner.</em></li>
+<li><b>2. Khi nói về QUÁ KHỨ:</b>
+  <br>• <b>Hành động nối tiếp nhau:</b> <b>When + S + V2/V-ed, S + V2/V-ed</b> (<em>When the bell rang, the students left the room.</em>).
+  <br>• <b>Hành động đang diễn ra thì hành động khác cắt ngang:</b> <b>While/When + S + was/were V-ing, S + V2/V-ed</b> (<em>While I was walking home, it began to rain.</em>).
+  <br>• <b>Hành động xảy ra trước – xảy ra sau:</b> <b>Before / By the time + S + V2/V-ed, S + had + V3/V-ed</b>; <b>After + S + had + V3/V-ed, S + V2/V-ed</b> (<em>After she had finished her work, she went home.</em>).</li>
+<li><b>3. Cấu trúc với SINCE:</b>
+  <br>• <b>S + have/has (been) + V3/V-ing + since + S + V2/V-ed (Quá khứ đơn)</b> (<em>We have been friends since we were at primary school.</em>).</li>
+</ul>
+<h4>3. Rút gọn mệnh đề thời gian ( khi cùng chủ ngữ)</h4>
+<ul>
+<li>Khi hai mệnh đề có <b>CÙNG CHỦ NGỮ</b>, sau <b>before, after, while, when, since</b> có thể lược bỏ chủ ngữ và đưa động từ về <b>V-ing</b>:
+  <br>• <em>Before <b>she went</b> to bed, <b>she brushed</b> her teeth. → Before <b>going</b> to bed, she brushed her teeth.</em></li>
+</ul>
+<p>Ví dụ tổng hợp: <em>Wait here until I come back.</em> • <em>Since he moved to Hanoi, he has worked as an engineer.</em> • <em>By the time the police arrived, the thief had escaped.</em></p>`);
+
+th(42, `<h3>Clauses of Manner &amp; Place – Mệnh đề chỉ cách thức và nơi chốn</h3>
+<h4>1. Mệnh đề chỉ cách thức (Clauses of Manner: As / As if / As though / The way)</h4>
+<ul>
+<li><b>as / the way / just as + S + V (Như là, theo đúng cách mà... – diễn tả thực tế):</b>
+  <br>• <em>Please do this exercise <b>as I showed you</b>. When in Rome, do <b>as the Romans do</b>.</em>
+  <br>• Lưu ý: Trong văn viết chuẩn, dùng <b>as + S + V</b> (mệnh đề), còn <b>like + Danh từ / Đại từ</b> (giới từ: <em>She sings like a professional singer</em>).</li>
+<li><b>Cấu trúc AS IF / AS THOUGH (Như thể là, cứ như là...) – Trọng tâm đề thi:</b>
+  <br>• <b>Trường hợp 1 – Điều có thật hoặc có khả năng đúng ở hiện tại:</b> Dùng thì <b>Hiện tại</b> bình thường (<em>He looks <b>as if he is</b> very tired — thực tế trông anh ấy đang mệt thật</em>).
+  <br>• <b>Trường hợp 2 – Giả định KHÔNG CÓ THẬT ở HIỆN TẠI (lùi về Quá khứ đơn / WERE):</b>
+    <br>Công thức: <b>S + V(hiện tại) + as if / as though + S + V2/V-ed (to be dùng WERE cho mọi ngôi)</b>.
+    <br>Ví dụ: <em>She talks <b>as if she knew</b> everything (thực tế cô ấy không biết). He orders me around <b>as though he were</b> my boss.</em>
+  <br>• <b>Trường hợp 3 – Giả định KHÔNG CÓ THẬT trong QUÁ KHỨ (lùi về Quá khứ hoàn thành):</b>
+    <br>Công thức: <b>S + V + as if / as though + S + had + V3/V-ed</b>.
+    <br>Ví dụ: <em>He looked <b>as if he had seen</b> a ghost. She talked about the film <b>as though she had directed</b> it herself.</em></li>
+</ul>
+<h4>2. Mệnh đề chỉ nơi chốn (Clauses of Place: Where / Wherever / Anywhere / Everywhere)</h4>
+<ul>
+<li><b>where + S + V (ở nơi mà):</b> Bổ nghĩa cho động từ để chỉ vị trí/địa điểm (khác với mệnh đề quan hệ <i>where</i> đứng sau một danh từ chỉ nơi chốn):
+  <br>• <em>Put the key <b>where you can easily find it</b>. Stay <b>where you are</b>!</em></li>
+<li><b>wherever / anywhere (that) / everywhere (that) + S + V (bất cứ nơi đâu, mọi nơi mà):</b>
+  <br>• <em><b>Wherever she goes</b>, she makes new friends. His dog follows him <b>everywhere he goes</b>.</em></li>
+</ul>
+<h4>3. Lỗi thường gặp</h4>
+<ul>
+<li><b>Chia hiện tại đơn sau as if / as though khi ngữ cảnh rõ ràng là giả định trái với sự thật hiện tại:</b> Sai: <i>He acts as if he is the king.</i> → Đúng: <b>He acts as if he were the king.</b></li>
+</ul>
+<p>Ví dụ tổng hợp: <em>Do the experiment exactly as the teacher instructed.</em> • <em>He acts as if he were the owner of this company.</em> • <em>Sit wherever you like.</em></p>`);
+
+th(43, `<h3>Participle Clauses – Mệnh đề phân từ (V-ing, V3/V-ed, Having + V3)</h3>
+<h4>1. Điều kiện tiên quyết để dùng Mệnh đề phân từ</h4>
+<ul>
+<li><b>QUY TẮC VÀNG (Chống lỗi Dangling Participle):</b> Chủ ngữ ẩn của mệnh đề phân từ (đứng đầu câu) và chủ ngữ của mệnh đề chính (đứng ngay sau dấu phẩy) <b>PHẢI LÀ CÙNG MỘT ĐỐI TƯỢNG</b>!
+  <br>• Đúng: <em><b>Walking</b> along the street, <b>I</b> met an old friend (Tôi đi bộ và tôi gặp bạn).</em>
+  <br>• Sai: <i>Walking along the street, a tree fell down (Cái cây không thể đi bộ!).</i></li>
+</ul>
+<h4>2. Ba loại mệnh đề phân từ trọng tâm trong đề thi THPT</h4>
+<ul>
+<li><b>1. Mệnh đề Hiện tại phân từ (Present Participle: V-ing..., S + V) – Nghĩa CHỦ ĐỘNG:</b>
+  <br>• Thay cho mệnh đề trạng ngữ chỉ thời gian (<i>when/while</i>), nguyên nhân (<i>because/since/as</i>), hoặc hành động xảy ra đồng thời/nối tiếp nhanh do chủ ngữ tự thực hiện:
+  <br>• <em><b>Feeling tired</b> (= Because she felt tired), she went to bed early.</em>
+  <br>• <em><b>Opening the drawer</b>, he took out an old letter.</em></li>
+<li><b>2. Mệnh đề Quá khứ phân từ (Past Participle: V3/V-ed..., S + V) – Nghĩa BỊ ĐỘNG:</b>
+  <br>• Dùng khi chủ ngữ của mệnh đề chính <b>chịu tác động (bị động)</b> của hành động ở vế đầu (thay cho <i>Because/When/If + S + be + V3</i>):
+  <br>• <em><b>Built in 1920</b> (= Because/Although it was built in 1920), the house is still in good condition.</em>
+  <br>• <em><b>Watered every day</b> (= If they are watered every day), these plants will grow fast.</em></li>
+<li><b>3. Mệnh đề Phân từ hoàn thành (Perfect Participle: Having + V3/V-ed / Having been + V3) – Nhấn mạnh hành động XẢY RA TRƯỚC:</b>
+  <br>• <b>Chủ động (Having + V3/V-ed..., S + V):</b> Nhấn mạnh hành động ở vế đầu đã hoàn tất hoàn toàn rồi mới tới hành động ở vế sau (thay cho <i>After + S + had + V3</i>):
+    <br><em><b>Having finished</b> all her homework (= After she had finished...), she went out for a walk.</em>
+  <br>• <b>Bị động (Having been + V3/V-ed..., S + V):</b>
+    <br><em><b>Having been warned</b> about the storm, the fishermen stayed in port.</em></li>
+</ul>
+<h4>3. Lỗi thường gặp</h4>
+<ul>
+<li><b>Nhầm V-ing (chủ động) và V3/ed (bị động) khi nhìn vào chủ ngữ sau dấu phẩy:</b> Luôn kiểm tra chủ ngữ ngay sau dấu phẩy là <b>tác nhân thực hiện (→ chọn V-ing / Having V3)</b> hay <b>đối tượng bị tác động (→ chọn V3/ed / Having been V3)</b>!</li>
+</ul>
+<p>Ví dụ tổng hợp: <em>Feeling hungry, he made a sandwich.</em> • <em>Written in simple English, the book is easy for beginners.</em> • <em>Having finished the report, she sent it to the manager.</em></p>`);
+
 // Rich linguistic bank to top up every topic (1..36) x level (nb, th, vd) to 50 MC and 50 Essay questions
 (function expandAllQuestions(){
   const SUBJ_SG = [
@@ -3906,6 +4157,118 @@ th(36,`<h3>Subject-Verb Agreement – Sự hòa hợp giữa Chủ ngữ và Đ�
           pushEs(thE, `Chia động từ (is / are): A number of students ___ ${vb2[4]} ${vb2[5]} now.`, "are");
           pushEs(vdE, `Chia động từ: ${sg[0]}, along with her classmates, (be) ___ ${vb2[4]} ${vb2[5]} right now.`, "is");
           pushEs(vdE, `Sửa lỗi hòa hợp S-V: Neither ${sg[0].toLowerCase()} nor ${pl[0].toLowerCase()} is ${vb[4]} ${vb[5]}.`, `Neither ${sg[0].toLowerCase()} nor ${pl[0].toLowerCase()} are ${vb[4]} ${vb[5]}.`);
+          break;
+
+        case 37: // Mệnh đề chỉ nguyên nhân (Clauses of Reason)
+          pushMC(nbM, `${sg[0]} ${vb[2]} ${vb[5]} early ___ ${sg[1]} wanted to help the group.`, "because", "although", "despite", "because of", i);
+          pushMC(nbM, `___ ${sg[0].toLowerCase()} prepared carefully, ${sg[1]} ${vb2[2]} ${vb2[5]} on time.`, "Since", "Because of", "Despite", "Although", i+1);
+          pushMC(thM, `${pl[0]} delayed ${vb[4]} ${vb[5]} ___ the heavy storm.`, "because of", "because", "since", "although", i);
+          pushMC(thM, `___ ${sg[0]}'s careful preparation, the team ${vb2[2]} ${vb2[5]} successfully.`, "Thanks to", "Because", "Since", "Although", i+2);
+          pushMC(vdM, `Because ${sg[0].toLowerCase()} was tired after ${vb[4]} ${vb[5]} → Because of ___ tired after ${vb[4]} ${vb[5]}.`, "being", "be", "was", "been", i);
+          pushMC(vdM, `Which sentence about ${sg[0]} is grammatically CORRECT?`, `Because ${sg[0].toLowerCase()} worked ${adj[1]}, ${sg[1]} ${vb2[2]} ${vb2[5]}.`, `Because ${sg[0].toLowerCase()} worked ${adj[1]}, so ${sg[1]} ${vb2[2]} ${vb2[5]}.`, `Because of ${sg[0].toLowerCase()} worked ${adj[1]}, ${sg[1]} succeeded.`, `Due to ${sg[0].toLowerCase()} was ${adj[0]}, ${sg[1]} succeeded.`, i+3);
+
+          pushEs(nbE, `Điền because hoặc because of: ${sg[0]} stayed at home ___ ${sg[1]} had to ${vb[0]} ${vb[5]}.`, "because");
+          pushEs(nbE, `Điền Since hoặc Despite: ___ ${pl[0].toLowerCase()} were ready, they ${vb2[2]} ${vb2[5]} immediately.`, "Since");
+          pushEs(thE, `Điền because hoặc because of: ${sg[0]} couldn't ${vb[0]} ${vb[5]} ___ the loud noise.`, "because of");
+          pushEs(thE, `Biến đổi sang cụm từ: Because ${sg[0].toLowerCase()} was ill, ${sg[1]} didn't ${vb2[0]} ${vb2[5]}. → Because of ___ ill, ${sg[0].toLowerCase()} didn't ${vb2[0]} ${vb2[5]}.`, "being");
+          pushEs(vdE, `Sửa lỗi cả câu: Because ${sg[0].toLowerCase()} was busy, so ${sg[1]} didn’t ${vb[0]} ${vb[5]}.`, `Because ${sg[0].toLowerCase()} was busy, ${sg[1]} didn’t ${vb[0]} ${vb[5]}.`);
+          pushEs(vdE, `Sửa lỗi cả câu: Because of ${sg[0].toLowerCase()} ${vb2[2]} ${vb2[5]} ${adj[1]}, everyone praised ${sg[1]==="he"?"him":"her"}.`, `Because ${sg[0].toLowerCase()} ${vb2[2]} ${vb2[5]} ${adj[1]}, everyone praised ${sg[1]==="he"?"him":"her"}.`);
+          break;
+
+        case 38: // Mệnh đề chỉ kết quả (Clauses of Result)
+          pushMC(nbM, `${sg[0]} was ___ ${adj[0]} when ${vb[4]} ${vb[5]} that everyone admired ${sg[1]==="he"?"him":"her"}.`, "so", "such", "too", "enough", i);
+          pushMC(nbM, `${sg[0]} ${vb2[2]} ${vb2[5]} ___ ${adj[1]} that the teacher praised ${sg[1]==="he"?"him":"her"}.`, "so", "such", "too", "very", i+1);
+          pushMC(thM, `It was ___ an interesting project that ${sg[0].toLowerCase()} ${vb[2]} ${vb[5]} twice.`, "such", "so", "too", "enough", i);
+          pushMC(thM, `${sg[0]} had ___ many tasks to ${vb2[0]} that ${sg[1]} stayed up late.`, "so", "such", "too", "very", i+2);
+          pushMC(vdM, `The box was so heavy that ${sg[0].toLowerCase()} couldn't carry it → The box was ___ heavy for ${sg[0].toLowerCase()} to carry.`, "too", "so", "such", "enough", i);
+          pushMC(vdM, `So ${adj[1]} ___ ${sg[0].toLowerCase()} ${vb2[0]} ${vb2[5]} that the whole class clapped.`, "did", "was", "had", "does", i+3);
+
+          pushEs(nbE, `Điền so hoặc such: ${sg[0]} worked ___ ${adj[1]} on ${vb[5]} that ${sg[1]} finished early.`, "so");
+          pushEs(nbE, `Điền so hoặc such: It was ___ a useful lesson that ${pl[0].toLowerCase()} ${vb2[2]} ${vb2[5]}.`, "such");
+          pushEs(thE, `Điền so hoặc such: There was ___ much noise that ${sg[0].toLowerCase()} couldn't ${vb[0]} ${vb[5]}.`, "so");
+          pushEs(thE, `Điền too hoặc enough: ${sg[0]} is ${adj[0]} ___ to ${vb2[0]} ${vb2[5]} alone.`, "enough");
+          pushEs(vdE, `Sửa lỗi cả câu: It was so a long assignment that ${sg[0].toLowerCase()} couldn't ${vb[0]} ${vb[5]}.`, `It was such a long assignment that ${sg[0].toLowerCase()} couldn't ${vb[0]} ${vb[5]}.`);
+          pushEs(vdE, `Hoàn thành đảo ngữ: So ${adj[0]} (be) ___ ${sg[0].toLowerCase()} when ${vb2[4]} ${vb2[5]} that everyone trusted ${sg[1]==="he"?"him":"her"}.`, "was");
+          break;
+
+        case 39: // Mệnh đề chỉ sự đối lập – nhượng bộ (Clauses of Contrast & Concession)
+          pushMC(nbM, `___ ${sg[0].toLowerCase()} was tired, ${sg[1]} still ${vb[2]} ${vb[5]}.`, "Although", "Despite", "Because", "In spite of", i);
+          pushMC(nbM, `${sg[0]} ${vb2[1]} ${vb2[5]} quickly, ___ ${sg2[0].toLowerCase()} prefers working slowly.`, "whereas", "despite", "because of", "in order that", i+1);
+          pushMC(thM, `___ the difficulty, ${pl[0].toLowerCase()} ${vb[2]} ${vb[5]} on time.`, "In spite of", "Although", "Even though", "Because", i);
+          pushMC(thM, `No matter how ___ ${sg[0].toLowerCase()} tried, ${sg[1]} couldn't ${vb2[0]} ${vb2[5]} in an hour.`, "hard", "hardly", "harder", "hardest", i+2);
+          pushMC(vdM, `${adj[0].charAt(0).toUpperCase()+adj[0].slice(1)} ___ ${sg[0].toLowerCase()} is, ${sg[1]} still asks for advice before ${vb[4]} ${vb[5]}.`, "as", "despite", "because", "so", i);
+          pushMC(vdM, `Which sentence about ${sg[0]} is grammatically CORRECT?`, `Even though ${sg[0].toLowerCase()} was busy, ${sg[1]} ${vb2[2]} ${vb2[5]}.`, `Even though ${sg[0].toLowerCase()} was busy, but ${sg[1]} ${vb2[2]} ${vb2[5]}.`, `Despite of being busy, ${sg[0].toLowerCase()} ${vb2[2]} ${vb2[5]}.`, `In spite ${sg[0].toLowerCase()} was busy, ${sg[1]} ${vb2[2]} ${vb2[5]}.`, i+3);
+
+          pushEs(nbE, `Điền Although hoặc Despite: ___ ${sg[0].toLowerCase()} had little time, ${sg[1]} ${vb[2]} ${vb[5]}.`, "Although");
+          pushEs(nbE, `Điền Although hoặc Despite: ___ the bad weather, ${pl[0].toLowerCase()} ${vb2[2]} ${vb2[5]}.`, "Despite");
+          pushEs(thE, `Biến đổi sang Despite: Although ${sg[0].toLowerCase()} felt tired, ${sg[1]} ${vb[2]} ${vb[5]}. → Despite ___ tired, ${sg[0].toLowerCase()} ${vb[2]} ${vb[5]}.`, "feeling");
+          pushEs(thE, `Điền No matter hoặc Whatever: ___ how busy ${sg[0].toLowerCase()} is, ${sg[1]} always ${vb2[1]} ${vb2[5]}.`, "No matter");
+          pushEs(vdE, `Sửa lỗi cả câu: Despite of the rain, ${sg[0].toLowerCase()} ${vb[2]} ${vb[5]}.`, `Despite the rain, ${sg[0].toLowerCase()} ${vb[2]} ${vb[5]}.`);
+          pushEs(vdE, `Hoàn thành đảo tính từ nhượng bộ: Although ${sg[0].toLowerCase()} is ${adj[0]} → ${adj[0].charAt(0).toUpperCase()+adj[0].slice(1)} ___ ${sg[0].toLowerCase()} is`, "as");
+          break;
+
+        case 40: // Mệnh đề chỉ mục đích (Clauses of Purpose)
+          pushMC(nbM, `${sg[0]} got up early ___ ${sg[1]} could ${vb[0]} ${vb[5]} before class.`, "so that", "because of", "although", "despite", i);
+          pushMC(nbM, `${pl[0]} went to the library ___ ${vb2[0]} ${vb2[5]}.`, "in order to", "so that", "for", "because", i+1);
+          pushMC(thM, `${sg[0]} checked the work twice ___ make any mistakes while ${vb[4]} ${vb[5]}.`, "so as not to", "not to", "so that not", "in order that", i);
+          pushMC(thM, `${sg[0]} took notes carefully in order that ${sg[1]} ___ ${vb2[0]} ${vb2[5]} later.`, "could", "can", "will", "may", i+2);
+          pushMC(vdM, `${sg[0]} locked the drawer for fear that someone ___ take ${vb[5]}.`, "might", "can", "will", "shall", i);
+          pushMC(vdM, `Which sentence expresses PURPOSE correctly for ${sg[0]}?`, `${sg[0]} hurried so as not to miss the bus before ${vb2[4]} ${vb2[5]}.`, `${sg[0]} hurried not to miss the bus before ${vb2[4]} ${vb2[5]}.`, `${sg[0]} hurried so that to not miss the bus.`, `${sg[0]} hurried in order that not miss the bus.`, i+3);
+
+          pushEs(nbE, `Điền so that hoặc in order to: ${sg[0]} practises daily ___ ${sg[1]} can ${vb[0]} ${vb[5]} well.`, "so that");
+          pushEs(nbE, `Điền so that hoặc in order to: ${sg[0]} stayed after school ___ ${vb2[0]} ${vb2[5]}.`, "in order to");
+          pushEs(thE, `Điền cụm mục đích phủ định (so as not to / so that): ${sg[0]} spoke quietly ___ disturb ${pl[0].toLowerCase()} while they ${vb[2]} ${vb[5]}.`, "so as not to");
+          pushEs(thE, `Điền can hoặc could: Yesterday ${sg[0].toLowerCase()} hurried so that ${sg[1]} ___ ${vb2[0]} ${vb2[5]} on time.`, "could");
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} left early not to be late for ${vb[4]} ${vb[5]}.`, `${sg[0]} left early so as not to be late for ${vb[4]} ${vb[5]}.`);
+          pushEs(vdE, `Điền in case hoặc so that: Take your notes ___ you need to ${vb2[0]} ${vb2[5]}.`, "in case");
+          break;
+
+        case 41: // Mệnh đề chỉ thời gian (Clauses of Time)
+          pushMC(nbM, `As soon as ${sg[0].toLowerCase()} ___ ${vb[5]}, ${sg[1]} will call you.`, vb[1], `will ${vb[0]}`, vb[2], `had ${vb[3]}`, i);
+          pushMC(nbM, `Wait here until ${pl[0].toLowerCase()} ___ ${vb2[5]}.`, vb2[0], `will ${vb2[0]}`, vb2[2], `had ${vb2[3]}`, i+1);
+          pushMC(thM, `Since ${sg[0].toLowerCase()} ___ to this school in ${yrPast}, ${sg[1]} has ${vb[3]} ${vb[5]} many times.`, "moved", "has moved", "moves", "will move", i);
+          pushMC(thM, `After ${sg[0].toLowerCase()} ___ ${vb2[5]} yesterday, ${sg[1]} went home.`, `had ${vb2[3]}`, `has ${vb2[3]}`, vb2[1], `will ${vb2[0]}`, i+2);
+          pushMC(vdM, `By the time ${sg2[0].toLowerCase()} arrives tonight, ${sg[0].toLowerCase()} ___ ${vb[5]}.`, `will have ${vb[3]}`, `had ${vb[3]}`, vb[2], `was ${vb[4]}`, i);
+          pushMC(vdM, `Before ___ ${vb2[5]}, ${sg[0].toLowerCase()} checked all the tools carefully.`, vb2[4], vb2[0], vb2[2], `to ${vb2[0]}`, i+3);
+
+          pushEs(nbE, `Chia động từ trong mệnh đề thời gian: When ${sg[0].toLowerCase()} (${vb[0]}) ___ ${vb[5]} tomorrow, ${sg[1]} will text us.`, vb[1]);
+          pushEs(nbE, `Chia động từ trong mệnh đề thời gian: Wait until ${pl[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]}.`, vb2[0]);
+          pushEs(thE, `Chia động từ sau since: ${sg[0]} has ${vb[3]} ${vb[5]} since ${sg[1]} (be) ___ in Grade 10.`, "was");
+          pushEs(thE, `Chia động từ: By the time we arrived yesterday, ${sg[0].toLowerCase()} (${vb2[0]}) ___ ${vb2[5]}.`, `had ${vb2[3]}`);
+          pushEs(vdE, `Sửa lỗi cả câu: As soon as ${sg[0].toLowerCase()} will ${vb[0]} ${vb[5]}, we will start.`, `As soon as ${sg[0].toLowerCase()} ${vb[1]} ${vb[5]}, we will start.`);
+          pushEs(vdE, `Rút gọn mệnh đề thời gian: After ${sg[0].toLowerCase()} ${vb2[2]} ${vb2[5]}, ${sg[1]} rested. → After ___ ${vb2[5]}, ${sg[0].toLowerCase()} rested.`, vb2[4]);
+          break;
+
+        case 42: // Mệnh đề chỉ cách thức và nơi chốn (Clauses of Manner & Place)
+          pushMC(nbM, `${sg[0]} ${vb[2]} ${vb[5]} exactly ___ the teacher had instructed.`, "as", "like", "where", "whereas", i);
+          pushMC(nbM, `You can put the materials ___ you can easily ${vb2[0]} ${vb2[5]}.`, "where", "as if", "although", "unless", i+1);
+          pushMC(thM, `${sg[0]} talks about the project as if ${sg[1]} ___ the leader now (nhưng thực tế không phải).`, "were", "is", "will be", "has been", i);
+          pushMC(thM, `___ ${sg[0].toLowerCase()} goes, ${sg[1]} always brings a notebook to ${vb2[0]} ${vb2[5]}.`, "Wherever", "Whatever", "However", "Whoever", i+2);
+          pushMC(vdM, `Yesterday ${sg[0].toLowerCase()} looked as though ${sg[1]} ___ ${vb[5]} all night without sleeping.`, `had ${vb[3]}`, vb[1], `has ${vb[3]}`, `will ${vb[0]}`, i);
+          pushMC(vdM, `Which sentence with “as if” is grammatically CORRECT for an unreal present situation?`, `${sg[0]} acts as if ${sg[1]} knew how to ${vb2[0]} ${vb2[5]}.`, `${sg[0]} acts as if ${sg[1]} knows how to ${vb2[0]} ${vb2[5]} (unreal).`, `${sg[0]} acts like ${sg[1]} were knowing ${vb2[5]}.`, `${sg[0]} acts as if ${sg[1]} will know ${vb2[5]}.`, i+3);
+
+          pushEs(nbE, `Điền as hoặc where: Please ${vb[0]} ${vb[5]} ___ I showed you yesterday.`, "as");
+          pushEs(nbE, `Điền where hoặc wherever: Sit ___ you feel comfortable to ${vb2[0]} ${vb2[5]}.`, "wherever");
+          pushEs(thE, `Chia động từ sau as if (trái với hiện tại): ${sg[0]} orders us around as if ${sg[1]} (be) ___ the boss when we ${vb[0]} ${vb[5]}.`, "were");
+          pushEs(thE, `Chia động từ sau as though (trái với hiện tại): ${sg[0]} speaks as though ${sg[1]} (know) ___ everything about ${vb2[5]}.`, "knew");
+          pushEs(vdE, `Chia động từ sau as if (trái với quá khứ): ${sg[0]} talked as if ${sg[1]} (${vb[0]}) ___ ${vb[5]} by ${sg[1]==="he"?"himself":"herself"} yesterday.`, `had ${vb[3]}`);
+          pushEs(vdE, `Sửa lỗi cả câu: ${sg[0]} acts as if ${sg[1]} is the owner of the club when ${vb2[4]} ${vb2[5]}.`, `${sg[0]} acts as if ${sg[1]} were the owner of the club when ${vb2[4]} ${vb2[5]}.`);
+          break;
+
+        case 43: // Mệnh đề phân từ (Participle Clauses)
+          pushMC(nbM, `___ ${vb[5]} carefully, ${sg[0].toLowerCase()} found the key answer.`, vb[4].charAt(0).toUpperCase()+vb[4].slice(1), vb[3].charAt(0).toUpperCase()+vb[3].slice(1), `To ${vb[0]}`, vb[1].charAt(0).toUpperCase()+vb[1].slice(1), i);
+          pushMC(nbM, `___ tired after ${vb2[4]} ${vb2[5]}, ${sg[0].toLowerCase()} went to bed early.`, "Feeling", "Felt", "Feel", "To feel", i+1);
+          pushMC(thM, `___ by ${sg[0].toLowerCase()} yesterday, ${vb[5]} looked brand new (nghĩa bị động).`, vb[3].charAt(0).toUpperCase()+vb[3].slice(1), vb[4].charAt(0).toUpperCase()+vb[4].slice(1), `Having ${vb[3]}`, `To ${vb[0]}`, i);
+          pushMC(thM, `___ already ___ ${vb2[5]}, ${pl[0].toLowerCase()} went out for a walk.`, `Having – ${vb2[3]}`, `Having – ${vb2[2]}`, `Being – ${vb2[0]}`, `Had – ${vb2[3]}`, i+2);
+          pushMC(vdM, `___ by the teacher, ${sg[0].toLowerCase()} ${vb[2]} ${vb[5]} much more ${adj[1]}.`, "Encouraged", "Encouraging", "Having encouraging", "To encourage", i);
+          pushMC(vdM, `Which sentence uses a participle clause CORRECTLY without a dangling subject?`, `Having ${vb2[3]} ${vb2[5]}, ${sg[0].toLowerCase()} handed it to the teacher.`, `Having ${vb2[3]} ${vb2[5]}, the bell rang loudly.`, `Walking into the room, ${vb2[5]} was on the table.`, `${vb2[4].charAt(0).toUpperCase()+vb2[4].slice(1)} ${vb2[5]}, the clock struck ten.`, i+3);
+
+          pushEs(nbE, `Rút gọn bằng V-ing: When ${sg[0].toLowerCase()} ${vb[2]} ${vb[5]}, ${sg[1]} smiled. → ___ ${vb[5]}, ${sg[0].toLowerCase()} smiled.`, vb[4].charAt(0).toUpperCase()+vb[4].slice(1));
+          pushEs(nbE, `Điền Feeling hoặc Felt: ___ hungry after ${vb2[4]} ${vb2[5]}, ${sg[0].toLowerCase()} ate a sandwich.`, "Feeling");
+          pushEs(thE, `Rút gọn bằng Having + V3: After ${sg[0].toLowerCase()} had ${vb[3]} ${vb[5]}, ${sg[1]} went home. → ___ ${vb[5]}, ${sg[0].toLowerCase()} went home.`, `Having ${vb[3]}`);
+          pushEs(thE, `Chia phân từ bị động (V3/ed): (${vb2[0]}) ___ by ${sg[0].toLowerCase()}, ${vb2[5]} was ready on time.`, vb2[3].charAt(0).toUpperCase()+vb2[3].slice(1));
+          pushEs(vdE, `Sửa lỗi phân từ: Having ${vb[2]} ${vb[5]}, ${sg[0].toLowerCase()} took a rest.`, `Having ${vb[3]} ${vb[5]}, ${sg[0].toLowerCase()} took a rest.`);
+          pushEs(vdE, `Hoàn thành phân từ hoàn thành bị động: After ${sg[0].toLowerCase()} had been told about ${vb2[5]} → Having ___ told about ${vb2[5]}`, "been");
           break;
       }
     }
