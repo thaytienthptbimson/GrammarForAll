@@ -882,9 +882,9 @@ small { color: var(--mu); }
   text-align: center;
 }
 .egp-tier1 {
-  background: rgba(6, 40, 37, 0.72);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 12px 20px;
+  background: rgba(6, 40, 37, 0.45);
+  border-bottom: none;
+  padding: 14px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1105,30 +1105,10 @@ small { color: var(--mu); }
         <button type="button" class="b" id="btnOpenEgpLogin" onclick="openEgpLoginModal()" title="Đăng nhập hoặc Đổi tài khoản">🔑 <span id="egpLoginBtnText">Đổi User</span></button>
         <button type="button" class="b" id="btnLogoutEgp" onclick="logoutEgpUser(true)" style="display:inline-flex;background:rgba(239,68,68,0.28);border-color:rgba(252,165,165,0.55);" title="Đăng xuất và xóa Tên đăng nhập & Mật khẩu ngay lập tức">🚪 Thoát TK</button>
         <button type="button" class="b" id="themeBtn" onclick="toggleTheme()" title="Đổi chế độ Sáng / Tối">🌓 Giao diện</button>
-        <button type="button" class="b" id="btnToggleEgpBanner" onclick="toggleEgpBanner()" title="Thu gọn hoặc mở rộng Banner">↕ <span id="egpBannerToggleText">Thu gọn Banner</span></button>
       </div>
     </div>
 
-    <!-- TIER 2: Centered Main Academic Title & 4 Scientific Pillars -->
-    <div class="egp-tier2" id="egpBannerExpanded">
-      <div class="copyright-ribbon" style="margin-bottom:8px;">
-        <span>✨ HỆ THỐNG HỌC LÝ THUYẾT, LUYỆN TẬP PHÂN HÓA, KIỂM TRA PHÁT ÂM AI &amp; ĐỀ THI 50 PHÚT CHUẨN THPT</span>
-      </div>
-      <h1 style="font-size:clamp(1.35rem,2.8vw,2rem);margin:0;color:#ffffff;letter-spacing:0.04em;">
-        ENGLISH GRAMMAR PRO — THẦY PHẠM TIẾN (THPT BỈM SƠN)
-      </h1>
-      <p class="brand-sub" style="max-width:760px;margin:6px auto 0;">
-        55 Chuyên đề Ngữ pháp Trọng tâm • 3 Mức độ Nhận thức (Nhận biết – Thông hiểu – Vận dụng) • Luyện Phát âm AI &amp; Quản trị Đa người dùng đồng bộ GitHub
-      </p>
 
-
-    </div>
-
-    <!-- Compact Mode Bar -->
-    <div class="egp-compact-bar" id="egpBannerCompact">
-      <span>📘 <b>Đang thu gọn Banner</b> để tập trung học &amp; làm bài tập (55 Chuyên đề Ngữ pháp THPT)</span>
-      <button type="button" class="b" id="btnExpandEgpBanner" onclick="toggleEgpBanner()" style="padding:4px 10px;font-size:0.76rem;">↕ Mở rộng Banner</button>
-    </div>
   </header>
   <div id="app"></div>
   <footer class="site-footer">
@@ -1210,8 +1190,53 @@ small { color: var(--mu); }
       <span class="sec-badge" id="egpGateStatusBadge">Cổng đăng nhập: Mở tự do</span>
     </div>
 
-    <!-- TAB 1: USER LIST -->
+    <!-- TAB 1: USER LIST + QUICK ISSUE FULL USER & GITHUB SYNC -->
     <div id="egpAdmView_list">
+      <!-- KHUNG CẤP NHANH USER + MẬT KHẨU FULL CHỨC NĂNG & ĐỒNG BỘ GITHUB TRỰC TIẾP -->
+      <div class="sec-box" style="border:2px solid var(--ac);background:var(--cd);">
+        <div class="sec-row" style="margin-bottom:8px;">
+          <div>
+            <b style="color:var(--ac);font-size:0.95rem;">⚡ CẤP NHANH USER &amp; MẬT KHẨU SỬ DỤNG FULL CHỨC NĂNG (ĐỒNG BỘ GITHUB)</b><br>
+            <small>Tạo nhanh tài khoản mở khóa Full 100% chức năng (55 Chuyên đề, Bài tập 3 mức độ, Phát âm AI, Kiểm tra 50 phút) và đẩy thẳng lên GitHub.</small>
+          </div>
+          <span class="sec-badge">Full 100% Chức năng</span>
+        </div>
+        <div class="egp-grid-2" style="grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:8px;">
+          <div>
+            <label style="font-size:0.76rem;font-weight:700;display:block;">Tên đăng nhập (User) *</label>
+            <input class="i" id="egpQuickNewUser" type="text" autocomplete="off" placeholder="VD: hs_nam12a1" style="width:100%;margin:0;" />
+          </div>
+          <div>
+            <label style="font-size:0.76rem;font-weight:700;display:block;">Mật khẩu (Password) *</label>
+            <div style="display:flex;gap:4px;">
+              <input class="i" id="egpQuickNewPass" type="text" autocomplete="off" placeholder="Nhập hoặc tạo MK..." style="width:100%;margin:0;font-family:monospace;font-weight:700;" />
+              <button type="button" class="b" id="btnQuickGenPw" onclick="genQuickFullPassword()" title="Tạo mật khẩu ngẫu nhiên" style="padding:6px 10px;">🎲</button>
+            </div>
+          </div>
+          <div>
+            <label style="font-size:0.76rem;font-weight:700;display:block;">Họ và tên / Lớp *</label>
+            <input class="i" id="egpQuickNewName" type="text" placeholder="VD: Nguyễn Văn Nam - 12A1" style="width:100%;margin:0;" />
+          </div>
+          <div>
+            <label style="font-size:0.76rem;font-weight:700;display:block;">Quyền hạn sử dụng</label>
+            <select class="i" id="egpQuickNewRole" style="width:100%;margin:0;">
+              <option value="student_full">Học sinh — Full 100% Chức năng (5 Nhóm)</option>
+              <option value="teacher_full">Giáo viên — Full 100% Chức năng</option>
+              <option value="admin">Quản trị viên (Admin)</option>
+            </select>
+          </div>
+        </div>
+        <div class="sec-row" style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--bd);">
+          <div style="font-size:0.78rem;color:var(--mu);">
+            💡 Sau khi cấp User, nhấn <b>☁️ Cấp User &amp; Cập nhật lên GitHub</b> để học sinh đăng nhập sử dụng được ngay trên mọi thiết bị.
+          </div>
+          <div class="r" style="margin:0;">
+            <button type="button" class="b" id="btnQuickAddOnly" onclick="quickCreateFullUser(false)">➕ Cấp User Full (Lưu tại máy)</button>
+            <button type="button" class="b on" id="btnQuickAddAndGithub" onclick="quickCreateFullUser(true)">☁️ Cấp User &amp; Cập nhật lên GitHub</button>
+          </div>
+        </div>
+      </div>
+
       <div class="sec-box">
         <div class="sec-row">
           <input class="i" id="egpUserSearchInp" type="text" oninput="renderEgpUsersTable()" placeholder="🔍 Tìm theo username, họ tên, lớp..." style="margin:0;flex:1;" />
@@ -6541,8 +6566,13 @@ function setCat(c){catFilter=c;R()}
 function onSearch(val){qSearch=val;R();const inp=$("searchInput");if(inp){inp.focus();inp.setSelectionRange(inp.value.length,inp.value.length);}}
 
 function R(){const s=st(),a=$("app");
- $("bd").textContent=s.k=="full"?"✓ Đã kích hoạt ("+s.d+" ngày)":s.k=="trial"?"⏳ Dùng thử ("+s.d+" ngày)":"🔒 Hết hạn dùng thử";
- if(s.k=="lock"){a.innerHTML=`<div class="c"><div class="sec-row"><h2 class="grammar-heading" style="color:var(--no)">🔒 ĐÃ HẾT 3 NGÀY DÙNG THỬ</h2><span class="sec-badge">🛡️ Bảo mật Vercel SHA-256</span></div><p>Nhập mật khẩu bản quyền của <b>Thầy Phạm Tiến (ĐT/Zalo: 0943930787)</b> để kích hoạt sử dụng toàn bộ 55 chuyên đề trong <b>365 ngày</b>.</p><div class="r" style="align-items:center"><div class="pw-wrap"><input class="i" id="pw" type="password" placeholder="Nhập mật khẩu kích hoạt..." onkeydown="if(event.key==='Enter')act('pw','er')"><button type="button" class="pw-eye" onclick="togglePwVis('pw',this)" title="Hiện / Ẩn mật khẩu">👁️</button></div><button type="button" class="b on" onclick="act('pw','er')">🔑 Kích hoạt 365 ngày</button></div><div id="er" class="no2" style="display:none"></div></div>`;return}
+ const uActive=(typeof egpAuth!=="undefined"&&egpAuth.currentUser)?egpAuth.currentUser:null;
+ if($("bd")){
+   $("bd").textContent=uActive?("✅ Full Chức năng ("+uActive.username+")"):(s.k=="trial"?"🔒 Giới hạn • Nhập User/MK mở Full":"🔒 Cần User & Mật khẩu Full");
+   $("bd").onclick=function(){openEgpLoginModal();};
+   $("bd").style.cursor="pointer";
+ }
+ if(s.k=="lock"&&!uActive){a.innerHTML=`<div class="c"><div class="sec-row"><h2 class="grammar-heading" style="color:var(--no)">🔒 YÊU CẦU TÀI KHOẢN (USER &amp; MẬT KHẨU) ĐỂ SỬ DỤNG FULL CHỨC NĂNG</h2><span class="sec-badge">🛡️ Bảo mật Đa người dùng &amp; GitHub</span></div><p>Vui lòng đăng nhập bằng <b>Tên đăng nhập (User) và Mật khẩu</b> được cấp bởi <b>Thầy Phạm Tiến (ĐT/Zalo: 0943930787)</b> để mở khóa toàn bộ 55 chuyên đề, Bài tập 3 mức độ, Kiểm tra Phát âm AI và Đề thi 50 phút.</p><div class="r" style="align-items:center"><input class="i" id="lockUserInp" type="text" autocomplete="off" placeholder="Tên đăng nhập (User)..." style="min-width:180px;"><div class="pw-wrap"><input class="i" id="pw" type="password" autocomplete="new-password" placeholder="Nhập mật khẩu được cấp..." onkeydown="if(event.key==='Enter')act('pw','er')"><button type="button" class="pw-eye" onclick="togglePwVis('pw',this)" title="Hiện / Ẩn mật khẩu">👁️</button></div><button type="button" class="b on" onclick="act('pw','er')">🔑 Kích hoạt 365 ngày</button></div><div id="er" class="no2" style="display:none"></div></div>`;return}
  if(!T){
    const totalMC=D.reduce((acc,d)=>acc+pool(d).length,0);
    const totalEs=D.reduce((acc,d)=>acc+epool(d).length,0);
@@ -6569,10 +6599,40 @@ function R(){const s=st(),a=$("app");
      if(!filtered.length)return "";
      return `<div class="section-header"><h3 class="cat-heading">${t.toUpperCase()}</h3><span class="cat-badge">${filtered.length} CHỦ ĐIỂM</span></div><div class="g">${filtered.map((i,kIdx)=>{
        const d=D.find(x=>x.id==i),n=pool(d).length,ne=epool(d).length;
-       return `<div class="c k" onclick="go(${i})"><div class="k-top"><b class="topic-heading">${d.n.toUpperCase()}</b><span class="k-num">#${String(kIdx+1).padStart(2,"0")}</span></div><div class="k-meta"><span class="meta-pill mc">${n?n+" câu trắc nghiệm":"Đang soạn"}</span>${ne?`<span class="meta-pill es">${ne} câu tự luận</span>`:""}</div></div>`;
+       const isLockedTopic=!uActive && i!==1; return `<div class="c k" onclick="go(${i})" style="${isLockedTopic?"opacity:0.88;":""}"><div class="k-top"><b class="topic-heading">${d.n.toUpperCase()}</b><span class="k-num">${isLockedTopic?"🔒 Full":"#"+String(kIdx+1).padStart(2,"0")}</span></div><div class="k-meta"><span class="meta-pill mc">${n?n+" câu trắc nghiệm":"Đang soạn"}</span>${ne?`<span class="meta-pill es">${ne} câu tự luận</span>`:""}${isLockedTopic?`<span class="meta-pill" style="color:var(--amber);border-color:var(--amber);">🔑 Cần User &amp; MK</span>`:`<span class="meta-pill" style="color:var(--ok);">✓ Đã mở khóa</span>`}</div></div>`;
      }).join("")}</div>`;
    }).join("");
-   a.innerHTML=`<h2 class="grammar-heading" style="text-align:center;margin:8px 0 14px;">CHỌN CHỦ ĐIỂM NGỮ PHÁP</h2>`+statsHtml+toolbarHtml+(groupsHtml||`<div class="c">Không tìm thấy chủ điểm ngữ pháp phù hợp với từ khóa.</div>`);
+   const authGateBar = uActive
+     ? `<div class="c" style="border-left:5px solid var(--ok);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:12px 16px;margin-bottom:14px;">
+         <div>
+           <b style="color:var(--ok);">✅ ĐÃ MỞ KHÓA FULL CHỨC NĂNG</b> • Người dùng: <b>${uActive.fullName}</b> (<code>${uActive.username}</code>)
+           <div style="font-size:0.8rem;color:var(--mu);">Trạng thái: Đang mở khóa ${uActive.allowedCats && uActive.allowedCats.length===5 ? "toàn bộ 55 Chuyên đề, Bài tập 3 mức độ, Phát âm AI & Đề kiểm tra 50 phút" : "Nhóm chuyên đề " + (uActive.allowedCats||[]).join(", ")} • Tự động thoát khi tắt ứng dụng.</div>
+         </div>
+         <div class="r" style="margin:0;">
+           ${uActive.role==="admin" ? `<button type="button" class="b egp-btn-gold" onclick="openEgpAdminModal()">👥 Quản trị Cấp User &amp; Cập nhật GitHub</button>` : ""}
+           <button type="button" class="b" onclick="logoutEgpUser(true)">🚪 Thoát Tài Khoản</button>
+         </div>
+       </div>`
+     : `<div class="c" style="border:2px solid var(--ac);padding:14px 18px;margin-bottom:16px;">
+         <div class="sec-row" style="margin-bottom:8px;">
+           <div>
+             <b style="color:var(--ac);font-size:0.96rem;">🔑 ĐĂNG NHẬP USER &amp; MẬT KHẨU ĐỂ SỬ DỤNG FULL CHỨC NĂNG</b>
+             <div style="font-size:0.8rem;color:var(--mu);">Chế độ Khách chỉ xem thử được Chuyên đề #1. Hãy nhập <b>Tên đăng nhập (User)</b> và <b>Mật khẩu</b> được cấp để mở khóa Full 55 chuyên đề, Bài tập, Phát âm AI &amp; Đề thi 50 phút.</div>
+           </div>
+           <span class="sec-badge">Tự thoát khi tắt App</span>
+         </div>
+         <form onsubmit="event.preventDefault();inlineFullLogin();" autocomplete="off" class="r" style="margin:0;align-items:center;">
+           <input class="i" id="inlineLoginUser" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Tên đăng nhập (VD: admin, hs_12a1...)" style="margin:0;flex:1;min-width:180px;" />
+           <div class="pw-wrap" style="margin:0;flex:1;min-width:180px;">
+             <input class="i" id="inlineLoginPass" type="password" autocomplete="new-password" placeholder="Mật khẩu được cấp..." onkeydown="if(event.key==='Enter'){event.preventDefault();inlineFullLogin();}" />
+             <button type="button" class="pw-eye" onclick="togglePwVis('inlineLoginPass',this)" title="Hiện / Ẩn mật khẩu">👁️</button>
+           </div>
+           <button type="submit" class="b on" id="btnInlineUnlockFull">🔓 Mở khóa Full Chức năng</button>
+           <button type="button" class="b egp-btn-gold" onclick="openEgpAdminModal()" title="Dành cho Thầy Phạm Tiến (Admin)">👥 Trang Quản trị (Cấp User &amp; GitHub)</button>
+         </form>
+         <div id="inlineLoginErr" class="no2" style="display:none;margin-top:8px;"></div>
+       </div>`;
+   a.innerHTML=`<h2 class="grammar-heading" style="text-align:center;margin:8px 0 14px;">CHỌN CHỦ ĐIỂM NGỮ PHÁP</h2>`+authGateBar+statsHtml+toolbarHtml+(groupsHtml||`<div class="c">Không tìm thấy chủ điểm ngữ pháp phù hợp với từ khóa.</div>`);
    return;
  }
  const d=D.find(x=>x.id==T);
@@ -6584,7 +6644,7 @@ function R(){const s=st(),a=$("app");
 // ============================================================================
 /* EGP-EMBEDDED-USERS-START */
 const EGP_EMBEDDED_AUTH = {
-  requireLoginGate: false,
+  requireLoginGate: true,
   updatedAt: "2026-11-18T16:50:00Z",
   githubRepo: {
     owner: "",
@@ -6662,10 +6722,10 @@ function clearEgpCredentialsAndSession(){
     localStorage.removeItem("egp_active_user_v1");
     sessionStorage.removeItem("egp_active_user_v1");
   }catch(e){}
-  const uInp = $("egpLoginUser");
-  const pInp = $("egpLoginPass");
-  if(uInp){ uInp.value = ""; uInp.defaultValue = ""; }
-  if(pInp){ pInp.value = ""; pInp.defaultValue = ""; }
+  ["egpLoginUser", "egpLoginPass", "inlineLoginUser", "inlineLoginPass"].forEach(id => {
+    const el = $(id);
+    if(el){ el.value = ""; el.defaultValue = ""; }
+  });
 }
 
 function toggleAutoLogoutOption(checked){
@@ -6794,12 +6854,12 @@ function updateEgpHeaderUserUI(){
   if(outBtn) outBtn.style.display = "inline-flex";
 }
 
-// Guard `go(id)` so users must log in or belong to allowed category groups
+// Guard `go(id)` and `tb(k)` so users must log in with User + Password to use Full Features (Topics #2-#55, Exercises, AI Pronunciation, 50-min Exam)
 const _origGo = go;
 go = function(id){
   const u = egpAuth.currentUser;
-  if(egpAuth.requireLoginGate && !u){
-    showToast("🔑 Vui lòng nhập Tên đăng nhập & Mật khẩu để học chuyên đề!");
+  if(!u && Number(id) !== 1){
+    showToast("🔒 Vui lòng đăng nhập User & Mật khẩu để mở khóa Full 55 chuyên đề!");
     openEgpLoginModal();
     return;
   }
@@ -6812,6 +6872,101 @@ go = function(id){
   }
   _origGo(id);
 };
+
+const _origTb = tb;
+tb = function(k){
+  const u = egpAuth.currentUser;
+  if(!u && (k === "pa" || k === "kt")){
+    showToast("🔒 Tính năng Kiểm tra Phát âm AI & Đề thi 50 phút thuộc gói Full. Vui lòng đăng nhập User & Mật khẩu!");
+    openEgpLoginModal();
+    return;
+  }
+  _origTb(k);
+};
+
+function inlineFullLogin(){
+  const uName = String(($("inlineLoginUser")||{}).value || "").trim();
+  const pw = String(($("inlineLoginPass")||{}).value || "").trim();
+  const er = $("inlineLoginErr");
+  if(!uName || !pw){
+    if(er){
+      er.style.display = "inline-block";
+      er.textContent = "✗ Vui lòng nhập đầy đủ Tên đăng nhập (User) và Mật khẩu!";
+    }
+    return;
+  }
+  const found = egpAuth.users.find(u => u.username.toLowerCase() === uName.toLowerCase());
+  if(!found || (found.passwordPlain !== pw && !(found.role === "admin" && computeSaltedHash(pw) === AUTH_HASH))){
+    if(er){
+      er.style.display = "inline-block";
+      er.textContent = "✗ Sai Tên đăng nhập hoặc Mật khẩu! Vui lòng kiểm tra lại hoặc liên hệ Thầy Phạm Tiến (0943930787).";
+    }
+    return;
+  }
+  if(found.status === "locked" || isEgpUserExpired(found)){
+    if(er){
+      er.style.display = "inline-block";
+      er.textContent = "✗ Tài khoản này đã bị khóa hoặc hết hạn sử dụng.";
+    }
+    return;
+  }
+  if($("inlineLoginUser")) $("inlineLoginUser").value = "";
+  if($("inlineLoginPass")) $("inlineLoginPass").value = "";
+  setEgpActiveUser(found, true);
+}
+
+function genQuickFullPassword(){
+  const chars = "abcdefghijkmnpqrstuvwxyz23456789";
+  let s = "full";
+  for(let i=0;i<4;i++) s += chars[Math.floor(Math.random()*chars.length)];
+  if($("egpQuickNewPass")) $("egpQuickNewPass").value = s;
+}
+
+async function quickCreateFullUser(pushGithub){
+  const username = String(($("egpQuickNewUser")||{}).value || "").trim().replace(/\s+/g, "");
+  const passwordPlain = String(($("egpQuickNewPass")||{}).value || "").trim();
+  const rawName = String(($("egpQuickNewName")||{}).value || "").trim();
+  const roleSel = ($("egpQuickNewRole")||{}).value || "student_full";
+
+  if(!username || !passwordPlain){
+    showToast("✗ Vui lòng nhập Tên đăng nhập (User) và Mật khẩu!");
+    if($("egpQuickNewUser") && !username) $("egpQuickNewUser").focus();
+    else if($("egpQuickNewPass")) $("egpQuickNewPass").focus();
+    return;
+  }
+  const fullName = rawName || ("Học sinh (" + username + ")");
+  const role = roleSel === "admin" ? "admin" : (roleSel === "teacher_full" ? "teacher" : "student");
+
+  const existingIdx = egpAuth.users.findIndex(x => x.username.toLowerCase() === username.toLowerCase());
+  const userObj = {
+    username,
+    passwordPlain,
+    fullName,
+    className: "Full Chức năng - THPT Bỉm Sơn",
+    role,
+    allowedCats: [1, 2, 3, 4, 5],
+    status: "active",
+    expiresAt: null
+  };
+
+  if(existingIdx !== -1){
+    egpAuth.users[existingIdx] = {...egpAuth.users[existingIdx], ...userObj};
+    showToast("✓ Đã cập nhật mật khẩu & quyền Full Chức năng cho User: " + username);
+  }else{
+    egpAuth.users.push(userObj);
+    showToast("🎉 Đã cấp User Full Chức năng mới: " + username);
+  }
+  saveEgpUsersDB();
+  renderEgpUsersTable();
+
+  if($("egpQuickNewUser")) $("egpQuickNewUser").value = "";
+  if($("egpQuickNewName")) $("egpQuickNewName").value = "";
+  genQuickFullPassword();
+
+  if(pushGithub){
+    await pushEgpUsersToGithub();
+  }
+}
 
 function renderSecModal(){
   updateEgpGateStatusUI();
@@ -6892,6 +7047,7 @@ function openEgpAdminModal(){
   switchEgpAdminTab("list");
   renderEgpUsersTable();
   updateEgpGateStatusUI();
+  if($("egpQuickNewPass") && !$("egpQuickNewPass").value) genQuickFullPassword();
   const m = $("egpAdminModal");
   if(m) m.classList.add("open");
 }
